@@ -1,0 +1,52 @@
+.container {
+    width: 100%;
+    
+    position: relative;
+    z-index: 0;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 33px;
+    padding-top: 1em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.imgContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+    z-index: -1;
+}
+
+.imgBorders {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+}
+
+.img {
+    width: 100%;
+}
+
+.content {
+    padding: 1rem;
+}
+.contentLeft {
+    padding-left: 0;
+}
+.contentRight {
+    padding-right: 0;
+}
+
+.link {
+    color: var(--color-violet);
+}
