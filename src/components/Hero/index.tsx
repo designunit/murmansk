@@ -2,6 +2,8 @@ import { Section } from '../Section'
 import s from './index.module.css'
 import { useMobile } from '../../hooks/useMobile'
 import { Ratio } from '../Ratio'
+import { Gradient } from '../Gradient'
+import { Emoji } from '../Emoji'
 
 export const Hero: React.FC = () => {
     const isMobile = useMobile()
@@ -18,7 +20,7 @@ export const Hero: React.FC = () => {
                                 zIndex: -1,
                                 height: '100%',
                             }}>
-                                <div className={s.bg} />
+                                <Gradient />
                                 <img
                                     src='/static/hero.svg'
                                     className={s.img}
@@ -30,7 +32,19 @@ export const Hero: React.FC = () => {
                                 <h1
                                     className={s.h1}
                                 >
-                                    МУР<br />МУР<br />МУР<br />МАНСК🥶
+                                    <div>МУР</div>
+                                    <div>МУР</div>
+                                    <div>МУР</div>
+                                    <div>
+                                        МАНСК
+                                        <Emoji
+                                            name='freezing-face_1f976'
+                                            resolution={120}
+                                            style={{
+                                                width: 120
+                                            }}
+                                        />
+                                    </div>
                                 </h1>
                             </>
                         )}
