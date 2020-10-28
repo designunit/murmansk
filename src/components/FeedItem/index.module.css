@@ -14,9 +14,6 @@
 }
 
 .imgContainer {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
     height: 100%;
     width: 100%;
 
@@ -31,10 +28,6 @@
     height: 100%;
     border-left: solid 1px black;
     border-right: solid 1px black;
-}
-
-.img {
-    width: 100%;
 }
 
 .content {
