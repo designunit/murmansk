@@ -47,7 +47,7 @@ export const Hero: React.FC = () => {
                                         МАНСК
                                         <Emoji
                                             name='freezing-face_1f976'
-                                            resolution={120}
+                                            resolution={240}
                                             style={{
                                                 width: isMobile ? '.75em' : 120
                                             }}

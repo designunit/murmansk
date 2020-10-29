@@ -77,15 +77,6 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                 }}
                             >
                                 <Gradient color={color} />
-
-                                <span style={{
-                                    position: 'absolute',
-                                    top: 0,
-                                    height: '100%',
-                                    width: '100%',
-                                    borderLeft: 'solid 1px black',
-                                    borderRight: 'solid 1px black',
-                                }} />
                                 <span className={s.imgContainer}>
                                     <Image
                                         src={img}
@@ -95,12 +86,7 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                 </span>
                             </span>
                             {state && (
-                                <span style={{
-                                    position: 'relative',
-                                    float: 'left',
-                                    width: '100%',
-                                    marginBottom: '1rem',
-                                }}>
+                                <span className={s.textDivider}>
                                     <span style={{
                                         position: 'absolute',
                                         top: 0,
@@ -117,16 +103,12 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                         </div>
                         <div className={s.links}>
                             {tags.map((tag, i) => (
-                                <span
-                                    key={i}
-                                >
-                                    <a
-                                        key={i}
-                                    >
+                                <>
+                                    <a key={i}>
                                         #{tag}
                                     </a>
                                     {!(i === tags.length - 1) && ', '}
-                                </span>
+                                </>
                             ))}
                         </div>
                     </div>
