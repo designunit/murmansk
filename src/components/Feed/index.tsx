@@ -11,6 +11,7 @@ export const Feed: React.FC<IFeedProps> = ({ items }) => {
         <>
             {items.map((item, index) => (
                 <FeedItem
+                    key={index}
                     item={item}
                     index={index}
                 />

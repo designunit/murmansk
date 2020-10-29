@@ -23,11 +23,12 @@ export const Hero: React.FC = () => {
                         leftContent={(
                             <div className={s.leftContainer}>
                                 <Gradient />
-                                <Image
-                                    src='/static/hero.png'
-                                    className={s.img}
-                                    unsized
-                                />
+                                <span className={s.imgContainer}>
+                                    <Image
+                                        src='/static/hero.png'
+                                        unsized
+                                    />
+                                </span>
                             </div>
                         )}
                         rightContent={(

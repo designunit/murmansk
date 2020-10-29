@@ -4,6 +4,7 @@ import { Gradient } from '../Gradient'
 import { Header } from '../Header'
 import { Section } from '../Section'
 import s from './index.module.css'
+import Image from 'next/image'
 
 interface IFeedItemProps {
     item: IItem
@@ -24,7 +25,7 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
         }
         const textHeight = textRef.current.getBoundingClientRect().height
         const imgHeight = imgRef.current.getBoundingClientRect().height
-        if (textHeight > imgHeight) {
+        if (textHeight > imgHeight && imgHeight > 50) {
             setState(true)
         }
     }, [textRef, imgRef])
@@ -33,7 +34,6 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
 
     return (
         <div
-            key={index}
             className={s.container}
             ref={postRef}
         >
@@ -59,7 +59,7 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                     }}
                 >
                     <div ref={textRef}>
-                        <p>
+                        <div>
                             <span
                                 ref={imgRef}
                                 style={{
@@ -68,7 +68,7 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                     top: '-1rem',
                                     marginLeft: side && '1rem',
                                     marginRight: !side && '1rem',
-                                    marginBottom: '-2rem',
+                                    marginBottom: '-1rem',
                                     height: '100%',
                                     maxHeight: 600,
                                     width: '33%',
@@ -81,17 +81,18 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                 <span style={{
                                     position: 'absolute',
                                     top: 0,
-                                    height: 'calc(100%)',
+                                    height: '100%',
                                     width: '100%',
                                     borderLeft: 'solid 1px black',
                                     borderRight: 'solid 1px black',
                                 }} />
-                                <img
-                                    src={img}
-                                    style={{
-                                        width: '100%'
-                                    }}
-                                />
+                                <span className={s.imgContainer}>
+                                    <Image
+                                        src={img}
+                                        unsized
+                                        loading='eager'
+                                    />
+                                </span>
                             </span>
                             {state && (
                                 <span style={{
@@ -99,7 +100,6 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                     float: 'left',
                                     width: '100%',
                                     marginBottom: '1rem',
-                                    marginTop: '1rem',
                                 }}>
                                     <span style={{
                                         position: 'absolute',
@@ -111,8 +111,10 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                     }} />
                                 </span>
                             )}
-                            {content}
-                        </p>
+                            <p>
+                                {content}
+                            </p>
+                        </div>
                         <div className={s.links}>
                             {tags.map((tag, i) => (
                                 <span
