@@ -31,74 +31,6 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
 
     const side = index - 1 % 2
 
-    const pictureEl = (
-        <span
-            ref={imgRef}
-            style={{
-                float: side ? 'right' : 'left',
-                position: 'relative',
-                top: '-1rem',
-                marginBottom: '-2rem',
-                marginRight: '1rem',
-                height: '100%',
-
-                display: 'flex',
-            }}
-        >
-            <Gradient color={color} />
-
-            <div style={{
-                position: 'absolute',
-                top: 0,
-                height: 'calc(100%)',
-                width: '100%',
-                borderLeft: 'solid 1px black',
-                borderRight: 'solid 1px black',
-            }} />
-            <img
-                src={img}
-            />
-        </span>
-    )
-    const contentEl = (
-        <div ref={textRef}>
-            <p>
-                {pictureEl}
-                {state && (
-                    <span style={{
-                        position: 'relative',
-                        float: 'left',
-                        width: '100%',
-                        marginBottom: '1rem',
-                        marginTop: '1rem',
-                    }}>
-                        <span style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: `calc(-8.33vw - max(${postRef.current?.getBoundingClientRect().width}px - 1440px, 0px)*.5 - 17px)`,
-                            borderBottom: 'solid 1px black',
-                            width: '100vw'
-                        }} />
-                    </span>
-                )}
-                {content}
-            </p>
-            {tags.map((tag, i) => (
-                <span
-                    key={i}
-                    className={s.link}
-                >
-                    <a
-                        key={i}
-                    >
-                        #{tag}
-                    </a>
-                    {!(i === tags.length - 1) && ', '}
-                </span>
-            ))}
-        </div>
-    )
-
     return (
         <div
             key={index}
@@ -126,7 +58,76 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                         paddingBottom: 0,
                     }}
                 >
-                    {contentEl}
+                    <div ref={textRef}>
+                        <p>
+                            <span
+                                ref={imgRef}
+                                style={{
+                                    float: side ? 'right' : 'left',
+                                    position: 'relative',
+                                    top: '-1rem',
+                                    marginLeft: side && '1rem',
+                                    marginRight: !side && '1rem',
+                                    marginBottom: '-2rem',
+                                    height: '100%',
+                                    maxHeight: 600,
+                                    width: '33%',
+
+                                    display: 'flex',
+                                }}
+                            >
+                                <Gradient color={color} />
+
+                                <span style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    height: 'calc(100%)',
+                                    width: '100%',
+                                    borderLeft: 'solid 1px black',
+                                    borderRight: 'solid 1px black',
+                                }} />
+                                <img
+                                    src={img}
+                                    style={{
+                                        width: '100%'
+                                    }}
+                                />
+                            </span>
+                            {state && (
+                                <span style={{
+                                    position: 'relative',
+                                    float: 'left',
+                                    width: '100%',
+                                    marginBottom: '1rem',
+                                    marginTop: '1rem',
+                                }}>
+                                    <span style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: `calc(${postRef.current?.getBoundingClientRect().width}px * -.0833 - max(${postRef.current?.getBoundingClientRect().width}px - 1440px, 0px)*.5)`,
+                                        zIndex: 10,
+                                        borderBottom: 'solid 1px black',
+                                        width: postRef.current?.getBoundingClientRect().width
+                                    }} />
+                                </span>
+                            )}
+                            {content}
+                        </p>
+                        <div className={s.links}>
+                            {tags.map((tag, i) => (
+                                <span
+                                    key={i}
+                                >
+                                    <a
+                                        key={i}
+                                    >
+                                        #{tag}
+                                    </a>
+                                    {!(i === tags.length - 1) && ', '}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
                 </Section>
             </div>
         </div>

@@ -3,15 +3,15 @@ import { useMobile } from '@/hooks/useMobile'
 export const Gradient: React.FC<{ color?: string }> = ({ color = 'var(--color-green)' }) => {
     const isMobile = useMobile()
     return (
-        <div style={{
+        <span style={{
             position: 'absolute',
             zIndex: -1,
-            top: isMobile ? '-15vmax' : '-12vw',
-            right: isMobile ? '-10vmax' : '-8.33vw',
-            width: isMobile ? '100vmax' : '50vw',
-            height: isMobile ? '100vmax' : '50vw',
-            maxWidth: 720,
-            maxHeight: 720,
+            top: isMobile ? '-15vmax' : '-20vw',
+            right: isMobile ? '-10vmax' : '-15vw',
+            width: isMobile ? '100vmax' : '75vw',
+            height: isMobile ? '100vmax' : '75vw',
+            maxWidth: 1024,
+            maxHeight: 1024,
             background: `radial-gradient(closest-side at center, ${color} 27.23%, rgba(255, 255, 255, 0) 100%)`,
             pointerEvents: 'none',
         }} />

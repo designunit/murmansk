@@ -5,6 +5,7 @@ import { Ratio } from '../Ratio'
 import { Gradient } from '../Gradient'
 import { Emoji } from '../Emoji'
 import { useFluidFontSize } from 'react-fluid-text'
+import Image from 'next/image'
 
 export const Hero: React.FC = () => {
     const isMobile = useMobile()
@@ -14,21 +15,18 @@ export const Hero: React.FC = () => {
     })
     return (
         <>
-            <div className={s.container}>
+            <section className={s.container}>
                 <Section className={s.section}>
                     <Ratio
                         left={1}
                         right={2}
                         leftContent={(
-                            <div style={{
-                                position: 'relative',
-                                zIndex: -1,
-                                height: '100%',
-                            }}>
+                            <div className={s.leftContainer}>
                                 <Gradient />
-                                <img
+                                <Image
                                     src='/static/hero.png'
                                     className={s.img}
+                                    unsized
                                 />
                             </div>
                         )}
@@ -62,18 +60,16 @@ export const Hero: React.FC = () => {
                 <div
                     className={s.container}
                     style={{
-                        width: '100%',
                         borderTop: 'solid 1px black',
-                        borderBottom: 'none',
                     }}
                 >
                     <Section>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nam corrupti rem ullam pariatur saepe vel nisi quo, illum incidunt ut laboriosam eum cumque asperiores atque nihil hic sit deserunt velit, deleniti a. Quaerat maxime eligendi tempore ipsa necessitatibus ex quas voluptatum amet voluptates, sequi velit porro fuga? Perspiciatis, iusto.
+                            Lorem ipsum dolor sit amet consectetur{' '}<Emoji name='jack-o-lantern_1f383' /> adipisicing elit. Maxime nam corrupti rem ullam pariatur saepe vel nisi quo, illum incidunt ut laboriosam eum cumque asperiores atque nihil hic sit deserunt velit, deleniti a. Quaerat maxime eligendi tempore ipsa necessitatibus ex quas voluptatum amet voluptates, sequi velit porro fuga? Perspiciatis, iusto.
                         </p>
                     </Section>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

@@ -1,5 +1,6 @@
 .container {
     width: 100%;
+    overflow: hidden;
     
     position: relative;
     z-index: 0;
@@ -30,6 +31,10 @@
     border-right: solid 1px black;
 }
 
+.img {
+    width: 33%;
+}
+
 .content {
     padding: 1rem;
 }
@@ -40,6 +45,7 @@
     padding-right: 0;
 }
 
-.link {
+.links {
     color: var(--color-violet);
+    padding-bottom: 1rem;
 }

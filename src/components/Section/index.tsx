@@ -8,8 +8,8 @@ export type SectionProps = {
 
 export const Section: React.FC<SectionProps> = props => {
     return (
-        <section className={`${s.section} ${props.className}`} style={props.style}>
+        <div className={`${s.section} ${props.className}`} style={props.style}>
             {props.children}
-        </section>
+        </div>
     )
 }

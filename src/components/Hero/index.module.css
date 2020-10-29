@@ -8,8 +8,6 @@
 
     position: relative;
     z-index: 0;
-
-    border-bottom: solid 1px black;
 }
 
 
@@ -22,24 +20,17 @@
     padding-bottom: 0;
 }
 
-.bg {
-    position: absolute;
-    top: max(-12.5vw, -760px / 2);
-    left: max(-25vw, -760px / 2);
-    z-index: -10;
-    width: 50vw;
-    height: 50vw;
-    max-width: 760px;
-    max-height: 760px;
-    background: radial-gradient(closest-side at center, #24FF00 27.23%, rgba(255, 255, 255, 0) 100%);
+.leftContainer {
+    position: relative;
+    height: 100%;
+    border-left: solid 1px black;
+    border-right: solid 1px black;
 }
 
 .img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-left: solid 1px black;
-    border-right: solid 1px black;
 }
 
 .h1 {
