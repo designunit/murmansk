@@ -20,12 +20,13 @@
     },
     "homepage": "https://github.com/designunit/murmansk#readme",
     "dependencies": {
-        "next": "^9.5.3",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
         "hamburger-react": "^2.2.0",
+        "next": "^10.0.0",
         "rc-drawer": "^4.1.0",
+        "react": "^16.13.1",
         "react-burger-menu": "^2.9.0",
+        "react-dom": "^16.13.1",
+        "react-fluid-text": "^0.1.1",
         "react-use": "^15.3.4"
     },
     "devDependencies": {
