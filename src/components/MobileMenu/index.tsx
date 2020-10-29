@@ -15,7 +15,7 @@ const menuStules: Partial<Styles> = {
         height: '48px',
         top: '0px',
         right: '0px',
-        marginTop: '1rem',
+        marginTop: '.5rem',
         marginRight: '8.33%',
         zIndex: '1101',
     },
@@ -29,15 +29,20 @@ const menuStules: Partial<Styles> = {
     bmMenu: {
         width: '100%',
         padding: '1rem',
-        background: 'var(--color-gray)',
+        background: 'white',
+        borderLeft: 'solid 1px black',
     },
     bmOverlay: {
-        background: 'var(--color-black)',
+        
     },
     bmItemList: {
+        height: 'min-content',
         marginTop: '64px',
-        marginRight: '8.33%',
-        textAlign: 'end',
+        marginRight: '8%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-end',
     }
 }
 

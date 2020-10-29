@@ -4,9 +4,14 @@ import { useMobile } from '../../hooks/useMobile'
 import { Ratio } from '../Ratio'
 import { Gradient } from '../Gradient'
 import { Emoji } from '../Emoji'
+import { useFluidFontSize } from 'react-fluid-text'
 
 export const Hero: React.FC = () => {
     const isMobile = useMobile()
+    const [ref, fontSize] = useFluidFontSize({
+        compressor: isMobile ? .5 : .25,
+        maxFontSize: 145
+    })
     return (
         <>
             <div className={s.container}>
@@ -22,7 +27,7 @@ export const Hero: React.FC = () => {
                             }}>
                                 <Gradient />
                                 <img
-                                    src='/static/hero.svg'
+                                    src='/static/hero.png'
                                     className={s.img}
                                 />
                             </div>
@@ -31,6 +36,10 @@ export const Hero: React.FC = () => {
                             <>
                                 <h1
                                     className={s.h1}
+                                    ref={ref}
+                                    style={{
+                                        fontSize
+                                    }}
                                 >
                                     <div>МУР</div>
                                     <div>МУР</div>
@@ -41,7 +50,7 @@ export const Hero: React.FC = () => {
                                             name='freezing-face_1f976'
                                             resolution={120}
                                             style={{
-                                                width: 120
+                                                width: isMobile ? '.75em' : 120
                                             }}
                                         />
                                     </div>
