@@ -101,12 +101,12 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                         </div>
                         <div className={s.links}>
                             {tags.map((tag, i) => (
-                                <>
-                                    <a key={i}>
+                                <span key={i}>
+                                    <a>
                                         #{tag}
                                     </a>
                                     {!(i === tags.length - 1) && ', '}
-                                </>
+                                </span>
                             ))}
                         </div>
                     </div>
