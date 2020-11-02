@@ -78,10 +78,8 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                             >
                                 <Gradient color={color} />
                                 <span className={s.imgContainer}>
-                                    <Image
+                                    <img
                                         src={img}
-                                        unsized
-                                        loading='eager'
                                     />
                                 </span>
                             </span>
