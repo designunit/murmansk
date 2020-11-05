@@ -11,7 +11,7 @@ interface IFeedItemProps {
 }
 
 export const FeedItem: React.FC<any> = ({ item, index }) => {
-    const { title, content, img = '/static/1.png', color, tags } = item
+    const { title ='заглушка для заголовка', content, img = '/static/1.png', color, tags } = item
 
     const postRef = useRef(null)
 
