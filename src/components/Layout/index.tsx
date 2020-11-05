@@ -6,6 +6,7 @@ import { MobileMenu } from '../MobileMenu'
 import { Feed } from '../Feed'
 import { Emoji } from '../Emoji'
 import { Map } from '../Map'
+import { Footer } from '../Footer'
 
 export type modalContentType = {
     text: string
@@ -98,6 +99,7 @@ export const Layout: React.FC<any> = ({ data }) => {
                 <Feed
                     data={data}
                 />
+                <Footer />
             </main>
         </div>
     )
