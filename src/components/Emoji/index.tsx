@@ -1,14 +1,23 @@
 import { CSSProperties } from 'react'
+import emojiUnicode from "emoji-unicode"
+
 
 interface IEmojiProps {
     name: string
-    resolution?: 60 | 120 | 240
     style?: CSSProperties
 }
 
-export const Emoji: React.FC<IEmojiProps> = ({ name, resolution = 60, style = { width: '1em' } }) => (
-    <img
-        src={`https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/${resolution}/apple/237/${name}.png`}
-        style={style}
-    />
-)
+const defaultStyle: CSSProperties = {
+    width: '1em',
+    maxWidth: 64,
+    maxHeight: 64,
+}
+
+export const Emoji: React.FC<IEmojiProps> = ({ name, style = defaultStyle }) => {
+    return (
+        <img
+            src={`https://cdn.jsdelivr.net/npm/emoji-datasource-apple@6.0.0/img/apple/64/${emojiUnicode(name).split(' ').join('-')}.png`}
+            style={style}
+        />
+    )
+}

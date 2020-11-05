@@ -4,15 +4,14 @@ import { Gradient } from '../Gradient'
 import { Header } from '../Header'
 import { Section } from '../Section'
 import s from './index.module.css'
-import Image from 'next/image'
 
 interface IFeedItemProps {
     item: IItem
     index: number
 }
 
-export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
-    const { title, content, img, color, tags } = item
+export const FeedItem: React.FC<any> = ({ item, index }) => {
+    const { title, content, img = '/static/1.png', color, tags } = item
 
     const postRef = useRef(null)
 
@@ -95,11 +94,11 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                     }} />
                                 </span>
                             )}
-                            <p>
-                                {content}
-                            </p>
+                            <div
+                                dangerouslySetInnerHTML={{ __html: item.post }}
+                            />
                         </div>
-                        <div className={s.links}>
+                        {/* <div className={s.links}>
                             {tags.map((tag, i) => (
                                 <span key={i}>
                                     <a>
@@ -108,7 +107,7 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                     {!(i === tags.length - 1) && ', '}
                                 </span>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
                 </Section>
             </div>

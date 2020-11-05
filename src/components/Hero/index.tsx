@@ -26,7 +26,7 @@ export const Hero: React.FC = () => {
                                 <span className={s.imgContainer}>
                                     <Image
                                         src='/static/hero.png'
-                                        unsized
+                                        layout='fill'
                                     />
                                 </span>
                             </div>
@@ -45,11 +45,11 @@ export const Hero: React.FC = () => {
                                     <div>МУР</div>
                                     <div>
                                         МАНСК
-                                        <Emoji
-                                            name='freezing-face_1f976'
-                                            resolution={240}
+                                        <img
+                                            src='/static/heroEmoji.png'
                                             style={{
-                                                width: isMobile ? '.75em' : 120
+                                                width: isMobile ? '.75em' : 120,
+                                                height: isMobile ? '.75em' : 120
                                             }}
                                         />
                                     </div>
@@ -66,7 +66,7 @@ export const Hero: React.FC = () => {
                 >
                     <Section>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur{' '}<Emoji name='jack-o-lantern_1f383' /> adipisicing elit. Maxime nam corrupti rem ullam pariatur saepe vel nisi quo, illum incidunt ut laboriosam eum cumque asperiores atque nihil hic sit deserunt velit, deleniti a. Quaerat maxime eligendi tempore ipsa necessitatibus ex quas voluptatum amet voluptates, sequi velit porro fuga? Perspiciatis, iusto.
+                            Lorem ipsum dolor sit amet consectetur{' '}<Emoji name='🎃' /> adipisicing elit. Maxime nam corrupti rem ullam pariatur saepe vel nisi quo, illum incidunt ut laboriosam eum cumque asperiores atque nihil hic sit deserunt velit, deleniti a. Quaerat maxime eligendi tempore ipsa necessitatibus ex quas voluptatum amet voluptates, sequi velit porro fuga? Perspiciatis, iusto.
                         </p>
                     </Section>
                 </div>

@@ -77,7 +77,7 @@ const items: IItem[] = [
     },
 ]
 
-export const Layout: React.FC = () => {
+export const Layout: React.FC<any> = ({ data }) => {
     const isMobile = useMobile()
     return (
         <div className={s.container}>
@@ -94,7 +94,7 @@ export const Layout: React.FC = () => {
                 />
                 <Hero />
                 <Feed
-                    items={items}
+                    data={data}
                 />
             </main>
         </div>

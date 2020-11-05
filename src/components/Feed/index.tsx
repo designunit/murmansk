@@ -4,12 +4,12 @@ import { FeedItem } from '../FeedItem'
 import { IItem } from '../Layout'
 
 interface IFeedProps {
-    items: IItem[]
+    data: IItem[]
 }
-export const Feed: React.FC<IFeedProps> = ({ items }) => {
+export const Feed: React.FC<any> = ({ data }) => {
     return (
         <>
-            {items.map((item, index) => (
+            {data.map((item, index) => (
                 <FeedItem
                     key={index}
                     item={item}
