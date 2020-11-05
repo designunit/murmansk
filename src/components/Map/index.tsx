@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Section } from '../Section'
 import s from './index.module.css'
 
@@ -11,6 +12,9 @@ export const Map: React.FC = () => {
                 height={452}
                 layout='responsive'
             />
+            <Link
+                href=''
+            >
             <a className={s.text}>
                 <Section style={{
                     height: '100%',
@@ -21,7 +25,6 @@ export const Map: React.FC = () => {
                     justifyContent: 'center',
 
                     textTransform: 'uppercase',
-                    textDecoration: 'underline',
                     fontWeight: 'bold',
                     fontSize: 50,
                     lineHeight: '135%',
@@ -37,6 +40,7 @@ export const Map: React.FC = () => {
                 </span>
                 </Section>
             </a>
+            </Link>
         </div>
     )
 }
