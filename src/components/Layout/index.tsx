@@ -5,6 +5,7 @@ import { useMobile } from '../../hooks/useMobile'
 import { MobileMenu } from '../MobileMenu'
 import { Feed } from '../Feed'
 import { Emoji } from '../Emoji'
+import { Map } from '../Map'
 
 export type modalContentType = {
     text: string
@@ -93,6 +94,7 @@ export const Layout: React.FC<any> = ({ data }) => {
                     buttons={buttons}
                 />
                 <Hero />
+                <Map />
                 <Feed
                     data={data}
                 />
