@@ -1,17 +1,20 @@
 import { useRef, useState, useEffect } from 'react'
-import { IItem } from '../Layout'
 import { Gradient } from '../Gradient'
 import { Header } from '../Header'
 import { Section } from '../Section'
 import s from './index.module.css'
+import { Item } from '@/types'
 
 interface IFeedItemProps {
-    item: IItem
+    item: Item
     index: number
 }
 
-export const FeedItem: React.FC<any> = ({ item, index }) => {
-    const { title ='заглушка для заголовка', content, img = '/static/1.png', color, tags } = item
+export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
+    // cms placeholers
+    const title ='заглушка для заголовка'
+    const img = `/static/${(index % 2)+1}.png`
+    const color = (index % 2) ? '#DB00FF' : '#F5D9D9'
 
     const postRef = useRef(null)
 

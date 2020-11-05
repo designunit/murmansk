@@ -1,12 +1,11 @@
+import { Item } from '@/types'
 import React from 'react'
 import { FeedItem } from '../FeedItem'
 
-import { IItem } from '../Layout'
-
 interface IFeedProps {
-    data: IItem[]
+    data: Item[]
 }
-export const Feed: React.FC<any> = ({ data }) => {
+export const Feed: React.FC<IFeedProps> = ({ data }) => {
     return (
         <>
             {data.map((item, index) => (

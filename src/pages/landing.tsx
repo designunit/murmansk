@@ -3,8 +3,13 @@ import { NextPage } from 'next'
 import { Layout } from '../components/Layout'
 import { GetStaticProps } from 'next'
 import { markdownToHtml } from '@/lib/markdownToHtml'
+import { Item } from '@/types'
 
-const Landing: NextPage<any> = ({ data }) => {
+interface ILandingProps {
+    data: Item[]
+}
+
+const Landing: NextPage<ILandingProps> = ({ data }) => {
     return (
         <>
             <Head>
@@ -18,7 +23,7 @@ const Landing: NextPage<any> = ({ data }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
     const res = await fetch(`https://unit.tmshv.com/mur-events`)
     const data = await res.json()
-    const parsed = await Promise.all(
+    const parsed: Item[] = await Promise.all(
         data.map(async x => ({
             ...x,
             post: await markdownToHtml(x.post)
