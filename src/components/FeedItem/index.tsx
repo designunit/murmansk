@@ -15,6 +15,11 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
     const title ='заглушка для заголовка'
     const img = `/static/${(index % 2)+1}.png`
     const color = (index % 2) ? '#DB00FF' : '#F5D9D9'
+    const tags = [
+        'заглушка',
+        'для',
+        'тегов'
+    ]
 
     const postRef = useRef(null)
 
@@ -101,16 +106,18 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                 dangerouslySetInnerHTML={{ __html: item.post }}
                             />
                         </div>
-                        {/* <div className={s.links}>
+                        <div className={s.links}>
                             {tags.map((tag, i) => (
                                 <span key={i}>
-                                    <a>
+                                    <a
+                                        className={s.link}
+                                    >
                                         #{tag}
                                     </a>
                                     {!(i === tags.length - 1) && ', '}
                                 </span>
                             ))}
-                        </div> */}
+                        </div>
                     </div>
                 </Section>
             </div>

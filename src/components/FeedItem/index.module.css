@@ -40,6 +40,16 @@
 }
 
 .links {
-    color: var(--color-violet);
     padding-bottom: 1rem;
+}
+
+.link {
+    color: var(--color-violet);
+}
+.link:hover {
+    text-decoration: line-through;
+}
+.link:visited {
+    color: #8000FF;
+    text-decoration: line-through;
 }
