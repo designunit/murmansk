@@ -27,7 +27,7 @@ export const Menu: React.FC<IMenuProps> = ({ buttons }) => {
                 </a>
                 <div className={s.menu}>
                     {!isMobile && (
-                        buttons.map(({ text, id, content }, index) => (
+                        buttons.map(({ text, id }, index) => (
                             <a
                                 key={index}
                                 className={s.button}
