@@ -87,6 +87,7 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                 <span className={s.imgContainer}>
                                     <img
                                         src={img}
+                                        height={600}
                                     />
                                 </span>
                             </span>
