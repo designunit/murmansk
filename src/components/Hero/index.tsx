@@ -45,13 +45,14 @@ export const Hero: React.FC = () => {
                                     <div>МУР</div>
                                     <div>
                                         МАНСК
-                                        <img
-                                            src='/static/heroEmoji.png'
-                                            style={{
-                                                width: isMobile ? '.75em' : 120,
-                                                height: isMobile ? '.75em' : 120
-                                            }}
-                                        />
+                                        <span>
+                                            <Image
+                                                src='/static/heroEmoji.png'
+                                                width={120}
+                                                height={120}
+                                                priority
+                                            />
+                                        </span>
                                     </div>
                                 </h1>
                             </>
