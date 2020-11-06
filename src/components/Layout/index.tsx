@@ -7,23 +7,25 @@ import { Feed } from '../Feed'
 import { Map } from '../Map'
 import { Footer } from '../Footer'
 
-export type buttonsType = any
+type button = {
+    text: string
+    id: string
+}
+
+export type buttonsType = button[]
 
 const buttons: buttonsType = [
     {
         text: 'Проекты',
         id: '#one',
-        content: <>ТЫ НАЖАЛ "О ПРОЕКТЕ"</>,
     },
     {
         text: 'Карта',
         id: '#two',
-        content: <>CCC ASD SA </>,
     },
     {
         text: 'Мероприятия',
         id: '#three',
-        content: <>CCC ASD SA </>,
     },
 ]
 
