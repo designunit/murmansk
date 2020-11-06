@@ -46,3 +46,8 @@
     font-size: 145px;
     line-height: 80%;
 }
+
+.h1Mobile {
+    padding: 0;
+    padding-bottom: 1rem;
+}

@@ -35,8 +35,8 @@ export const Map: React.FC = () => {
                     }}>
                         <span style={{
                             position: 'absolute',
-                            bottom: isMobile ? '5%' : '-95px',
-                            right: isMobile ? '-5%' : 'calc(50% - 220px)',
+                            bottom: isMobile ? '15%' : '-95px',
+                            right: isMobile ? '0%' : 'calc(50% - 220px)',
                         }}>
                             <Image
                                 src='/static/palec.png'

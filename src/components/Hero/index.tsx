@@ -10,7 +10,7 @@ import Image from 'next/image'
 export const Hero: React.FC = () => {
     const isMobile = useMobile()
     const [ref, fontSize] = useFluidFontSize({
-        compressor: isMobile ? .5 : .25,
+        compressor: isMobile ? .45 : .25,
         maxFontSize: 145
     })
     return (
@@ -49,7 +49,7 @@ export const Hero: React.FC = () => {
                         rightContent={(
                             <>
                                 <h1
-                                    className={s.h1}
+                                    className={`${s.h1} ${isMobile && s.h1Mobile}`}
                                     ref={ref}
                                     style={{
                                         fontSize
