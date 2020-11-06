@@ -50,6 +50,6 @@
     text-decoration: line-through;
 }
 .link:visited {
-    color: #8000FF;
+    color: var(--color-purple);
     text-decoration: line-through;
 }
