@@ -20,15 +20,30 @@ export const Hero: React.FC = () => {
                     <Ratio
                         left={1}
                         right={2}
+                        reverseMobile
                         leftContent={(
                             <div className={s.leftContainer}>
                                 <Gradient />
                                 <span className={s.imgContainer}>
                                     <Image
                                         src='/static/hero.png'
-                                        layout='fill'
+                                        width={991}
+                                        height={1023}
                                     />
                                 </span>
+                            </div>
+                        )}
+                        spacer={!isMobile ? null : (
+                            <div style={{
+                                position: 'relative',
+                                top: 0,
+                            }}>
+                                <div style={{
+                                    position: 'absolute',
+                                    left: '-10%',
+                                    width: '100vw',
+                                    borderBottom: 'solid 1px black',
+                                }} />
                             </div>
                         )}
                         rightContent={(
@@ -48,8 +63,8 @@ export const Hero: React.FC = () => {
                                         <span>
                                             <Image
                                                 src='/static/heroEmoji.png'
-                                                width={120}
-                                                height={120}
+                                                width={isMobile ? fontSize * .75 : 120}
+                                                height={isMobile ? fontSize * .75 : 120}
                                                 priority
                                             />
                                         </span>
