@@ -6,8 +6,8 @@ export const Gradient: React.FC<{ color?: string }> = ({ color = 'var(--color-gr
         <span style={{
             position: 'absolute',
             zIndex: -1,
-            top: isMobile ? '-15vmax' : '-20vw',
-            right: isMobile ? '-10vmax' : '-15vw',
+            top: isMobile ? '-20vmax' : '-20vw',
+            right: isMobile ? '-20vmax' : '-15vw',
             width: isMobile ? '100vmax' : '75vw',
             height: isMobile ? '100vmax' : '75vw',
             maxWidth: 1024,

@@ -4,6 +4,7 @@ import { Header } from '../Header'
 import { Section } from '../Section'
 import s from './index.module.css'
 import { Item } from '@/types'
+import { useMobile } from '@/hooks/useMobile'
 
 interface IFeedItemProps {
     item: Item
@@ -11,6 +12,8 @@ interface IFeedItemProps {
 }
 
 export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
+    const isMobile = useMobile()
+
     // cms placeholers
     const title ='заглушка для заголовка'
     const img = `/static/${(index % 2)+1}.png`
@@ -25,17 +28,15 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
 
     const textRef = useRef(null)
     const imgRef = useRef(null)
-    const [state, setState] = useState(false)
+    const [displayLine, setDisplayLine] = useState(false)
     useEffect(() => {
         if (!textRef || !imgRef) {
             return
         }
         const textHeight = textRef.current.getBoundingClientRect().height
         const imgHeight = imgRef.current.getBoundingClientRect().height
-        if (textHeight > imgHeight && imgHeight > 50) {
-            setState(true)
-        }
-    }, [textRef, imgRef])
+        setDisplayLine(textHeight > imgHeight && imgHeight > 50 || isMobile)
+    }, [textRef.current?.getBoundingClientRect().height, imgRef.current?.getBoundingClientRect().height])
 
     const side = index - 1 % 2
 
@@ -66,40 +67,48 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                     }}
                 >
                     <div ref={textRef}>
-                        <div>
+                        <div style={{
+                            display: isMobile && 'flex',
+                            flexDirection: 'column',
+                        }}>
                             <span
                                 ref={imgRef}
                                 style={{
                                     float: side ? 'right' : 'left',
                                     position: 'relative',
-                                    top: '-1rem',
-                                    marginLeft: side && '1rem',
-                                    marginRight: !side && '1rem',
-                                    marginBottom: '-1rem',
+                                    top: !isMobile &&  '-1rem',
+                                    marginLeft: !isMobile && side && '1rem',
+                                    marginRight: !isMobile && !side && '1rem',
+                                    marginBottom: !isMobile && '-1rem',
                                     height: '100%',
-                                    maxHeight: 600,
-                                    width: '33%',
+                                    maxHeight: !isMobile && 600,
+                                    width: isMobile ? '100%' : '33%',
 
                                     display: 'flex',
+                                    flex: 1,
                                 }}
                             >
                                 <Gradient color={color} />
                                 <span className={s.imgContainer}>
                                     <img
                                         src={img}
-                                        height={600}
                                     />
                                 </span>
                             </span>
-                            {state && (
-                                <span className={s.textDivider}>
+                            {displayLine && (
+                                <span style={{
+                                    marginBottom: !isMobile && '1rem',
+                                    position: 'relative',
+                                    float: 'left',
+                                    width: '100%',
+                                }}>
                                     <span style={{
                                         position: 'absolute',
                                         top: 0,
                                         left: `calc(${postRef.current?.getBoundingClientRect().width}px * -.0833 - max(${postRef.current?.getBoundingClientRect().width}px - 1440px, 0px)*.5)`,
                                         zIndex: 10,
                                         borderBottom: 'solid 1px black',
-                                        width: postRef.current?.getBoundingClientRect().width
+                                        width: isMobile ? '100vw' : postRef.current?.getBoundingClientRect().width,
                                     }} />
                                 </span>
                             )}
@@ -115,7 +124,7 @@ export const FeedItem: React.FC<IFeedItemProps> = ({ item, index }) => {
                                     >
                                         #{tag}
                                     </a>
-                                    {!(i === tags.length - 1) && ', '}
+                                    {i !== tags.length - 1 && ', '}
                                 </span>
                             ))}
                         </div>
