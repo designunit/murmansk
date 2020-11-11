@@ -12,9 +12,14 @@ export const Menu: React.FC<IMenuProps> = ({ buttons }) => {
     const isMobile = useMobile()
 
     return (
+        <div style={{
+            height: '100%',
+            width: '100%',
+            margin: 'calc(2rem - 1px)',
+        }}>
         <Header
             style={{
-                position: 'sticky',
+                position: 'fixed',
                 top: 0,
                 zIndex: 100,
             }}
@@ -40,5 +45,6 @@ export const Menu: React.FC<IMenuProps> = ({ buttons }) => {
                 </div>
             </Section>
         </Header>
+        </div>
     )
 }
