@@ -28,7 +28,7 @@ export const Menu: React.FC<IMenuProps> = ({ buttons }) => {
                 className={s.section}
             >
                 <a className={s.logo}>
-                    КисКисМур🐯🐱🐈
+                    Мойзалив.рф
                 </a>
                 <div className={s.menu}>
                     {!isMobile && (

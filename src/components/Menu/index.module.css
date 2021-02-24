@@ -3,11 +3,11 @@
     padding-bottom: 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-    height: 100%;
-    padding: 1rem 0;
+    padding: .5rem 0;
     font-weight: bold;
     background: linear-gradient(var(--color-primary), var(--color-secondary));
 }

@@ -27,6 +27,10 @@
     border-right: solid 1px black;
 }
 
+.imgContainer {
+    height: 100%;
+}
+
 .imgContainer div {
     width: 100%;
     height: 100%;

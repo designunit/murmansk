@@ -24,13 +24,13 @@ export const Hero: React.FC = () => {
                         leftContent={(
                             <div className={s.leftContainer}>
                                 <Gradient />
-                                <span className={s.imgContainer}>
+                                <div className={s.imgContainer}>
                                     <Image
                                         src='/static/hero.png'
                                         width={991}
                                         height={1023}
                                     />
-                                </span>
+                                </div>
                             </div>
                         )}
                         spacer={!isMobile ? null : (
