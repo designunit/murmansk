@@ -10,30 +10,32 @@ import { Footer } from '../Footer'
 type button = {
     text: string
     id: string
+    href?: string
 }
 
 export type buttonsType = button[]
 
 const buttons: buttonsType = [
     {
-        text: 'Проекты',
-        id: '#one',
-    },
-    {
         text: 'Карта',
-        id: '#two',
+        id: 'map',
+        href: 'https://app.latl.ng/map/FGF6683DZD8R4GE4'
     },
-    {
-        text: 'Мероприятия',
-        id: '#three',
-    },
+    // {
+    //     text: 'Проекты',
+    //     id: '#one',
+    // },
+    // {
+    //     text: 'Мероприятия',
+    //     id: '#three',
+    // },
 ]
 
 export const Layout: React.FC<any> = ({ data }) => {
     const isMobile = useMobile()
     return (
         <div className={s.container}>
-            {isMobile && (
+            {false && isMobile && (
                 <MobileMenu
                     buttons={buttons}
                 />

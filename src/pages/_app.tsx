@@ -8,7 +8,7 @@ const App: AppType = props => {
 
     return (
         <>
-            <Head>
+            {false && <Head>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
                 <script type='text/javascript'
@@ -29,6 +29,7 @@ const App: AppType = props => {
                 />
                 {/* <noscript><div><img src='https://mc.yandex.ru/watch/XXXXXXX' style={{ position: 'absolute', left: -9999 }} alt='' /></div></noscript> */}
             </Head>
+            }
 
             <Component {...pageProps} />
         </>
