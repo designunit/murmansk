@@ -1,0 +1,37 @@
+.section {
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 69px;
+}
+
+.logo {
+    padding: .5rem 0;
+    padding-right: .5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+ 
+.button {
+    /* ПОКА ЧТО БЕЗ КНОПОК */
+    display: none;
+
+    padding: .25rem 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: solid 1px black;
+    border-radius: 2rem;
+}
+.button:hover {
+    background-color: var(--color-gray);
+}

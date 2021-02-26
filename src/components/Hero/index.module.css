@@ -1,0 +1,65 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 0;
+}
+
+
+.section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.leftContainer {
+    position: relative;
+    height: 100%;
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+}
+
+.imgContainer {
+    height: 100%;
+}
+
+.imgContainer div {
+    width: 100%;
+    height: 100%;
+}
+.imgContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.h1 {
+    width: 100%;
+    margin: 0;
+    margin-top: -.33em;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 145px;
+    line-height: 80%;
+}
+
+.h2 {
+    font-weight: bold;
+    font-size: 33px;
+    padding-top: 1em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.h1Mobile {
+    padding: 0;
+    padding-bottom: 1rem;
+}

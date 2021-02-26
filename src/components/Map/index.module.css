@@ -1,0 +1,30 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    border-top: solid 1px black;
+}
+.container > :first-child {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+.container img {
+    object-fit: cover;
+}
+
+.text {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 7% 0;
+}
+
+.str {
+    white-space: break-spaces;
+    text-align: center;
+}
