@@ -30,7 +30,7 @@ export const Map: React.FC = () => {
 
                         textTransform: 'uppercase',
                         fontWeight: 'bold',
-                        fontSize: isMobile ? 36 : 50,
+                        fontSize: isMobile ? 28 : 50,
                         lineHeight: '135%',
                     }}>
                         <span style={{
@@ -40,8 +40,8 @@ export const Map: React.FC = () => {
                         }}>
                             <Image
                                 src='/static/palec.png'
-                                width={95}
-                                height={122}
+                                width={isMobile ? 95 * .75 : 95}
+                                height={isMobile ? 122 * .75 : 122}
                                 priority
                             />
                         </span>
