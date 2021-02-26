@@ -14,7 +14,7 @@ export const Menu: React.FC<IMenuProps> = ({ buttons }) => {
     const isMobile = useMobile()
 
     const [state, setState] = useState('')
-    const getPlaceholder = async () => await markdownToHtml(`👨👩👧👦💗🌊⛄🏂🚣🌅🎑`).then(x => setState(x))
+    const getPlaceholder = async () => await markdownToHtml(isMobile ? `👦🌊🌅` : `👨👩👧👦💗🌊⛄🏂🚣🌅🎑`, true).then(x => setState(x))
     getPlaceholder()
 
     return (

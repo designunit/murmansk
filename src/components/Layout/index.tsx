@@ -19,7 +19,7 @@ const buttons: buttonsType = [
     {
         text: 'Карта',
         id: 'map',
-        href: 'https://app.latl.ng/map/FGF6683DZD8R4GE4'
+        href: 'https://app.latl.ng/map/FGF6683DZD8R4GE4',
     },
     // {
     //     text: 'Проекты',
@@ -35,22 +35,12 @@ export const Layout: React.FC<any> = ({ data }) => {
     const isMobile = useMobile()
     return (
         <div className={s.container}>
-            {false && isMobile && (
-                <MobileMenu
-                    buttons={buttons}
-                />
-            )}
-            <main
-                className={s.main}
-            >
-                <Menu
-                    buttons={buttons}
-                />
+            {false && isMobile && <MobileMenu buttons={buttons} />}
+            <main className={s.main}>
+                <Menu buttons={buttons} />
                 <Hero />
                 <Map />
-                <Feed
-                    data={data}
-                />
+                {false && <Feed data={data} />}
                 <Footer />
             </main>
         </div>
