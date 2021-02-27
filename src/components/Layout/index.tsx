@@ -19,7 +19,7 @@ const buttons: buttonsType = [
     {
         text: 'Карта',
         id: 'map',
-        href: 'https://app.latl.ng/map/FGF6683DZD8R4GE4',
+        href: 'https://map.latl.ng/FGF6683DZD8R4GE4',
     },
     // {
     //     text: 'Проекты',
