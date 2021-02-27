@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const meta: IMeta = {
 		title: 'МОЙЗАЛИВ.РФ',
 		description: 'Дорогие Мурманчане, давайте чаще любоваться видами нашего города!',
-		image: 'https://мойзалив.рф/static/hero.png',
+		image: 'https://мойзалив.рф/static/meta.jpg',
 		imageWidth: 911,
 		imageHeight: 1023,
 
