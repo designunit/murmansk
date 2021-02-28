@@ -16,7 +16,7 @@ export const Map: React.FC = () => {
                 />
             </span>
             <Link
-                href='https://app.latl.ng/map/FGF6683DZD8R4GE4'
+                href='https://map.latl.ng/FGF6683DZD8R4GE4'
             >
                 <a className={s.text}>
                     <Section style={{
