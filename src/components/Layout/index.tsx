@@ -6,6 +6,7 @@ import { MobileMenu } from '../MobileMenu'
 import { Feed } from '../Feed'
 import { Map } from '../Map'
 import { Footer } from '../Footer'
+import { Markers } from '../Markers'
 
 type button = {
     text: string
@@ -41,6 +42,7 @@ export const Layout: React.FC<any> = ({ data }) => {
                 <Hero />
                 <Map />
                 {false && <Feed data={data} />}
+                <Markers />
                 <Footer />
             </main>
         </div>

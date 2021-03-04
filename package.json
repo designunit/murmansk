@@ -20,6 +20,7 @@
     },
     "homepage": "https://github.com/designunit/murmansk#readme",
     "dependencies": {
+        "classnames": "^2.2.6",
         "emoji-regex": "^9.2.0",
         "emoji-unicode": "^2.0.1",
         "hamburger-react": "^2.2.0",
@@ -29,11 +30,14 @@
         "react-burger-menu": "^2.9.0",
         "react-dom": "^17.0.1",
         "react-fluid-text": "^0.1.1",
+        "react-hook-form": "^6.15.4",
+        "react-image-marker": "^1.2.0",
         "react-use": "^15.3.4",
         "remark": "^13.0.0",
         "remark-html": "^13.0.1"
     },
     "devDependencies": {
+        "@types/classnames": "^2.2.11",
         "@types/node": "^14.14.31",
         "@types/react": "^17.0.2",
         "@types/react-burger-menu": "^2.6.2",
