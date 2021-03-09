@@ -48,3 +48,31 @@
     text-transform: uppercase;
     margin-top: 20px;
 }
+
+.viewSwitch {
+    position: relative;
+    padding: .5em;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 1px transparent;
+    border-radius: 0px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.viewSwitch::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    background-color: black;
+    
+    transition: all .25s;
+}
+.viewSwitch:hover::after {
+    width: 100%;
+}
+.viewSwitchActive {
+    border-bottom: solid 1px black;
+}

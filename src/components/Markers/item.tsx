@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { MarkerData } from '.'
 import s from './item.module.css'
 
-export const Item: React.FC<MarkerData> = ({
+interface IItemProps extends MarkerData {}
+
+export const Item: React.FC<IItemProps> = ({
     top,
     left,
     itemNumber,
@@ -11,20 +13,19 @@ export const Item: React.FC<MarkerData> = ({
     ...props
 }) => {
     const [open, setOpen] = useState(isOpen)
-    // useEffect(() => {
-    //     setOpen(isOpen)
-    // }, [isOpen])
+
+    const onClick = useCallback(() => {
+        setOpen(!open)
+    }, [open])
 
     return (
         <div className={s.container}>
-            <div className={s.point} onClick={() => {
-                setOpen(!open)
-            }} />
+            <div className={s.point} onClick={onClick} />
             <div
                 className={s.card}
                 style={{
                     display: open ? 'block' : 'none',
-                    left: left > 75 && 'calc(-400px + 10px)',
+                    left: left > 75 && 'calc(-300px + 5px)',
                 }}
                 onClick={() => setOpen(false)}
             >

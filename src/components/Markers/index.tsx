@@ -5,9 +5,10 @@ import s from './index.module.css'
 import { Item } from './item'
 import { useForm } from 'react-hook-form'
 import { Emoji } from '../Emoji'
+import cx from 'classnames'
 
 export interface MarkerData extends Marker {
-    text?: string
+    text: string
     itemNumber?: Number
     isOpen?: boolean
 }
@@ -31,11 +32,12 @@ export const Markers: React.FC = () => {
             какой дичайший пердеж потом? Вонища такая, что обои от стен
             отклеиваются.`,
         },
-        { top: 33, left: 76 },
+        { top: 33, left: 76, text: 'близкая точка для проверялки' },
         { top: 34, left: 70, text: 'проверялка для близких точек' },
     ])
     const [draft, setDraft] = useState({ top: null, left: null })
     const [showForm, setShowForm] = useState(false)
+    const [showMarkers, setShowMarkers] = useState(false)
 
     const { register, handleSubmit, reset, errors } = useForm()
 
@@ -66,82 +68,115 @@ export const Markers: React.FC = () => {
                 }}
             >
                 <img src='static/map.png' className={s.bg} />
-                <ImageMarker
-                    src='static/placeholder.png'
-                    alt=''
-                    markers={markers}
-                    onAddMarker={(marker: Marker) => {
-                        setDraft(marker)
-                        setShowForm(true)
-                    }}
-                    markerComponent={(props: MarkerData) => (
-                        <Item
-                            {...props}
-                            isOpen={
-                                draft.top == props.top ||
-                                draft.left == props.left
-                            }
-                        />
-                    )}
-                />
-                {showForm && (
-                    <div className={s.formContainer} onClick={hideForm}>
-                        <form
-                            onSubmit={handleSubmit(onSubmit)}
-                            className={s.form}
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <div className={s.formHead}>
-                                <span>// Новая точка</span>
-                                <button
-                                    style={{
-                                        width: 30,
-                                        border: 'none',
-                                        background: 'white',
-                                        cursor: 'pointer',
-                                    }}
-                                    onClick={hideForm}
-                                >
-                                    <Emoji name='❌' />
-                                </button>
-                            </div>
-                            <textarea
-                                name='text'
-                                ref={register({
-                                    required: 'Обязательное поле',
-                                    maxLength: {
-                                        value: 300,
-                                        message: 'Максимум 300 символов',
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: 'Минимум 6 символов',
-                                    },
-                                })}
-                                rows={4}
-                                cols={45}
-                                placeholder='Что вы думаете?'
-                                style={{
-                                    resize: 'none',
-                                }}
-                            />
-                            {errors?.text && (
-                                <p
-                                    style={{
-                                        color: 'tomato',
-                                        fontSize: 12,
-                                    }}
-                                >
-                                    {errors?.text.message}
-                                </p>
+                {showMarkers && (
+                    <>
+                        <ImageMarker
+                            src='static/placeholder.png'
+                            alt=''
+                            markers={markers}
+                            onAddMarker={(marker: Marker) => {
+                                setDraft(marker)
+                                setShowForm(true)
+                            }}
+                            // @ts-ignore
+                            markerComponent={(props: MarkerData) => (
+                                <Item {...props} />
                             )}
-                            <button type='submit'>
-                                Поставить точку
-                                <Emoji name='📍' />
-                            </button>
-                        </form>
-                    </div>
+                        />
+                        {showForm && (
+                            <div className={s.formContainer} onClick={hideForm}>
+                                <form
+                                    onSubmit={handleSubmit(onSubmit)}
+                                    className={s.form}
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    <div className={s.formHead}>
+                                        <span>// Новая точка</span>
+                                        <button
+                                            style={{
+                                                width: 30,
+                                                border: 'none',
+                                                background: 'white',
+                                                cursor: 'pointer',
+                                            }}
+                                            onClick={hideForm}
+                                        >
+                                            <Emoji name='❌' />
+                                        </button>
+                                    </div>
+                                    <textarea
+                                        name='text'
+                                        ref={register({
+                                            required: 'Обязательное поле',
+                                            maxLength: {
+                                                value: 300,
+                                                message:
+                                                    'Максимум 300 символов',
+                                            },
+                                            minLength: {
+                                                value: 6,
+                                                message: 'Минимум 6 символов',
+                                            },
+                                        })}
+                                        rows={4}
+                                        cols={45}
+                                        placeholder='Что вы думаете?'
+                                        style={{
+                                            resize: 'none',
+                                        }}
+                                    />
+                                    {errors?.text && (
+                                        <p
+                                            style={{
+                                                color: 'tomato',
+                                                fontSize: 12,
+                                            }}
+                                        >
+                                            {errors?.text.message}
+                                        </p>
+                                    )}
+                                    <button type='submit'>
+                                        Поставить точку
+                                        <Emoji name='📍' />
+                                    </button>
+                                </form>
+                            </div>
+                        )}
+                    </>
                 )}
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    paddingTop: '20px',
+                }}
+            >
+                <button
+                    onClick={() => {
+                        setShowMarkers(false)
+                        setShowForm(false)
+                    }}
+                    className={cx(
+                        s.viewSwitch,
+                        !showMarkers && s.viewSwitchActive
+                    )}
+                >
+                    {'Посмотреть картинку '}
+                    <Emoji name='↔️' />
+                </button>
+                <button
+                    onClick={() => {
+                        setShowMarkers(true)
+                    }}
+                    className={cx(
+                        s.viewSwitch,
+                        showMarkers && s.viewSwitchActive
+                    )}
+                >
+                    {'Посмотреть идеи '}
+                    <Emoji name='💡' />
+                </button>
             </div>
         </Section>
     )
