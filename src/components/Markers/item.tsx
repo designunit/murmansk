@@ -9,10 +9,10 @@ export const Item: React.FC<IItemProps> = ({
     left,
     itemNumber,
     text,
-    isOpen = false,
+    isOpen,
     ...props
 }) => {
-    const [open, setOpen] = useState(isOpen)
+    const [open, setOpen] = useState(isOpen ?? true)
 
     const onClick = useCallback(() => {
         setOpen(!open)
@@ -25,7 +25,8 @@ export const Item: React.FC<IItemProps> = ({
                 className={s.card}
                 style={{
                     display: open ? 'block' : 'none',
-                    left: left > 75 && 'calc(-300px + 5px)',
+                    left: left > 75 && 'unset',
+                    transform: left > 75 && 'translateX(calc(-100% + 5px))',
                 }}
                 onClick={() => setOpen(false)}
             >

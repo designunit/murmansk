@@ -1,6 +1,6 @@
 .container {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     cursor: pointer;
 }
 
@@ -17,7 +17,8 @@
 
 .card {
     position: relative;
-    width: 300px;
+    max-width: 300px;
+    width: fit-content;
     height: 2em;
     bottom: calc(2em - 5px);
     left: 5px;

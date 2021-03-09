@@ -1,10 +1,11 @@
 import { Section } from '../Section'
 import ImageMarker, { Marker } from 'react-image-marker'
-import { useCallback, useMemo, useState } from 'react'
-import s from './index.module.css'
+import { useCallback, useState } from 'react'
 import { Item } from './item'
 import { useForm } from 'react-hook-form'
 import { Emoji } from '../Emoji'
+import ReactCompareImage from 'react-compare-image'
+import s from './index.module.css'
 import cx from 'classnames'
 
 export interface MarkerData extends Marker {
@@ -67,7 +68,13 @@ export const Markers: React.FC = () => {
                     position: 'relative',
                 }}
             >
-                <img src='static/map.png' className={s.bg} />
+                <div className={s.bg}>
+                    <ReactCompareImage
+                        leftImage='static/map.png'
+                        rightImage='static/meta.jpg'
+                        aspectRatio='wider'
+                    />
+                </div>
                 {showMarkers && (
                     <>
                         <ImageMarker
