@@ -11,7 +11,8 @@ import cx from 'classnames'
 export interface MarkerData extends Marker {
     text: string
     itemNumber?: Number
-    isOpen?: boolean
+    id: string
+    isOpen: boolean
 }
 
 export const Markers: React.FC = () => {
@@ -32,10 +33,33 @@ export const Markers: React.FC = () => {
             иногда предлагает, но я отказываюсь. Надо ли говорить о том
             какой дичайший пердеж потом? Вонища такая, что обои от стен
             отклеиваются.`,
+            isOpen: true,
+            id: '14',
         },
-        { top: 33, left: 76, text: 'близкая точка для проверялки' },
-        { top: 34, left: 70, text: 'проверялка для близких точек' },
+        {
+            top: 33,
+            left: 76,
+            text: 'близкая точка для проверялки',
+            isOpen: true,
+            id: 'iha',
+        },
+        {
+            top: 34,
+            left: 70,
+            text: 'проверялка для близких точек',
+            isOpen: true,
+            id: 'rwuth',
+        },
     ])
+    const onItemClick = useCallback(
+        (id: string, state: boolean) => {
+            const newMarkers = markers.map((x, i) =>
+                x.id === id ? { ...x, isOpen: state } : x
+            )
+            setMarkers(newMarkers)
+        },
+        [markers]
+    )
     const [draft, setDraft] = useState({ top: null, left: null })
     const [showForm, setShowForm] = useState(false)
     const [showMarkers, setShowMarkers] = useState(false)
@@ -48,6 +72,7 @@ export const Markers: React.FC = () => {
                 ...draft,
                 text: data.text,
                 isOpen: true,
+                id: 'uyhtg', // generate UNIQUE id
             }
             setMarkers([...markers, newMarker])
             setShowForm(false)
@@ -87,7 +112,7 @@ export const Markers: React.FC = () => {
                             }}
                             // @ts-ignore
                             markerComponent={(props: MarkerData) => (
-                                <Item {...props} />
+                                <Item {...props} onItemClick={onItemClick} />
                             )}
                         />
                         {showForm && (
@@ -172,6 +197,11 @@ export const Markers: React.FC = () => {
                     {'Посмотреть картинку '}
                     <Emoji name='↔️' />
                 </button>
+                <span style={{
+                    padding: '.5em'
+                }}>
+                    //
+                </span>
                 <button
                     onClick={() => {
                         setShowMarkers(true)

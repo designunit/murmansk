@@ -1,8 +1,9 @@
-import { useCallback, useState } from 'react'
 import { MarkerData } from '.'
 import s from './item.module.css'
 
-interface IItemProps extends MarkerData {}
+interface IItemProps extends MarkerData {
+    onItemClick: (id: string, state: boolean) => void
+}
 
 export const Item: React.FC<IItemProps> = ({
     top,
@@ -10,25 +11,19 @@ export const Item: React.FC<IItemProps> = ({
     itemNumber,
     text,
     isOpen,
+    id,
     ...props
 }) => {
-    const [open, setOpen] = useState(isOpen ?? true)
-
-    const onClick = useCallback(() => {
-        setOpen(!open)
-    }, [open])
-
     return (
         <div className={s.container}>
-            <div className={s.point} onClick={onClick} />
+            <div className={s.point} onClick={() => props.onItemClick(id, !isOpen)} />
             <div
                 className={s.card}
                 style={{
-                    display: open ? 'block' : 'none',
-                    left: left > 75 && 'unset',
-                    transform: left > 75 && 'translateX(calc(-100% + 5px))',
+                    display: isOpen ? 'block' : 'none',
+                    transform: left > 75 && 'translateX(-100%)',
                 }}
-                onClick={() => setOpen(false)}
+                onClick={() => props.onItemClick(id, false)}
             >
                 <p className={s.text}>{text ?? 'Нету текста ):'}</p>
             </div>
