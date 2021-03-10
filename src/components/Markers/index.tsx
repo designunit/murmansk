@@ -5,6 +5,8 @@ import { Item } from './item'
 import { useForm } from 'react-hook-form'
 import { Emoji } from '../Emoji'
 import ReactCompareImage from 'react-compare-image'
+import { useMobile } from '@/hooks/useMobile'
+import Collapse from 'rc-collapse'
 import s from './index.module.css'
 import cx from 'classnames'
 
@@ -16,6 +18,8 @@ export interface MarkerData extends Marker {
 }
 
 export const Markers: React.FC = () => {
+    const isMobile = useMobile()
+
     const [markers, setMarkers] = useState<MarkerData[]>([
         {
             top: 10,
@@ -34,21 +38,21 @@ export const Markers: React.FC = () => {
             какой дичайший пердеж потом? Вонища такая, что обои от стен
             отклеиваются.`,
             isOpen: true,
-            id: '14',
+            id: 'id1',
         },
         {
             top: 33,
             left: 76,
             text: 'близкая точка для проверялки',
             isOpen: true,
-            id: 'iha',
+            id: 'id2',
         },
         {
             top: 34,
             left: 70,
             text: 'проверялка для близких точек',
             isOpen: true,
-            id: 'rwuth',
+            id: 'id3',
         },
     ])
     const onItemClick = useCallback(
@@ -63,6 +67,7 @@ export const Markers: React.FC = () => {
     const [draft, setDraft] = useState({ top: null, left: null })
     const [showForm, setShowForm] = useState(false)
     const [showMarkers, setShowMarkers] = useState(false)
+    const [activeId, setActiveId] = useState(undefined)
 
     const { register, handleSubmit, reset, errors } = useForm()
 
@@ -72,7 +77,7 @@ export const Markers: React.FC = () => {
                 ...draft,
                 text: data.text,
                 isOpen: true,
-                id: 'uyhtg', // generate UNIQUE id
+                id: 'vkhgadrg', // not UNIQUE !!!
             }
             setMarkers([...markers, newMarker])
             setShowForm(false)
@@ -98,6 +103,7 @@ export const Markers: React.FC = () => {
                         leftImage='static/map.png'
                         rightImage='static/meta.jpg'
                         aspectRatio='wider'
+                        handle={showMarkers ? <></> : null}
                     />
                 </div>
                 {showMarkers && (
@@ -112,7 +118,15 @@ export const Markers: React.FC = () => {
                             }}
                             // @ts-ignore
                             markerComponent={(props: MarkerData) => (
-                                <Item {...props} onItemClick={onItemClick} />
+                                <Item
+                                    {...props}
+                                    onItemClick={onItemClick}
+                                    isOpen={
+                                        isMobile
+                                            ? activeId === props.id
+                                            : props.isOpen
+                                    }
+                                />
                             )}
                         />
                         {showForm && (
@@ -177,13 +191,34 @@ export const Markers: React.FC = () => {
                     </>
                 )}
             </div>
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    paddingTop: '20px',
-                }}
-            >
+            {isMobile && showMarkers && (
+                <>
+                    <Collapse
+                        accordion
+                        className={s.mobileAccordion}
+                        onChange={(key) => {
+                            setActiveId(key)
+                        }}
+                        expandIcon={(props: any) => (
+                            <Emoji
+                                name={props.isActive ? '🔽' : '▶️'}
+                                style={{ marginRight: '.25em' }}
+                            />
+                        )}
+                    >
+                        {markers.map((x, i) => (
+                            <Collapse.Panel
+                                key={x.id}
+                                headerClass={s.mobileItemHead}
+                                header={<p>{x.text}</p>}
+                            >
+                                {x.text}
+                            </Collapse.Panel>
+                        ))}
+                    </Collapse>
+                </>
+            )}
+            <div className={s.viewSwitchContainer}>
                 <button
                     onClick={() => {
                         setShowMarkers(false)
@@ -197,9 +232,11 @@ export const Markers: React.FC = () => {
                     {'Посмотреть картинку '}
                     <Emoji name='↔️' />
                 </button>
-                <span style={{
-                    padding: '.5em'
-                }}>
+                <span
+                    style={{
+                        padding: '.5em',
+                    }}
+                >
                     //
                 </span>
                 <button

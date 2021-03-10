@@ -1,3 +1,4 @@
+import { useMobile } from '@/hooks/useMobile'
 import { MarkerData } from '.'
 import s from './item.module.css'
 
@@ -14,19 +15,29 @@ export const Item: React.FC<IItemProps> = ({
     id,
     ...props
 }) => {
+    const isMobile = useMobile()
+
     return (
         <div className={s.container}>
-            <div className={s.point} onClick={() => props.onItemClick(id, !isOpen)} />
             <div
-                className={s.card}
+                className={s.point}
+                onClick={() => !isMobile && props.onItemClick(id, !isOpen)}
                 style={{
-                    display: isOpen ? 'block' : 'none',
-                    transform: left > 75 && 'translateX(-100%)',
+                    display: isMobile ? (isOpen ? 'block' : 'none') : 'block',
                 }}
-                onClick={() => props.onItemClick(id, false)}
-            >
-                <p className={s.text}>{text ?? 'Нету текста ):'}</p>
-            </div>
+            />
+            {!isMobile && (
+                <div
+                    className={s.card}
+                    style={{
+                        display: isOpen ? 'block' : 'none',
+                        transform: left > 75 && 'translateX(-100%)',
+                    }}
+                    onClick={() => props.onItemClick(id, false)}
+                >
+                    <p className={s.text}>{text ?? 'Нету текста ):'}</p>
+                </div>
+            )}
         </div>
     )
 }
