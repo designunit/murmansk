@@ -10,7 +10,6 @@
     z-index: 0;
 }
 
-
 .section {
     width: 100%;
     display: flex;
@@ -44,7 +43,7 @@
 .h1 {
     width: 100%;
     margin: 0;
-    margin-top: -.33em;
+    margin-top: -0.33em;
     padding: 1rem;
     font-weight: bold;
     font-size: 145px;
@@ -62,4 +61,30 @@
 .h1Mobile {
     padding: 0;
     padding-bottom: 1rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.cta {
+    margin-left: 2em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    flex: 1 0 50%;
+    position: relative;
+}
+.cta:hover {
+    color: white;
+}
+
+@media screen and (max-width: 1024px) {
+    .flex {
+        flex-direction: column;
+    }
+
+    .cta {
+        margin: 0;
+        flex: 1 0 auto;
+    }
 }

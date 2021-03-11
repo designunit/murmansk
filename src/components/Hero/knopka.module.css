@@ -1,0 +1,66 @@
+.scene-wrapper {
+    overflow: hidden;
+    position: relative;
+    background-color: transparent;
+    
+    height: 100%;
+    /* border: solid 3px black; */
+  }
+  
+  .water__wave-front, .water__wave-back {
+    width: 200%;
+    background-size: 100% 100%;
+    -webkit-animation: move-water;
+            animation: move-water;
+    -webkit-animation-duration: 5s;
+            animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+    position: absolute;
+    left: 0;
+    top: 45%;
+    fill: cyan;
+    height: 489px;
+  }
+  .water__wave-back {
+    -webkit-animation-delay: 200ms;
+            animation-delay: 200ms;
+    animation-direction: reverse;
+    -webkit-animation-duration: 10s;
+            animation-duration: 10s;
+    fill: #9bf7f7;
+    top: 5%;
+    opacity: 1;
+  }
+  .water__wave-front--fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 32%;
+  }
+  @-webkit-keyframes move-water {
+    50% {
+      transform: translateX(-25%) translateY(1%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes move-water {
+    50% {
+      transform: translateX(-25%) translateY(1%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .scene-wrapper {
+        height: 175px;
+    }
+  }
