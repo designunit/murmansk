@@ -78,13 +78,25 @@
     color: white;
 }
 
+.ctaText > span {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 1024px) {
     .flex {
         flex-direction: column;
     }
 
     .cta {
+        position: relative;
+        left: -8.33vw;
+        width: 100vw;
         margin: 0;
         flex: 1 0 auto;
+    }
+    .ctaText > span {
+        font-size: 12px;
     }
 }
