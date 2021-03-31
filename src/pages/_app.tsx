@@ -12,7 +12,7 @@ const App: AppType = (props) => {
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
-        {false && <YMetrika number="61650523" mode="noscript" />}
+        <YMetrika number="61650523" mode="noscript" />
       </Head>
 
       <Component {...pageProps} />
