@@ -1,6 +1,6 @@
 import s from './styles.module.css'
 import cx from 'classnames'
-import { useForm, useWatch } from 'react-hook-form'
+import { Controller, useForm, useWatch } from 'react-hook-form'
 import React, { useCallback, forwardRef, useState, ReactElement, useEffect } from 'react'
 import { Button } from '../Button'
 import Image from 'next/image'
@@ -316,16 +316,9 @@ const Form2 = (props: any) => {
                     required={false}
                 >
                     <Input
+                        ref={register}
                         name='sectionTwo_two'
-                        defaultValue=''
-                    // ref={register({ required: 'Обязательное поле' })}
-                    // placeholder='Ваш район'
                     />
-                    {/* {errors?.['sectionOne_two'] && (
-                        <p className={cx(s.caption, s.error)}>
-                            {errors['sectionOne_two'].message}
-                        </p>
-                    )} */}
                 </Question>
                 <Question
                     head='Сколько вам лет?'
@@ -379,6 +372,7 @@ const Form2 = (props: any) => {
                     required={false}
                 >
                     <Input
+                        ref={register}
                         name='sectionTwo_five'
                     />
                 </Question>
@@ -624,6 +618,7 @@ const Form3 = (props: any) => {
                     required={false}
                 >
                     <Input
+                        ref={register}
                         name='sectionThree_two'
                     />
                 </Question>
@@ -774,6 +769,8 @@ export const OpinionForm: React.FC<any> = ({ showFinish, scrollTop }) => {
         const newState = formState
         newState[step] = true
         setFormState(newState)
+
+        console.log(JSON.stringify(formData, null, 3))
 
         setStep(step + 1)
     }, [formData, step])
