@@ -5,6 +5,7 @@ import React, { useRef, useState } from 'react'
 import { OpinionForm } from '../OpinionForm'
 import { Button } from '../Button'
 import Link from 'next/link'
+import { Emoji } from '../Emoji'
 
 export type ModalProps = Omit<ReactModal.Props, 'closeTimeoutMS'>
 
@@ -32,8 +33,9 @@ export const Modal: React.FC<{
                     <span style={{
                         fontWeight: 'bold',
                     }}>
-                        КАКОЙ ТВОЙ МОЙЗАЛИВ?
+                        МОЙЗАЛИВ // ОПРОС
                     </span>
+                    <span ref={refContainer} />
                     <Button
                         size='default'
                         theme='link'
@@ -42,20 +44,17 @@ export const Modal: React.FC<{
                         style={{
                             position: 'absolute',
                             top: '5.5rem',
-                            right: 'calc(10% + 2rem)',
+                            right: 'calc(8.33% + 2rem)',
                             zIndex: 2,
+                            padding: '4px 4px',
                         }}
                     >
-                        <img
-                            src='/static/closeMenu.svg'
-                            style={{
-                                width: 32,
-                                height: 32,
-                            }}
-                        />
+                        <Emoji name='❌' style={{
+                            width: 32,
+                            height: 32,
+                        }} />
                     </Button>
                 </div>
-                <span ref={refContainer} />
                 {state == 'start' ? (
                     <div style={{
                         display: 'flex',
@@ -90,12 +89,14 @@ export const Modal: React.FC<{
                                 alignSelf: 'center',
                             }}
                         >
-                            НАЧАТЬ ОПРОС
+                            <Emoji name='🏁' style={{ marginRight: '.5em' }} />
+                            {'НАЧАТЬ ОПРОС'}
+                            <Emoji name='✅' style={{ marginLeft: '.5em' }} />
                         </Button>
                     </div>
                 ) : state == 'finish' ? (
                     <div style={{
-                        height: '75%',
+                        height: '100%',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -104,12 +105,22 @@ export const Modal: React.FC<{
                         <div style={{
                             paddingBottom: '3rem',
                         }}>
-                            <span style={{ fontSize: '56px', lineHeight: '56px' }}>
-                                Спасибо, Ваш ответ отправлен.
-                            </span>
+                            <div style={{ fontSize: '56px', lineHeight: '56px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <span style={{ padding: '.5em 0' }}>
+                                    <Emoji name='❤️' />
+                                    <Emoji name='💙' />
+                                    <Emoji name='💖' />
+                                </span>
+                                Спасибо, Ваш ответ отправлен
+                                <span style={{ padding: '.5em 0' }}>
+                                    <Emoji name='👍' />
+                                    <Emoji name='👌' />
+                                    <Emoji name='👏' />
+                                </span>
+                            </div>
                         </div>
                         <Button
-                            size='default'
+                            size='big'
                             onClick={() => setModalIsOpen(false)}
                             style={{
                                 width: 'fit-content',

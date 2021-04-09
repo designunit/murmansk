@@ -5,6 +5,7 @@ import React, { useCallback, forwardRef, useState, ReactElement, useEffect } fro
 import { Button } from '../Button'
 import Image from 'next/image'
 import { useEffectOnce } from 'react-use'
+import { Emoji } from '../Emoji'
 
 const Row: React.SFC = props => (
     <div className={s.row}>
@@ -64,18 +65,47 @@ const Question: React.FC<QuestionProps> = ({ head, children, required = true, ca
 const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, errors, checkbox = false, userAnwser = false, required = true }, ref) => {
     const [state, setState] = useState('')
     const [checked, setChecked] = useState(false)
+    const [checkedArr, setCheackedArr] = useState(data.map(x => false))
     return (
         <>
             <div className={s.radio}>
                 {/* @ts-ignore */}
                 {data.map((x, i) => (
-                    x && <label key={i}>
-                        <input name={name} type={checkbox ? 'checkbox' : 'radio'} value={x} ref={register(required && { required: 'Обязательное поле' })} />
+                    x && <label key={i} style={{ position: 'relative' }}>
+                        {(
+                            <Emoji name={checkbox ?
+                                checkedArr[i] ? '🌞' : '🔲'
+                                : checkedArr[i] ? '😻' : '🔘'
+                            }
+                                style={{
+                                    position: 'absolute',
+                                    top: `calc(50% - ${checkbox ? '5px' : '5px'})`,
+                                    left: checkbox ? 0 : 1,
+                                    transform: 'translateY(-50%)',
+                                    pointerEvents: 'none',
+                                    width: '1.25em',
+                                    height: '1.25em',
+                                }} />
+                        )}
+                        <input name={name} type={checkbox ? 'checkbox' : 'radio'} value={x} ref={register(required && { required: 'Обязательное поле' })}
+                            onChange={e => setCheackedArr(checkedArr.map((j, k) =>
+                                k == i ? e.target.checked : (checkbox ? j : false)
+                            ))}
+                        />
                         {x}
                     </label>
                 ))}
                 {userAnwser && (
-                    <label>
+                    <label style={{ position: 'relative' }}>
+                        <Emoji name={checked ? '🌞' : '🔲'} style={{
+                            position: 'absolute',
+                            top: `calc(50% - ${checkbox ? '5px' : '5px'})`,
+                            left: checkbox ? 0 : 1,
+                            transform: 'translateY(-50%)',
+                            pointerEvents: 'none',
+                            width: '1.25em',
+                            height: '1.25em',
+                        }} />
                         <input onChange={() => setChecked(!checked)} checked={checked} name={name} type={checkbox ? 'checkbox' : 'radio'} value={state} ref={register({ required: 'Обязательное поле' })} />
                         <Input
                             onChange={(e) => {
@@ -282,7 +312,7 @@ const Form1 = (props: any) => {
                         margin: '2rem 0',
                     }}
                 >
-                    {'ДАЛЕЕ >'}
+                    {'ДАЛЕЕ '} <Emoji name='👉' style={{width: '1.5em', margin: '0 0 .25em .5em'}} />
                 </Button>
             </div>
         </Form >
@@ -465,7 +495,7 @@ const Form2 = (props: any) => {
                         alignSelf: 'center'
                     }}
                 >
-                    {'ДАЛЕЕ >'}
+                    {'ДАЛЕЕ '} <Emoji name='👉' style={{width: '1.5em', margin: '0 0 .25em .5em'}} />
                 </Button>
                 <div style={{ height: '1rem' }} />
             </div>
@@ -636,7 +666,7 @@ const Form3 = (props: any) => {
                         alignSelf: 'center'
                     }}
                 >
-                    {'ДАЛЕЕ >'}
+                    {'ДАЛЕЕ '} <Emoji name='👉' style={{width: '1.5em', margin: '0 0 .25em .5em'}} />
                 </Button>
                 <div style={{ height: '1rem' }} />
             </div>
@@ -720,9 +750,9 @@ const Form4 = (props: any) => {
                     type={'submit'}
                     style={{
                         alignSelf: 'center',
-                        backgroundColor: 'var(--color-button)'
                     }}
                     disabled={formState.isSubmitting}
+                    onClick={e => formState.isSubmitting && e.preventDefault()}
                 >
                     {props.buttonText}
                 </Button>
@@ -769,8 +799,6 @@ export const OpinionForm: React.FC<any> = ({ showFinish, scrollTop }) => {
         const newState = formState
         newState[step] = true
         setFormState(newState)
-
-        console.log(JSON.stringify(formData, null, 3))
 
         setStep(step + 1)
     }, [formData, step])

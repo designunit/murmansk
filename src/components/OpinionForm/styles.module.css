@@ -13,6 +13,7 @@
 
 .steps .stepButton:first-child {
     border-left: solid 1px var(--color-border);
+    padding-left: 8px;
 }
 
 .stepButton {
@@ -150,6 +151,10 @@
     }
 }
 @media screen and (max-width: 480px) {
+    .stepButton {
+        padding-left: 0 !important;
+    }
+
     .radio {
         display: flex;
         flex-direction: column;
