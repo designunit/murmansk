@@ -6,6 +6,8 @@ import { MobileMenu } from '../MobileMenu'
 import { Feed } from '../Feed'
 import { Map } from '../Map'
 import { Footer } from '../Footer'
+import React, { useState } from 'react'
+import { Modal } from '../Modal'
 
 type button = {
     text: string
@@ -33,12 +35,17 @@ const buttons: buttonsType = [
 
 export const Layout: React.FC<any> = ({ data }) => {
     const isMobile = useMobile()
+    const [modalIsOpen, setModalIsOpen] = useState(false)
     return (
         <div className={s.container}>
             {false && isMobile && <MobileMenu buttons={buttons} />}
             <main className={s.main}>
+                <Modal
+                    modalIsOpen={modalIsOpen}
+                    setModalIsOpen={setModalIsOpen}
+                />
                 <Menu buttons={buttons} />
-                <Hero />
+                <Hero setModalIsOpen={setModalIsOpen} />
                 <Map />
                 {false && <Feed data={data} />}
                 <Footer />

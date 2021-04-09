@@ -20,6 +20,8 @@
     },
     "homepage": "https://github.com/designunit/murmansk#readme",
     "dependencies": {
+        "@types/react-modal": "^3.12.0",
+        "axios": "^0.21.1",
         "emoji-regex": "^9.2.0",
         "emoji-unicode": "^2.0.1",
         "hamburger-react": "^2.2.0",
@@ -29,6 +31,8 @@
         "react-burger-menu": "^2.9.0",
         "react-dom": "^17.0.1",
         "react-fluid-text": "^0.1.1",
+        "react-hook-form": "^6.14.1",
+        "react-modal": "^3.12.1",
         "react-use": "^15.3.4",
         "remark": "^13.0.0",
         "remark-html": "^13.0.1"
