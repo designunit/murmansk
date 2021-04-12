@@ -44,7 +44,7 @@ export const Modal: React.FC<{
                         style={{
                             position: 'absolute',
                             top: '5.5rem',
-                            right: 'calc(8.33% + 2rem)',
+                            right: 'calc(8.33% + (max(0px, 100vw - 1440px)/2) + 2rem)',
                             zIndex: 2,
                             padding: '4px 4px',
                         }}
