@@ -12,7 +12,7 @@
 }
 
 .steps .stepButton:first-child {
-    border-left: solid 1px var(--color-border);
+    /* border-left: solid 1px var(--color-border); */
     padding-left: 8px;
 }
 

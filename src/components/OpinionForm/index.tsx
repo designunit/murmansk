@@ -79,7 +79,7 @@ const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, e
                             }
                                 style={{
                                     position: 'absolute',
-                                    top: `calc(50% - ${checkbox ? '5px' : '5px'})`,
+                                    top: `calc(50% - 5px)`,
                                     left: checkbox ? 0 : 1,
                                     transform: 'translateY(-50%)',
                                     pointerEvents: 'none',
@@ -91,6 +91,9 @@ const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, e
                             onChange={e => setCheackedArr(checkedArr.map((j, k) =>
                                 k == i ? e.target.checked : (checkbox ? j : false)
                             ))}
+                            style={{
+                                marginRight: 12,
+                            }}
                         />
                         {x}
                     </label>
