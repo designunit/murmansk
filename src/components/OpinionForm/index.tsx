@@ -233,9 +233,9 @@ const Form1 = (props: any) => {
                     paddingBottom: '2rem',
                 }}>
                     <Image
-                        src='/static/form/map.jpg'
-                        width={1225}
-                        height={2546}
+                        src='/static/form/map.png'
+                        width={1341}
+                        height={2418}
                         objectFit='contain'
                     />
                 </div>
