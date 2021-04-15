@@ -92,6 +92,8 @@ const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, e
                                 k == i ? e.target.checked : (checkbox ? j : false)
                             ))}
                             style={{
+                                width: '1.25em',
+                                height: '1.25em',
                                 marginRight: 12,
                             }}
                         />
