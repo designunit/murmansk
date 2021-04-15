@@ -71,33 +71,38 @@ const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, e
             <div className={s.radio}>
                 {/* @ts-ignore */}
                 {data.map((x, i) => (
-                    x && <label key={i} style={{ position: 'relative' }}>
-                        {(
-                            <Emoji name={checkbox ?
-                                checkedArr[i] ? '🌞' : '🔲'
-                                : checkedArr[i] ? '😻' : '🔘'
-                            }
+                    x && <label key={i} style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                    }}>
+                        <div style={{ position: 'relative' }}>
+                            {(
+                                <Emoji name={checkbox ?
+                                    checkedArr[i] ? '🌞' : '🔲'
+                                    : checkedArr[i] ? '😻' : '🔘'
+                                }
+                                    style={{
+                                        position: 'absolute',
+                                        left: checkbox ? 0 : 2,
+                                        pointerEvents: 'none',
+                                        width: '1.25em',
+                                        height: '1.25em',
+                                    }} />
+                            )}
+                            <input name={name} type={checkbox ? 'checkbox' : 'radio'} value={x} ref={register(required && { required: 'Обязательное поле' })}
+                                onChange={e => setCheackedArr(checkedArr.map((j, k) =>
+                                    k == i ? e.target.checked : (checkbox ? j : false)
+                                ))}
                                 style={{
-                                    position: 'absolute',
-                                    top: `calc(50% - 5px)`,
-                                    left: checkbox ? 0 : 1,
-                                    transform: 'translateY(-50%)',
-                                    pointerEvents: 'none',
                                     width: '1.25em',
                                     height: '1.25em',
-                                }} />
-                        )}
-                        <input name={name} type={checkbox ? 'checkbox' : 'radio'} value={x} ref={register(required && { required: 'Обязательное поле' })}
-                            onChange={e => setCheackedArr(checkedArr.map((j, k) =>
-                                k == i ? e.target.checked : (checkbox ? j : false)
-                            ))}
-                            style={{
-                                width: '1.25em',
-                                height: '1.25em',
-                                marginRight: 12,
-                            }}
-                        />
-                        {x}
+                                    marginRight: 0,
+                                }}
+                            />
+                        </div>
+                        <span style={{ marginLeft: 12 }}>
+                            {x}
+                        </span>
                     </label>
                 ))}
                 {userAnwser && (
@@ -295,7 +300,7 @@ const Form1 = (props: any) => {
                         margin: '2rem 0',
                     }}
                 >
-                    {'ДАЛЕЕ '} <Emoji name='👉' style={{width: '1.5em', margin: '0 0 .25em .5em'}} />
+                    {'ДАЛЕЕ '} <Emoji name='👉' style={{ width: '1.5em', margin: '0 0 .25em .5em' }} />
                 </Button>
             </div>
         </Form >
@@ -478,7 +483,7 @@ const Form2 = (props: any) => {
                         alignSelf: 'center'
                     }}
                 >
-                    {'ДАЛЕЕ '} <Emoji name='👉' style={{width: '1.5em', margin: '0 0 .25em .5em'}} />
+                    {'ДАЛЕЕ '} <Emoji name='👉' style={{ width: '1.5em', margin: '0 0 .25em .5em' }} />
                 </Button>
                 <div style={{ height: '1rem' }} />
             </div>
@@ -649,7 +654,7 @@ const Form3 = (props: any) => {
                         alignSelf: 'center'
                     }}
                 >
-                    {'ДАЛЕЕ '} <Emoji name='👉' style={{width: '1.5em', margin: '0 0 .25em .5em'}} />
+                    {'ДАЛЕЕ '} <Emoji name='👉' style={{ width: '1.5em', margin: '0 0 .25em .5em' }} />
                 </Button>
                 <div style={{ height: '1rem' }} />
             </div>
