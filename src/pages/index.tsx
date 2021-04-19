@@ -11,7 +11,7 @@ interface ILandingProps {
     meta: IMeta
 }
 
-const Landing: NextPage<ILandingProps> = ({ data, meta }) => {
+const Landing: NextPage<ILandingProps> = ({ data, meta }) => {    
     return (
         <>
             <Head>

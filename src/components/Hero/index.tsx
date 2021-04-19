@@ -7,9 +7,9 @@ import { Emoji } from '../Emoji'
 import { useFluidFontSize } from 'react-fluid-text'
 import Image from 'next/image'
 import style from './knopka.module.css'
-import Link from 'next/link'
+import div from 'next/link'
 
-export const Hero: React.FC = () => {
+export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
     const isMobile = useMobile()
     const [ref, fontSize] = useFluidFontSize({
         compressor: isMobile ? 0.45 : 0.25,
@@ -72,9 +72,8 @@ export const Hero: React.FC = () => {
                         rightContent={
                             <>
                                 <h1
-                                    className={`${s.h1} ${
-                                        isMobile && s.h1Mobile
-                                    }`}
+                                    className={`${s.h1} ${isMobile && s.h1Mobile
+                                        }`}
                                     ref={ref}
                                     style={{
                                         fontSize,
@@ -140,126 +139,128 @@ export const Hero: React.FC = () => {
                                     <Emoji name='👉' />
                                     <Emoji name='👉' />
                                 </p>
-                                { !isMobile && bouncingEl }
+                                {!isMobile && bouncingEl}
                             </div>
-                            <Link href='https://docs.google.com/forms/d/e/1FAIpQLSduJyxepgq1BYNdFvD9eWiSp9jpWJLYuEmckxT_Uq7J7VVbEw/viewform'>
-                                <a className={s.cta}>
-                                    <div className={style['scene-wrapper']}>
-                                        <svg
-                                            className={style.hidden}
-                                            xmlns='http://www.w3.org/2000/svg'
-                                        >
-                                            <symbol
-                                                viewBox='0 0 2744 489'
-                                                id='water-waves'
-                                                preserveAspectRatio='xMinYMin'
-                                            >
-                                                <path
-                                                    d='M0 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489H0V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489H343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489H686V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0z'
-                                                    fillRule='evenodd'
-                                                />
-                                            </symbol>
-                                        </svg>
-                                        <svg
-                                            className={
-                                                style['water__wave-back']
-                                            }
-                                        >
-                                            <use href='#water-waves' />
-                                        </svg>
-                                        <svg
-                                            className={
-                                                style['water__wave-front']
-                                            }
-                                        >
-                                            <use href='#water-waves' />
-                                        </svg>
-                                    </div>
-                                    <div
-                                        className={s.ctaText}
-                                        style={{
-                                            position: 'absolute',
-                                            zIndex: 1,
-                                            top: '50%',
-                                            left: '50%',
-                                            transform: 'translate(-50%, -50%)',
-                                            width: '100%',
-                                            height: isMobile
-                                                ? 'calc(100%)'
-                                                : 'calc(100% - 2em)',
-                                            padding: '20px',
-
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
-                                        }}
+                            <div
+                                className={s.cta}
+                                onClick={() => setModalIsOpen(true)}
+                                // href='https://docs.google.com/forms/d/e/1FAIpQLSduJyxepgq1BYNdFvD9eWiSp9jpWJLYuEmckxT_Uq7J7VVbEw/viewform'
+                            >
+                                <div className={style['scene-wrapper']}>
+                                    <svg
+                                        className={style.hidden}
+                                        xmlns='http://www.w3.org/2000/svg'
                                     >
-                                        <span
-                                            style={{
-                                                marginBottom: '.5em',
-                                            }}
+                                        <symbol
+                                            viewBox='0 0 2744 489'
+                                            id='water-waves'
+                                            preserveAspectRatio='xMinYMin'
                                         >
-                                            <Emoji name='📣' />
-                                            <Emoji name='📣' />
-                                            <Emoji name='📣' />
-                                            {' '}{isMobile ? 'пройти опрос' : 'пройти опрос пройти опрос пройти опрос'}{' '}
-                                            <Emoji name='📢' />
-                                            <Emoji name='📢' />
-                                            <Emoji name='📢' />
-                                        </span>
-                                        <p
-                                            style={{
-                                                margin: 0,
-                                                textAlign: 'center',
-                                                fontWeight: 'bold',
-                                                fontSize: isMobile ? 18 : 28,
-                                                textTransform: 'uppercase',
-                                                whiteSpace: 'normal',
-                                                textDecoration: 'underline',
-                                            }}
-                                        >
-                                            Я расскажу вам, где, как и что надо благоустроить, чтобы с комфортом любоваться заливом!
-                                        </p>
-                                        <span
-                                            style={{
-                                                marginTop: '1em',
-                                            }}
-                                        >
-                                            <Emoji name='🔊' />
-                                            <Emoji name='🔊' />
-                                            <Emoji name='🔊' />
-                                            {' '}{isMobile ? 'пройти опрос' : 'пройти опрос пройти опрос пройти опрос'}{' '}
-                                            <Emoji name='📣' />
-                                            <Emoji name='📣' />
-                                            <Emoji name='📣' />
-                                        </span>
-                                    </div>
+                                            <path
+                                                d='M0 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489H0V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489H343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489H686V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0zm343 0s39.5 29.6 79 29.6c41.2 0 82-29.6 82-29.6s50.2 29.6 94 29.6c45.7 0 88-29.6 88-29.6v489h-343V0z'
+                                                fillRule='evenodd'
+                                            />
+                                        </symbol>
+                                    </svg>
+                                    <svg
+                                        className={
+                                            style['water__wave-back']
+                                        }
+                                    >
+                                        <use href='#water-waves' />
+                                    </svg>
+                                    <svg
+                                        className={
+                                            style['water__wave-front']
+                                        }
+                                    >
+                                        <use href='#water-waves' />
+                                    </svg>
+                                </div>
+                                <div
+                                    className={s.ctaText}
+                                    style={{
+                                        position: 'absolute',
+                                        zIndex: 1,
+                                        top: '50%',
+                                        left: '50%',
+                                        transform: 'translate(-50%, -50%)',
+                                        width: '100%',
+                                        height: isMobile
+                                            ? 'calc(100%)'
+                                            : 'calc(100% - 2em)',
+                                        padding: '20px',
+
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                    }}
+                                >
                                     <span
                                         style={{
-                                            position: 'absolute',
-                                            zIndex: 2,
-                                            bottom: isMobile ? '55px' : '-35px',
-                                            right: isMobile
-                                                ? '0%'
-                                                : 'calc(50% - 220px)',
+                                            marginBottom: '.5em',
                                         }}
                                     >
-                                        <Image
-                                            src='/static/palec.png'
-                                            width={
-                                                isMobile ? 95 * 0.5 : 95 * 0.75
-                                            }
-                                            height={
-                                                isMobile
-                                                    ? 122 * 0.5
-                                                    : 122 * 0.75
-                                            }
-                                            priority
-                                        />
+                                        <Emoji name='📣' />
+                                        <Emoji name='📣' />
+                                        <Emoji name='📣' />
+                                        {' '}{isMobile ? 'пройти опрос' : 'пройти опрос пройти опрос пройти опрос'}{' '}
+                                        <Emoji name='📢' />
+                                        <Emoji name='📢' />
+                                        <Emoji name='📢' />
                                     </span>
-                                </a>
-                            </Link>
-                            { isMobile && bouncingEl }
+                                    <p
+                                        style={{
+                                            margin: 0,
+                                            textAlign: 'center',
+                                            fontWeight: 'bold',
+                                            fontSize: isMobile ? 18 : 28,
+                                            textTransform: 'uppercase',
+                                            whiteSpace: 'normal',
+                                            textDecoration: 'underline',
+                                        }}
+                                    >
+                                        Я расскажу вам, где, как и что надо благоустроить, чтобы с комфортом любоваться заливом!
+                                        </p>
+                                    <span
+                                        style={{
+                                            marginTop: '1em',
+                                        }}
+                                    >
+                                        <Emoji name='🔊' />
+                                        <Emoji name='🔊' />
+                                        <Emoji name='🔊' />
+                                        {' '}{isMobile ? 'пройти опрос' : 'пройти опрос пройти опрос пройти опрос'}{' '}
+                                        <Emoji name='📣' />
+                                        <Emoji name='📣' />
+                                        <Emoji name='📣' />
+                                    </span>
+                                </div>
+                                <span
+                                    style={{
+                                        position: 'absolute',
+                                        zIndex: 2,
+                                        bottom: isMobile ? '55px' : '-35px',
+                                        right: isMobile
+                                            ? '0%'
+                                            : 'calc(50% - 220px)',
+                                    }}
+                                >
+                                    <Image
+                                        src='/static/palec.png'
+                                        width={
+                                            isMobile ? 95 * 0.5 : 95 * 0.75
+                                        }
+                                        height={
+                                            isMobile
+                                                ? 122 * 0.5
+                                                : 122 * 0.75
+                                        }
+                                        priority
+                                    />
+                                </span>
+                            </div>
+                            {isMobile && bouncingEl}
                         </div>
                     </Section>
                 </div>

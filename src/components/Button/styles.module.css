@@ -1,0 +1,103 @@
+.button {
+    cursor: pointer;
+    border: none;
+
+    color: var(--color-text);
+
+    text-transform: uppercase;
+    font-weight: bold;
+
+    /* FOR LINK */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    white-space: nowrap;
+
+    --color-bg: white;
+    --color-border: black;
+}
+
+.button[disabled] {
+    cursor: not-allowed;
+}
+
+.button:hover:not([disabled]):not(.themeLink) {
+    /* --color-text: black; */
+    --color-bg: var(--color-green);
+    /* --color-border: black; */
+}
+
+/* THEME */
+
+.themeDefault {
+    background: var(--color-bg);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+.themePrimary {
+    --color-bg: var(--color-button);
+    --color-text: white;
+    --color-border: white;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+.themeLink {
+    color: var(--color-text);
+    background: none;
+}
+
+/* SIZE */
+
+.sizeSmall {
+    padding: 4px 20px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.sizeDefault {
+    padding: 4px 24px;
+
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.sizeBig {
+    padding: 16px 48px;
+
+    font-size: 16px;
+    line-height: 26px;
+}
+
+/* SHAPE */
+
+.shapeDefault {
+    border-radius: var(--button-border-radius);
+}
+
+.shapePill {
+    border-radius: 100px;
+}
+
+.shapeCircle {
+    border-radius: 50%;
+}
+
+@media screen and (max-width : 480px) {
+    .button {
+        width: 100%;
+    }
+
+    .sizeDefault {
+        padding: 8px 24px;
+    }
+
+    .themeDefault {
+        background:rgba(255, 255, 255, 0.7);
+    }
+    
+}

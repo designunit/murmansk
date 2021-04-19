@@ -73,6 +73,7 @@
     margin-bottom: 2em;
     flex: 1 0 50%;
     position: relative;
+    cursor: pointer;
 }
 .cta:hover {
     color: white;
