@@ -158,5 +158,7 @@
     .radio {
         display: flex;
         flex-direction: column;
+        flex-wrap: nowrap;
+        max-height: 100% !important;
     }
 }

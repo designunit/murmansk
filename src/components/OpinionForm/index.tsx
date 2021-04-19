@@ -62,13 +62,13 @@ const Question: React.FC<QuestionProps> = ({ head, children, required = true, ca
     </div>
 )
 
-const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, errors, checkbox = false, userAnwser = false, required = true }, ref) => {
+const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, errors, checkbox = false, userAnwser = false, required = true, ...props }, ref) => {
     const [state, setState] = useState('')
     const [checked, setChecked] = useState(false)
     const [checkedArr, setCheackedArr] = useState(data.map(x => false))
     return (
         <>
-            <div className={s.radio}>
+            <div className={s.radio} style={props.style}>
                 {/* @ts-ignore */}
                 {data.map((x, i) => (
                     x && <label key={i} style={{
@@ -83,7 +83,7 @@ const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, e
                                 }
                                     style={{
                                         position: 'absolute',
-                                        left: checkbox ? 0 : 2,
+                                        left: 2,
                                         pointerEvents: 'none',
                                         width: '1.25em',
                                         height: '1.25em',
@@ -109,14 +109,18 @@ const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, e
                     <label style={{ position: 'relative' }}>
                         <Emoji name={checked ? '🌞' : '🔲'} style={{
                             position: 'absolute',
-                            top: `calc(50% - ${checkbox ? '5px' : '5px'})`,
-                            left: checkbox ? 0 : 1,
-                            transform: 'translateY(-50%)',
+                            left: 2,
                             pointerEvents: 'none',
                             width: '1.25em',
                             height: '1.25em',
                         }} />
-                        <input onChange={() => setChecked(!checked)} checked={checked} name={name} type={checkbox ? 'checkbox' : 'radio'} value={state} ref={register({ required: 'Обязательное поле' })} />
+                        <input onChange={() => setChecked(!checked)} checked={checked} name={name} type={checkbox ? 'checkbox' : 'radio'} value={state} ref={register({ required: 'Обязательное поле' })}
+                            style={{
+                                width: '1.25em',
+                                height: '1.25em',
+                                marginRight: 0,
+                            }}
+                        />
                         <Input
                             onChange={(e) => {
                                 setState(e.target.value)
@@ -125,6 +129,7 @@ const Radios = forwardRef<HTMLFormElement | any, any>(({ data, name, register, e
                             style={{
                                 padding: '0 8px',
                                 borderWidth: '1px',
+                                marginLeft: 12,
                             }}
                             placeholder='Другое...'
                         />
@@ -156,13 +161,13 @@ const Arrow = ({ className }) => (
 
 const pointNames = [
     '1. Абрам-мыс',
-    '2. Гора Горелая',
-    '3. Сопка Достоевского',
-    '4. Склон Карла Либкнехта',
-    '5. Кильдинская площадка',
-    '6. Пустырь Маяковского',
-    '7. Видовая Северного проезда',
-    '8. Сквер Шмидта',
+    // '2. Гора Горелая',
+    '2. Сопка Достоевского',
+    '3. Склон Карла Либкнехта',
+    '4. Кильдинская площадка',
+    '5. Пустырь Маяковского',
+    '6. Видовая Северного проезда',
+    '7. Сквер Шмидта',
 ]
 
 const Form1 = (props: any) => {
@@ -180,11 +185,6 @@ const Form1 = (props: any) => {
                 'Выбранная для благоустройства точка расположена выше Мемориала под открытым небом, на площадке, которую местные жители называют "корона".',
                 'Местные жители рассказали нам, что выбранная площадка и так достаточно популярна у мурманчан с другого берега. Поэтому жители боятся, что благоустройство территории сделает ее еще более популярной для не местных, а местные лишаться своего тихого природного уголка. Возможно, главной ценностью новой видовой площадки должна быть ее природа, или вы можете порекомендовать более подходящую для благоустройства точку поблизости?'
             ],
-        },
-        {
-            text: [
-                'Выбранная видовая точка расположена на вершине горы Горелой.',
-            ]
         },
         {
             text: [
@@ -258,6 +258,11 @@ const Form1 = (props: any) => {
                         errors={errors}
                         name='sectionOne'
                         data={pointNames}
+                        style={{
+                            display: 'flex',
+                            flexFlow: 'column wrap',
+                            maxHeight: `calc(${pointNames.length / 2} * 3rem)`,
+                        }}
                     />
                 </Question>
 
@@ -377,11 +382,11 @@ const Form2 = (props: any) => {
                             'Любуюсь видом на залив',
                             'Фотографируюсь',
 
-                            [1].includes(selectedPoint) && 'Собираю грибы/ягоды',
-                            [2, 3, 4, 5, 7].includes(selectedPoint) && 'Регулярно прохожу мимо',
-                            [2, 3, 4, 7].includes(selectedPoint) && 'Паркую машину',
-                            [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Делаю шашлыки',
-                            [5].includes(selectedPoint) && 'Посещаю базу отдыха "Чунга-Чанга"',
+                            // [1].includes(selectedPoint) && 'Собираю грибы/ягоды',
+                            'Регулярно прохожу мимо', // [2, 3, 4, 5, 7].includes(selectedPoint) && 'Регулярно прохожу мимо',
+                            'Паркую машину', // [2, 3, 4, 7].includes(selectedPoint) && 'Паркую машину',
+                            'Делаю шашлыки', // [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Делаю шашлыки',
+                            [4].includes(selectedPoint) && 'Посещаю базу отдыха "Чунга-Чанга"',
                         ]}
                     />
                 </Question>
@@ -438,12 +443,12 @@ const Form2 = (props: any) => {
                             'Фотографируются',
                             'Смотрят на фейерверки',
 
-                            [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Гуляют с детьми',
-                            [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Катаются на лыжах',
-                            [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Делают шашлыки',
-                            [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Выпивают',
-                            [1, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Любуются заливом',
-                            [2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Паркуют машину',
+                            'Гуляют с детьми', // [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Гуляют с детьми',
+                            'Катаются на лыжах', // [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Катаются на лыжах',
+                            'Делают шашлыки', // [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Делают шашлыки',
+                            'Выпивают', // [0, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Выпивают',
+                            'Любуются заливом', // [1, 2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Любуются заливом',
+                            'Паркуют машину', // [2, 3, 4, 5, 6, 7].includes(selectedPoint) && 'Паркуют машину',
                         ]}
                     />
                 </Question>
