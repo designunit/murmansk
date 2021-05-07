@@ -68,6 +68,7 @@ export const Markers: React.FC = () => {
     const [showForm, setShowForm] = useState(false)
     const [showMarkers, setShowMarkers] = useState(false)
     const [activeId, setActiveId] = useState(undefined)
+    const [addMode, setAddMode] = useState(false)
 
     const { register, handleSubmit, reset, errors } = useForm()
 
@@ -80,6 +81,8 @@ export const Markers: React.FC = () => {
                 id: 'vkhgadrg', // not UNIQUE !!!
             }
             setMarkers([...markers, newMarker])
+            setAddMode(false)
+
             setShowForm(false)
             reset()
         },
@@ -92,7 +95,10 @@ export const Markers: React.FC = () => {
     }, [])
 
     return (
-        <Section>
+        <Section style={{
+            paddingTop: 36,
+            paddingBottom: 36,
+        }}>
             <div
                 style={{
                     position: 'relative',
@@ -113,6 +119,9 @@ export const Markers: React.FC = () => {
                             alt=''
                             markers={markers}
                             onAddMarker={(marker: Marker) => {
+                                if (!addMode) {
+                                    return 
+                                }
                                 setDraft(marker)
                                 setShowForm(true)
                             }}
@@ -191,6 +200,54 @@ export const Markers: React.FC = () => {
                     </>
                 )}
             </div>
+            {showMarkers && (
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    paddingTop: 20,
+                }}>
+                    <button
+                        onClick={() => setAddMode(!addMode)}
+                    >
+                        {addMode ? 'Отмена' : 'Добавить точку'}
+                    </button>
+                </div>
+            )}
+            <div className={s.viewSwitchContainer}>
+                <button
+                    onClick={() => {
+                        setShowMarkers(false)
+                        setShowForm(false)
+                        setAddMode(false)
+                    }}
+                    className={cx(
+                        s.viewSwitch,
+                        !showMarkers && s.viewSwitchActive
+                    )}
+                >
+                    {'Посмотреть картинку '}
+                    <Emoji name='↔️' />
+                </button>
+                <span
+                    style={{
+                        padding: '.5em 1em',
+                    }}
+                >
+                    //
+                </span>
+                <button
+                    onClick={() => {
+                        setShowMarkers(true)
+                    }}
+                    className={cx(
+                        s.viewSwitch,
+                        showMarkers && s.viewSwitchActive
+                    )}
+                >
+                    {'Посмотреть идеи '}
+                    <Emoji name='💡' />
+                </button>
+            </div>
             {isMobile && showMarkers && (
                 <>
                     <Collapse
@@ -218,40 +275,6 @@ export const Markers: React.FC = () => {
                     </Collapse>
                 </>
             )}
-            <div className={s.viewSwitchContainer}>
-                <button
-                    onClick={() => {
-                        setShowMarkers(false)
-                        setShowForm(false)
-                    }}
-                    className={cx(
-                        s.viewSwitch,
-                        !showMarkers && s.viewSwitchActive
-                    )}
-                >
-                    {'Посмотреть картинку '}
-                    <Emoji name='↔️' />
-                </button>
-                <span
-                    style={{
-                        padding: '.5em',
-                    }}
-                >
-                    //
-                </span>
-                <button
-                    onClick={() => {
-                        setShowMarkers(true)
-                    }}
-                    className={cx(
-                        s.viewSwitch,
-                        showMarkers && s.viewSwitchActive
-                    )}
-                >
-                    {'Посмотреть идеи '}
-                    <Emoji name='💡' />
-                </button>
-            </div>
         </Section>
     )
 }
