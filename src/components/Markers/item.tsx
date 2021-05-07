@@ -31,7 +31,7 @@ export const Item: React.FC<IItemProps> = ({
                     className={s.card}
                     style={{
                         display: isOpen ? 'block' : 'none',
-                        transform: left > 75 && 'translateX(-100%)',
+                        transform: `translate(${left > 75 ? '-100%' : '0%'}, ${top < 20 ? '0%' : '-100%'})`,
                     }}
                     onClick={() => props.onItemClick(id, false)}
                 >

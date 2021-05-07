@@ -18,21 +18,19 @@
 .card {
     position: relative;
     max-width: 300px;
-    width: fit-content;
-    height: 2em;
-    bottom: calc(2em - 5px);
+    width: max-content;
+    max-height: 5em;
+    bottom: calc(-50%);
     left: 5px;
     z-index: 1;
+    overflow: hidden;
     background: rgba(255, 255, 255, .75);
 }
 
 .text {
+    display: block;
     height: 100%;
     padding: 10px;
     margin: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-decoration: underline;
     font-size: 12px;
 }
