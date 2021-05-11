@@ -7,7 +7,6 @@ import { Emoji } from '../Emoji'
 import { useFluidFontSize } from 'react-fluid-text'
 import Image from 'next/image'
 import style from './knopka.module.css'
-import div from 'next/link'
 
 export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
     const isMobile = useMobile()
@@ -125,24 +124,17 @@ export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
                                     <Emoji name='💬' />
                                     <Emoji name='👈' />
                                 </p>
-                                <p>
-                                А если вы не нашли в списке свои любимые видовые точки - предложите их на интерактивной карте - мы включим их в программу на следующий год!
-                                    <span>
-                                        <Emoji name='👇' />
-                                        <Emoji name='🗺️' />
-                                        <Emoji name='👇' />
-                                    </span>
-                                </p>
                             </div>
                         </div>
                     </Section>
                     <Section style={{
                         paddingBottom: 0,
+                        maxWidth: '100%',
+                        padding: '1% 0',
                     }}>
                         <div
                             className={s.cta}
                             onClick={() => setModalIsOpen(true)}
-                        // href='https://docs.google.com/forms/d/e/1FAIpQLSduJyxepgq1BYNdFvD9eWiSp9jpWJLYuEmckxT_Uq7J7VVbEw/viewform'
                         >
                             <div className={style['scene-wrapper']}>
                                 <svg
@@ -175,7 +167,7 @@ export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
                                     <use href='#water-waves' />
                                 </svg>
                             </div>
-                            <div
+                            <Section
                                 className={s.ctaText}
                                 style={{
                                     position: 'absolute',
@@ -183,17 +175,14 @@ export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
                                     top: '50%',
                                     left: '50%',
                                     transform: 'translate(-50%, -50%)',
-                                    width: '100%',
-                                    height: isMobile
-                                        ? 'calc(100%)'
-                                        : 'calc(100% - 2em)',
-                                    // padding: '20px',
+                                    height: '100%',
+                                    paddingTop: 0,
+                                    paddingBottom: 0,
 
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
-                                }}
-                            >
+                                }}>
                                 <span
                                     style={{
                                         marginBottom: '.5em',
@@ -233,15 +222,15 @@ export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
                                     <Emoji name='📣' />
                                     <Emoji name='📣' />
                                 </span>
-                            </div>
+                            </Section>
                             <span
                                 style={{
                                     position: 'absolute',
                                     zIndex: 2,
-                                    bottom: isMobile ? '25px' : '-35px',
+                                    bottom: isMobile ? '-25px' : '-50px',
                                     right: isMobile
-                                        ? '0%'
-                                        : '150px',
+                                        ? '15%'
+                                        : '25%',
                                 }}
                             >
                                 <Image
@@ -258,6 +247,18 @@ export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
                                 />
                             </span>
                         </div>
+
+                    </Section>
+                    <Section>
+
+                        <p>
+                            А если вы не нашли в списке свои любимые видовые точки - предложите их на интерактивной карте - мы включим их в программу на следующий год!
+                        <span>
+                                <Emoji name='👇' />
+                                <Emoji name='🗺️' />
+                                <Emoji name='👇' />
+                            </span>
+                        </p>
                     </Section>
                 </div>
             </section>

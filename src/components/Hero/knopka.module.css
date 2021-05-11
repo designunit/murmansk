@@ -4,11 +4,10 @@
     background-color: transparent;
     
     height: 100%;
-    /* border: solid 3px black; */
   }
   
   .water__wave-front, .water__wave-back {
-    width: 200%;
+    width: 150%;
     background-size: 100% 100%;
     -webkit-animation: move-water;
             animation: move-water;
@@ -43,19 +42,19 @@
   }
   @-webkit-keyframes move-water {
     50% {
-      transform: translateX(-25%) translateY(1%);
+      transform: translateX(-12%);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-24.9%);
     }
   }
   
   @keyframes move-water {
     50% {
-      transform: translateX(-25%) translateY(1%);
+      transform: translateX(-12%);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-24.9%);
     }
   }
 

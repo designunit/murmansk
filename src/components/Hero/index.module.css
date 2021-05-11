@@ -69,7 +69,6 @@
 
 .cta {
     margin-top: 1em;
-    margin-bottom: 2em;
     flex: 1 0 50%;
     position: relative;
     cursor: pointer;
@@ -91,13 +90,12 @@
 
     .cta {
         position: relative;
-        left: -8.33vw;
         width: 100vw;
         margin: 0;
-        flex: 1 0 auto;
     }
     .ctaText {
         padding-top: 1em;
+        justify-content: center;
     }
     .ctaText > span {
         font-size: 12px;
