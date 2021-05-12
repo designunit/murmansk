@@ -46,16 +46,16 @@ const Landing: NextPage<ILandingProps> = ({ meta }) => {
 
                             borderLeft: state !== 'start' && !isMobile && 'solid 1px black',
                             borderRight: state !== 'start' && !isMobile && 'solid 1px black',
-                            padding: isMobile ? '0' : '0 1rem',
+                            padding: state == 'form' && !isMobile && '0 1rem',
                         }}
                     >
                         {state == 'start' ? (
                             <div style={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                borderLeft: 'solid 1px black',
-                                borderRight: 'solid 1px black',
-                                padding: '1% 1rem',
+                                borderLeft: !isMobile && 'solid 1px black',
+                                borderRight: !isMobile && 'solid 1px black',
+                                padding: isMobile ? '1% 0' : '1% 1rem',
                             }}>
                                 <p>
                                     Дорогие мурманчане, спасибо, что вы здесь и хотите чаще любоваться видами нашего города!

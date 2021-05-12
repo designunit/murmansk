@@ -105,9 +105,9 @@ export const Hero: React.FC<any> = () => {
                         paddingBottom: 0,
                     }}>
                         <div style={{
-                            padding: '0 1rem',
-                            borderLeft: 'solid 1px black',
-                            borderRight: 'solid 1px black',
+                            padding: isMobile ? 0 : '0 1rem',
+                            borderLeft: !isMobile && 'solid 1px black',
+                            borderRight: !isMobile && 'solid 1px black',
                         }}>
                             <h2 className={s.h2}>
                                 Дорогие Мурманчане, давайте чаще любоваться
@@ -182,87 +182,87 @@ export const Hero: React.FC<any> = () => {
                         </div>
                         <Link href='/опрос'>
                             <a>
-                        <Section
-                            className={s.ctaText}
-                            style={{
-                                position: 'absolute',
-                                zIndex: 1,
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                height: '100%',
-                                paddingTop: 0,
-                                paddingBottom: 0,
+                                <Section
+                                    className={s.ctaText}
+                                    style={{
+                                        position: 'absolute',
+                                        zIndex: 1,
+                                        top: '50%',
+                                        left: '50%',
+                                        transform: 'translate(-50%, -50%)',
+                                        height: '100%',
+                                        paddingTop: 0,
+                                        paddingBottom: 0,
 
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <span
-                                style={{
-                                    marginBottom: '.5em',
-                                }}
-                            >
-                                <Emoji name='📣' />
-                                <Emoji name='📣' />
-                                <Emoji name='📣' />
-                                {' '}{isMobile ? 'пройти опрос' : 'пройти опрос пройти опрос пройти опрос'}{' '}
-                                <Emoji name='📢' />
-                                <Emoji name='📢' />
-                                <Emoji name='📢' />
-                            </span>
-                            <p
-                                style={{
-                                    margin: 0,
-                                    textAlign: 'center',
-                                    fontWeight: 'bold',
-                                    fontSize: isMobile ? 18 : 28,
-                                    textTransform: 'uppercase',
-                                    whiteSpace: 'normal',
-                                    textDecoration: 'underline',
-                                }}
-                            >
-                                Я расскажу вам, где, как и что надо благоустроить, чтобы с комфортом любоваться заливом!
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    <span
+                                        style={{
+                                            marginBottom: '.5em',
+                                        }}
+                                    >
+                                        <Emoji name='📣' />
+                                        <Emoji name='📣' />
+                                        <Emoji name='📣' />
+                                        {' '}{isMobile ? 'пройти опрос' : 'пройти опрос пройти опрос пройти опрос'}{' '}
+                                        <Emoji name='📢' />
+                                        <Emoji name='📢' />
+                                        <Emoji name='📢' />
+                                    </span>
+                                    <p
+                                        style={{
+                                            margin: 0,
+                                            textAlign: 'center',
+                                            fontWeight: 'bold',
+                                            fontSize: isMobile ? 18 : 28,
+                                            textTransform: 'uppercase',
+                                            whiteSpace: 'normal',
+                                            textDecoration: 'underline',
+                                        }}
+                                    >
+                                        Я расскажу вам, где, как и что надо благоустроить, чтобы с комфортом любоваться заливом!
                                         </p>
-                            <span
-                                style={{
-                                    marginTop: '1em',
-                                }}
-                            >
-                                <Emoji name='🔊' />
-                                <Emoji name='🔊' />
-                                <Emoji name='🔊' />
-                                {' '}{isMobile ? 'пройти опрос' : 'пройти опрос пройти опрос пройти опрос'}{' '}
-                                <Emoji name='📣' />
-                                <Emoji name='📣' />
-                                <Emoji name='📣' />
-                            </span>
-                        </Section>
-                        <span
-                            style={{
-                                position: 'absolute',
-                                zIndex: 2,
-                                bottom: isMobile ? '-25px' : '-25px',
-                                right: isMobile
-                                    ? '15%'
-                                    : '22%',
-                            }}
-                        >
-                            <Image
-                                src='/static/palec.png'
-                                width={
-                                    isMobile ? 95 * 0.5 : 95 * 0.75
-                                }
-                                height={
-                                    isMobile
-                                        ? 122 * 0.5
-                                        : 122 * 0.75
-                                }
-                                priority
-                            />
-                        </span>
-                        </a>
+                                    <span
+                                        style={{
+                                            marginTop: '1em',
+                                        }}
+                                    >
+                                        <Emoji name='🔊' />
+                                        <Emoji name='🔊' />
+                                        <Emoji name='🔊' />
+                                        {' '}{isMobile ? 'пройти опрос' : 'пройти опрос пройти опрос пройти опрос'}{' '}
+                                        <Emoji name='📣' />
+                                        <Emoji name='📣' />
+                                        <Emoji name='📣' />
+                                    </span>
+                                </Section>
+                                <span
+                                    style={{
+                                        position: 'absolute',
+                                        zIndex: 2,
+                                        bottom: isMobile ? '-25px' : '-25px',
+                                        right: isMobile
+                                            ? '15%'
+                                            : '22%',
+                                    }}
+                                >
+                                    <Image
+                                        src='/static/palec.png'
+                                        width={
+                                            isMobile ? 95 * 0.5 : 95 * 0.75
+                                        }
+                                        height={
+                                            isMobile
+                                                ? 122 * 0.5
+                                                : 122 * 0.75
+                                        }
+                                        priority
+                                    />
+                                </span>
+                            </a>
                         </Link>
                     </div>
 
@@ -273,9 +273,9 @@ export const Hero: React.FC<any> = () => {
                 }}>
                     <p style={{
                         margin: '0',
-                        padding: '1rem',
-                        borderLeft: 'solid 1px black',
-                        borderRight: 'solid 1px black',
+                        padding: isMobile ? '1rem 0' : '1rem',
+                        borderLeft: !isMobile && 'solid 1px black',
+                        borderRight: !isMobile && 'solid 1px black',
                     }}>
                         А если вы не нашли в списке свои любимые видовые точки - предложите их на интерактивной карте - мы включим их в программу на следующий год!
                         <span>
