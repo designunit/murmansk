@@ -7,8 +7,10 @@ import { Emoji } from '../Emoji'
 import { useFluidFontSize } from 'react-fluid-text'
 import Image from 'next/image'
 import style from './knopka.module.css'
+import React from 'react'
+import Link from 'next/link'
 
-export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
+export const Hero: React.FC<any> = () => {
     const isMobile = useMobile()
     const [ref, fontSize] = useFluidFontSize({
         compressor: isMobile ? 0.45 : 0.25,
@@ -146,7 +148,6 @@ export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
                 }}>
                     <div
                         className={s.cta}
-                        onClick={() => setModalIsOpen(true)}
                     >
                         <div className={style['scene-wrapper']}>
                             <svg
@@ -179,6 +180,8 @@ export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
                                 <use href='#water-waves' />
                             </svg>
                         </div>
+                        <Link href='/опрос'>
+                            <a>
                         <Section
                             className={s.ctaText}
                             style={{
@@ -194,7 +197,8 @@ export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
-                            }}>
+                            }}
+                        >
                             <span
                                 style={{
                                     marginBottom: '.5em',
@@ -258,6 +262,8 @@ export const Hero: React.FC<any> = ({ setModalIsOpen }) => {
                                 priority
                             />
                         </span>
+                        </a>
+                        </Link>
                     </div>
 
                 </Section>

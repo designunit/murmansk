@@ -1,13 +1,9 @@
-import { Hero } from '../Hero'
 import s from './index.module.css'
 import { Menu } from '../Menu'
 import { useMobile } from '../../hooks/useMobile'
 import { MobileMenu } from '../MobileMenu'
-import { Feed } from '../Feed'
-import { Map } from '../Map'
 import { Footer } from '../Footer'
-import React, { useEffect, useState } from 'react'
-import { Modal } from '../Modal'
+import React from 'react'
 import { useRouter } from 'next/router'
 
 type button = {
@@ -20,26 +16,18 @@ export type buttonsType = button[]
 
 const buttons: buttonsType = []
 
-export const Layout: React.FC<any> = ({ data }) => {
+export const Layout: React.FC<any> = ({ data, children }) => {
     const isMobile = useMobile()
 
     const router = useRouter()
-    const isModalOpen = ['1', 'true'].includes(router.query.popForm as string)
-    useEffect(() => setModalIsOpen(isModalOpen), [router.query.popForm])
-    
-    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const isIndex = router.asPath === '/'
+
     return (
         <div className={s.container}>
             {false && isMobile && <MobileMenu buttons={buttons} />}
             <main className={s.main}>
-                <Modal
-                    modalIsOpen={modalIsOpen}
-                    setModalIsOpen={setModalIsOpen}
-                />
-                <Menu buttons={buttons} />
-                <Hero setModalIsOpen={setModalIsOpen} />
-                <Map />
-                {false && <Feed data={data} />}
+                <Menu buttons={buttons} isIndex={isIndex} />
+                {children}
                 <Footer />
             </main>
         </div>
