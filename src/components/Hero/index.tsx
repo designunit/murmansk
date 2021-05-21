@@ -9,6 +9,7 @@ import Image from 'next/image'
 import style from './knopka.module.css'
 import React from 'react'
 import Link from 'next/link'
+import { Timeline } from '../Timeline'
 
 export const Hero: React.FC<any> = () => {
     const isMobile = useMobile()
@@ -28,13 +29,14 @@ export const Hero: React.FC<any> = () => {
                             !isMobile && (
                                 <div className={s.leftContainer}>
                                     <Gradient />
-                                    <div className={s.imgContainer}>
+                                    <Timeline />
+                                    {/* <div className={s.imgContainer}>
                                         <Image
                                             src='/static/hero.png'
                                             width={991}
                                             height={1023}
                                         />
-                                    </div>
+                                    </div> */}
                                 </div>
                             )
                         }
