@@ -8,7 +8,14 @@
     right: 0;
     bottom: 0;
     overflow-y: auto;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
+.container::-webkit-scrollbar {
+    display: none;
+}
+  
 
 .item {
     display: flex;

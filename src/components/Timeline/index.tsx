@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+import { useEffectOnce } from 'react-use'
 import { Emoji } from '../Emoji'
 import s from './index.module.css'
 
@@ -46,8 +48,18 @@ export const Timeline = () => {
     ]
     const index = 3
 
+    const ref = useRef(null)
+    useEffectOnce(() => {
+        setTimeout(() => {
+            ref.current.scrollTo({
+                top: 700,
+                behavior: 'smooth',
+            })
+        }, 500)
+    })
+
     return (
-        <div className={s.container}>
+        <div className={s.container} ref={ref}>
             {data.map((x, i) => (
                 <div className={s.item}>
                     <div className={`${s.itemContent} ${i < index && s.disabled}`}>
