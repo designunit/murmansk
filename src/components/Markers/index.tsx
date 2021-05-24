@@ -1,14 +1,14 @@
 import { Section } from '../Section'
-import ImageMarker, { Marker } from 'react-image-marker'
-import { useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Item } from './item'
-import { useForm } from 'react-hook-form'
 import { Emoji } from '../Emoji'
 import ReactCompareImage from 'react-compare-image'
 import { useMobile } from '@/hooks/useMobile'
 import Collapse from 'rc-collapse'
 import s from './index.module.css'
 import cx from 'classnames'
+import { useForm } from 'react-hook-form'
+import ImageMarker, { Marker } from 'react-image-marker'
 
 export interface MarkerData extends Marker {
     text: string

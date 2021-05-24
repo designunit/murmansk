@@ -3,7 +3,6 @@ import { Menu } from '../Menu'
 import { useMobile } from '../../hooks/useMobile'
 import { MobileMenu } from '../MobileMenu'
 import { Footer } from '../Footer'
-import { Markers } from '../Markers'
 import React from 'react'
 import { useRouter } from 'next/router'
 
