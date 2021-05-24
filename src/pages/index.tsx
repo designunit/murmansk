@@ -5,20 +5,29 @@ import { GetStaticProps } from 'next'
 import { markdownToHtml } from '@/lib/markdownToHtml'
 import { Item } from '@/types'
 import { IMeta, Meta } from '@/components/Meta'
+import React from 'react'
+import { Feed } from '@/components/Feed'
+import { Hero } from '@/components/Hero'
+import { Map } from '@/components/Map'
 
 interface ILandingProps {
     data: Item[]
     meta: IMeta
 }
 
-const Landing: NextPage<ILandingProps> = ({ data, meta }) => {
+const Landing: NextPage<ILandingProps> = ({ data, meta }) => {    
     return (
         <>
             <Head>
                 <title>Мойзалив.рф</title>
                 <Meta meta={meta} />
             </Head>
-            <Layout data={data} />
+            <Layout data={data}>
+                <Hero />
+                <Map />
+                
+                {false && <Feed data={data} />}
+            </Layout>
         </>
     )
 }

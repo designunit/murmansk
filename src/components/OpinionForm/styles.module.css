@@ -1,0 +1,163 @@
+.form {
+    width: 100%;
+}
+
+.steps {
+    position: sticky;
+    top: 69px;
+    padding: 1rem 0;
+    z-index: 1;
+    background-color: white;
+}
+
+.steps .stepButton:first-child {
+    /* border-left: solid 1px var(--color-border); */
+    padding-left: 8px;
+}
+
+.stepButton {
+    padding: 0;
+    --color-fill: white;
+    --color-border: black;
+    background-color: var(--color-fill);
+    border: solid 1px var(--color-border);
+    border-right: none;
+    border-left: none;
+}
+
+.stepButtonRegular {
+    --color-fill: white;
+    --color-border: black;
+}
+
+.stepButtonNow {
+    --color-fill: var(--color-violet);
+    --color-border: var(--color-fill);
+}
+.stepButtonComplete {
+    --color-fill: var(--color-green);
+    --color-border: var(--color-fill);
+}
+
+.arrow {
+    position: absolute;
+    right: -20px; 
+    top: -4.5px;
+    height: 123%;
+    z-index: 1;
+}
+
+.radio {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.radio label {
+    display: flex;
+    align-items: center;
+
+    margin-left: 10px;
+    padding-bottom: .5rem;
+}
+
+.radio input {
+    margin-right: .5rem;
+}
+
+.row {
+    display: flex;
+
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+.row:last-child {
+    margin-bottom: 0px;
+}
+
+.space {
+    flex: 1;
+}
+
+.field {
+    padding: 8px 16px;
+    width: 100%;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+
+    border-radius: var(--border-radius);
+    border: 2px solid #091133;
+}
+
+.field[disabled] {
+    cursor: not-allowed;
+}
+
+.field:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}
+
+.questionList {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.question {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.questionHead {
+    font-size: 22px;
+
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.caption {
+    padding: 0 8px;
+    font-size: var(--font-size);
+}
+
+.questionCaption {
+    margin-top: -1rem;
+    font-size: .75em;
+    padding: 1em 0;
+}
+
+.error {
+    color: tomato;
+}
+
+@media screen and (max-width: 1280px) {
+    .arrow {
+        right: -24.5px;
+        top: -5px;
+    }
+
+    .stepButtonText {
+        display: none;
+    }
+    .stepButton > button {
+        height: 41.5px;
+        width: 56px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .stepButton {
+        padding-left: 0 !important;
+    }
+
+    .radio {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        max-height: 100% !important;
+    }
+}

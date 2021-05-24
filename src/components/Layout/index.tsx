@@ -1,12 +1,11 @@
-import { Hero } from '../Hero'
 import s from './index.module.css'
 import { Menu } from '../Menu'
 import { useMobile } from '../../hooks/useMobile'
 import { MobileMenu } from '../MobileMenu'
-import { Feed } from '../Feed'
-import { Map } from '../Map'
 import { Footer } from '../Footer'
 import { Markers } from '../Markers'
+import React from 'react'
+import { useRouter } from 'next/router'
 
 type button = {
     text: string
@@ -16,33 +15,20 @@ type button = {
 
 export type buttonsType = button[]
 
-const buttons: buttonsType = [
-    {
-        text: 'Карта',
-        id: 'map',
-        href: 'https://map.latl.ng/FGF6683DZD8R4GE4',
-    },
-    // {
-    //     text: 'Проекты',
-    //     id: '#one',
-    // },
-    // {
-    //     text: 'Мероприятия',
-    //     id: '#three',
-    // },
-]
+const buttons: buttonsType = []
 
-export const Layout: React.FC<any> = ({ data }) => {
+export const Layout: React.FC<any> = ({ data, children }) => {
     const isMobile = useMobile()
+
+    const router = useRouter()
+    const isIndex = router.asPath === '/'
+
     return (
         <div className={s.container}>
             {false && isMobile && <MobileMenu buttons={buttons} />}
             <main className={s.main}>
-                <Menu buttons={buttons} />
-                <Hero />
-                <Map />
-                {false && <Feed data={data} />}
-                <Markers />
+                <Menu buttons={buttons} isIndex={isIndex} />
+                {children}
                 <Footer />
             </main>
         </div>

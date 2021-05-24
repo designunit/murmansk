@@ -30,12 +30,12 @@ export const Map: React.FC = () => {
 
                         textTransform: 'uppercase',
                         fontWeight: 'bold',
-                        fontSize: isMobile ? 28 : 50,
+                        fontSize: isMobile ? 28 : 36,
                         lineHeight: '135%',
                     }}>
-                        <span style={{
+                        {/* <span style={{
                             position: 'absolute',
-                            bottom: isMobile ? '25%' : '-95px',
+                            bottom: isMobile ? '-25px' : '-95px',
                             right: isMobile ? '0%' : 'calc(50% - 220px)',
                         }}>
                             <Image
@@ -44,8 +44,8 @@ export const Map: React.FC = () => {
                                 height={isMobile ? 122 * .75 : 122}
                                 priority
                             />
-                        </span>
-                        {['Я каждый день любуюсь заливом ', 'Знаю отличные места', 'Расскажу где и что надо делать!'].map((x, i) => (
+                        </span> */}
+                        {['Покажу вам на карте точную точку!'].map((x, i) => (
                             <span className={s.str} key={i}>
                                 {x}
                             </span>

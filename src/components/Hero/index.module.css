@@ -10,7 +10,6 @@
     z-index: 0;
 }
 
-
 .section {
     width: 100%;
     display: flex;
@@ -44,7 +43,7 @@
 .h1 {
     width: 100%;
     margin: 0;
-    margin-top: -.33em;
+    margin-top: -0.33em;
     padding: 1rem;
     font-weight: bold;
     font-size: 145px;
@@ -54,7 +53,7 @@
 .h2 {
     font-weight: bold;
     font-size: 33px;
-    padding-top: 1em;
+    padding-top: 1rem;
     margin: 0;
     text-transform: uppercase;
 }
@@ -62,4 +61,43 @@
 .h1Mobile {
     padding: 0;
     padding-bottom: 1rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.cta {
+    margin-top: 1em;
+    flex: 1 0 50%;
+    position: relative;
+    cursor: pointer;
+}
+.cta:hover {
+    color: var(--color-green);
+}
+
+.ctaText > span {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1024px) {
+    .flex {
+        flex-direction: column;
+    }
+
+    .cta {
+        position: relative;
+        width: 100vw;
+        margin: 0;
+    }
+    .ctaText {
+        padding-top: 1em;
+        justify-content: center;
+    }
+    .ctaText > span {
+        font-size: 12px;
+    }
 }
