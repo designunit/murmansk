@@ -1,7 +1,13 @@
 .container {
     display: flex;
     flex-flow: column;
-    padding: 0px 8px;
+    padding: 1rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
 }
 
 .item {
