@@ -74,7 +74,7 @@
     cursor: pointer;
 }
 .cta:hover {
-    color: var(--color-green);
+    color: var(--color-violet);
 }
 
 .ctaText > span {
