@@ -361,6 +361,10 @@ const Form2 = (props: any) => {
                             '55-64 года',
                             '65 лет и старше',
                         ]}
+                        style={{
+                            display: 'block',
+                            columnCount: 2,
+                        }}
                     />
                 </Question>
                 <Question
