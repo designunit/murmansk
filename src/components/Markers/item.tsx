@@ -1,15 +1,14 @@
 import { useMobile } from '@/hooks/useMobile'
-import { MarkerData } from '.'
+import { MarkerData } from '@/types'
 import s from './item.module.css'
 
-interface IItemProps extends MarkerData {
+type IItemProps = MarkerData & {
     onItemClick: (id: string, state: boolean) => void
 }
 
 export const Item: React.FC<IItemProps> = ({
     top,
     left,
-    itemNumber,
     text,
     isOpen,
     id,
@@ -23,7 +22,7 @@ export const Item: React.FC<IItemProps> = ({
                 className={s.point}
                 onClick={() => !isMobile && props.onItemClick(id, !isOpen)}
                 style={{
-                    display: isMobile ? (isOpen ? 'block' : 'none') : 'block',
+                    display: !isMobile || isOpen ? 'block' : 'none',
                 }}
             />
             {!isMobile && (
@@ -35,7 +34,7 @@ export const Item: React.FC<IItemProps> = ({
                     }}
                     onClick={() => props.onItemClick(id, false)}
                 >
-                    <p className={s.text}>{text ?? 'Нету текста ):'}</p>
+                    <span className={s.text}>{text ?? 'Нету текста ):'}</span>
                 </div>
             )}
         </div>
