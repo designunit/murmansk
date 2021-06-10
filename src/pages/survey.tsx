@@ -19,7 +19,7 @@ interface ILandingProps {
 }
 
 const Landing: NextPage<ILandingProps> = ({ meta }) => {
-    const [state, setState] = useState<'start' | 'form' | 'finish'>('start')
+    const [state, setState] = useState<'start' | 'form' | 'finish'>('finish')
     const refContainer = useRef<HTMLDivElement>(null)
     const isMobile = useMobile()
 
@@ -93,6 +93,8 @@ const Landing: NextPage<ILandingProps> = ({ meta }) => {
                             </div>
                         ) : state == 'finish' ? (
                             <div style={{
+                                padding: '0 2rem',
+
                                 height: '100%',
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -109,7 +111,9 @@ const Landing: NextPage<ILandingProps> = ({ meta }) => {
                                             <Emoji name='💙' />
                                             <Emoji name='💖' />
                                         </span>
-                                Спасибо, Ваш ответ отправлен
+                                        Опрос завершен 
+                                        <span style={{height: '.5em'}} />
+                                        Спасибо за ваши ответы
                                 <span style={{ padding: '.5em 0' }}>
                                             <Emoji name='👍' />
                                             <Emoji name='👌' />
@@ -124,7 +128,7 @@ const Landing: NextPage<ILandingProps> = ({ meta }) => {
                                             width: 'fit-content',
                                         }}
                                     >
-                                        ЗАВЕРШИТЬ
+                                        НА ГЛАВНУЮ
                             </Button>
                                 </Link>
                             </div>
