@@ -1,5 +1,5 @@
-import { Feed } from '@/components/Feed'
-import { FeedItem } from '@/components/FeedItem'
+import { ProjectsGrid } from '@/components/ProjectsGrid'
+import { Project } from '@/components/Project'
 import { Hero } from '@/components/Hero'
 import { Layout } from '@/components/Layout'
 import { Markers } from '@/components/Markers'
@@ -16,7 +16,7 @@ interface ILandingProps {
     markers: MarkerData[]
 }
 
-const Project: NextPage<ILandingProps> = ({ data, meta, markers }) => {
+const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
     return (
         <>
             <Head>
@@ -28,7 +28,7 @@ const Project: NextPage<ILandingProps> = ({ data, meta, markers }) => {
                     paddingTop: 0,
                     paddingBottom: 0,
                 }}>
-                    <FeedItem
+                    <Project
                         project={data[0]}
                     />
                 </Section>
@@ -118,4 +118,4 @@ export async function getStaticPaths() {
     }
 }
 
-export default Project
+export default ProjectPage

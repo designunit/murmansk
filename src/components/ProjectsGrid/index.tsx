@@ -1,34 +1,39 @@
-import { Item } from '@/types'
 import Link from 'next/link'
 import React from 'react'
-import { FeedItem } from '../FeedItem'
 import { Section } from '../Section'
+import s from './index.module.css'
 
 interface IFeedProps {
     data: any // Item[]
 }
-export const Feed: React.FC<IFeedProps> = ({ data }) => {
+export const ProjectsGrid: React.FC<IFeedProps> = ({ data }) => {
     return (
+        <div style={{
+            width: '100%',
+            borderTop: 'solid 1px black',
+            borderBottom: 'solid 1px black',
+            display: 'flex',
+            justifyContent: 'center',
+        }}>
             <Section>
                 <div style={{
                     borderLeft: 'solid 1px black',
                     borderRight: 'solid 1px black',
-                    padding: '0 1rem',
+                    padding: '1rem',
 
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 30%)',
-                    gap: 24,
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    justifyContent: 'space-between',
                 }}>
                     {data.map((project, i) => (
                         <Link href={`/${project.id}`} >
-                            <a style={{
-                                textDecoration: 'none',
-                            }}>
+                            <a className={s.a}>
                                 <div style={{
                                     display: 'flex',
                                     flexDirection: 'column',
                                     overflow: 'clip',
-                                    whiteSpace: 'pre-wrap'
+                                    whiteSpace: 'pre-wrap',
+                                    padding: '1rem',
                                 }}>
                                     <img
                                         src={project.preview}
@@ -37,7 +42,9 @@ export const Feed: React.FC<IFeedProps> = ({ data }) => {
                                             maxWidth: '100%',
                                         }}
                                     />
-                                    <h3>
+                                    <h3 style={{
+                                        marginBottom: 0,
+                                    }}>
                                         {project.title}
                                     </h3>
                                     <p>
@@ -49,5 +56,6 @@ export const Feed: React.FC<IFeedProps> = ({ data }) => {
                     ))}
                 </div>
             </Section>
+        </div>
     )
 }

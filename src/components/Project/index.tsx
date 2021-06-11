@@ -1,6 +1,6 @@
 import { Gradient } from '../Gradient'
 import { Header } from '../Header'
-import { Section } from '../Section'
+import { Section as div } from '../Section'
 import s from './index.module.css'
 import { Item } from '@/types'
 import { useMobile } from '@/hooks/useMobile'
@@ -70,22 +70,25 @@ const ProjectItem = ({ item }) => {
     dangerouslySetInnerHTML={{ __html: item.post }}
 /> */}
 
-export const FeedItem: React.FC<IFeedItemProps> = ({ project }) => {
+export const Project: React.FC<IFeedItemProps> = ({ project }) => {
     const isMobile = useMobile()
     return (
         <div className={s.container} style={{
             borderLeft: 'solid 1px black',
             borderRight: 'solid 1px black',
         }}>
-            <Header>
-
-                <p className={s.title}>{project.title}</p>
+            <Header style={{
+                justifyContent: 'flex-start',
+            }}>
+                <h1 className={s.title}>{project.title}</h1>
             </Header>
-            <Section>
+            <div style={{
+                padding: '0 1rem',
+            }}>
                 {project.items.map((x, i) => (
                     <ProjectItem item={x} key={i} />
                 ))}
-            </Section>
+            </div>
         </div>
     )
 }

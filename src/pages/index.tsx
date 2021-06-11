@@ -6,7 +6,7 @@ import { markdownToHtml } from '@/lib/markdownToHtml'
 import { Item, MarkerData } from '@/types'
 import { IMeta, Meta } from '@/components/Meta'
 import React from 'react'
-import { Feed } from '@/components/Feed'
+import { ProjectsGrid } from '@/components/ProjectsGrid'
 import { Hero } from '@/components/Hero'
 import { Map } from '@/components/Map'
 import { Markers } from '@/components/Markers'
@@ -26,7 +26,7 @@ const Landing: NextPage<ILandingProps> = ({ data, meta, markers }) => {
             </Head>
             <Layout data={data}>
                 <Hero />
-                {true && <Feed data={data} />}
+                <ProjectsGrid data={data} />
                 <Map />
             </Layout>
         </>

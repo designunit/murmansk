@@ -262,24 +262,6 @@ export const Hero: React.FC<any> = () => {
     
                     </Section>                    
                 )}
-                <Section style={{
-                    paddingTop: 0,
-                    paddingBottom: 0,
-                }}>
-                    <p style={{
-                        margin: '0',
-                        padding: isMobile ? '1rem 0' : '1rem',
-                        borderLeft: !isMobile && 'solid 1px black',
-                        borderRight: !isMobile && 'solid 1px black',
-                    }}>
-                        Делитесь своими предложениями <Emoji name='💡' /> на интерактивной карте. Если вы не нашли свои любимые видовые точки - предложите, и мы включим их в программу на следующий год!
-                        <span>
-                            <Emoji name='👇' />
-                            <Emoji name='🗺️' />
-                            <Emoji name='👇' />
-                        </span>
-                    </p>
-                </Section>
             </section>
         </>
     )

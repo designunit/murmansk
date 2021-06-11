@@ -1,0 +1,9 @@
+.a {
+    text-decoration: none;
+}
+.a :hover {
+    background: var(--color-green);
+}
+.a :hover > h3 {
+    text-decoration: underline;
+}
