@@ -46,7 +46,7 @@ export const Timeline = () => {
             emoji: '🏁',
         },
     ]
-    const index = 3
+    const index = 4
 
     const ref = useRef(null)
     useEffectOnce(() => {
