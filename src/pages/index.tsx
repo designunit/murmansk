@@ -26,23 +26,22 @@ const Landing: NextPage<ILandingProps> = ({ data, meta, markers }) => {
             </Head>
             <Layout data={data}>
                 <Hero />
+                {true && <Feed data={data} />}
                 <Map />
-                {false && <Markers markersData={markers} />}
-                {false && <Feed data={data} />}
             </Layout>
         </>
     )
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const res = await fetch(`https://unit.tmshv.com/mur-events`)
-    const data = await res.json()
-    const parsed: Item[] = await Promise.all(
-        data.map(async x => ({
-            ...x,
-            post: await markdownToHtml(x.post)
-        }))
-    )
+    // const res = await fetch(`https://unit.tmshv.com/mur-events`)
+    // const data = await res.json()
+    // const parsed: Item[] = await Promise.all(
+    //     data.map(async x => ({
+    //         ...x,
+    //         post: await markdownToHtml(x.post)
+    //     }))
+    // )
 
     const markers = [
         {
@@ -77,6 +76,41 @@ export const getStaticProps: GetStaticProps = async (context) => {
         },
     ]
 
+    const data = [
+        {
+            title: 'Название тестового проекта',
+            preview: '/static/proj/1.jpg',
+            description: 'описание для тестового проекта с открыточным видом, фруктовым садом и пешеходной набережной вдоль воды. Каждый день вокруг Казанского собора движутся десятки тысяч прихожан, туристов и местных жителей, тут же паркуются 250 автомобилей',
+            id: 'test',
+            items: [
+            ]
+        },
+        {
+            title: 'Название другого тестового проекта',
+            preview: '/static/proj/3.jpg',
+            description: 'ное пространство для людей. Каждый час до 1000 человек протискивается через 30 хаотично припаркованных автомобилей. Люди идут по узкому тротуару между нагромождением ',
+            id: 'test',
+            items: [
+            ]
+        },
+        {
+            title: 'Название третьего проекта',
+            preview: '/static/proj/1.jpg',
+            description: 'о для людей. Каждый час до 1000 человек протискивается через 30 хаотично припаркованных автомобилей. Люди идут по узкому тро вокруг Казанского собора движутся десятки тысяч прихожан, туристов и местных жителей, тут же паркуются 250 автомобилей',
+            id: 'test',
+            items: [
+            ]
+        },
+        {
+            title: 'Четвертый проект',
+            preview: '/static/proj/2.jpg',
+            description: 'короткое описание',
+            id: 'test',
+            items: [
+            ]
+        },
+    ]
+
     const meta: IMeta = {
 		title: 'МОЙЗАЛИВ.РФ',
 		description: 'Дорогие Мурманчане, давайте чаще любоваться видами нашего города!',
@@ -97,7 +131,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     return {
         props: {
-            data: parsed,
+            data,
             meta,
             markers,
         }
