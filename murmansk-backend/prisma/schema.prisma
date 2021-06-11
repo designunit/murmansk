@@ -11,21 +11,23 @@ generator client {
 }
 
 model User {
-    id      Int      @id @default(autoincrement())
-    email   String   @unique
+    id      Int        @id @default(autoincrement())
+    email   String?    @unique
+    vk      VkProfile? @relation(fields: [vkid], references: [id])
+    vkid    Int?       @unique
     name    String?
     avatar  String?
-    // posts   Post[]
-    profile Profile?
     markers Marker[]
     likes   Like[]
 }
 
-model Profile {
-    id     Int  @id @default(autoincrement())
-    // bio    String?
-    user   User @relation(fields: [userId], references: [id])
-    userId Int  @unique
+model VkProfile {
+    id        Int     @id
+    email     String? @unique
+    firstName String
+    lastName  String
+    photo     String
+    user      User[]
 }
 
 model Marker {
