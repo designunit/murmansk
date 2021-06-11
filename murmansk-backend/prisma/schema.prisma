@@ -43,23 +43,26 @@ model Marker {
 }
 
 model Like {
-    id        Int      @id @default(autoincrement())
+    // id        Int      @id @default(autoincrement())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     like      Boolean
     author    User     @relation(fields: [authorId], references: [id])
     authorId  Int
     image     Image    @relation(fields: [imageId], references: [id])
-    imageId   Int      @unique
+    imageId   Int
+
+    @@id([imageId, authorId])
 }
 
 model Image {
-    id      Int      @id @default(autoincrement())
-    src     String
-    width   Int
-    height  Int
-    markers Marker[]
-    likes   Like[]
+    id        Int      @id @default(autoincrement())
+    src       String
+    width     Int
+    height    Int
+    likeCount Int      @default(0)
+    markers   Marker[]
+    likes     Like[]
 }
 
 // model Post {
