@@ -26,6 +26,43 @@ app.post(`/images`, async (req, res) => {
         }
     })
     res.json(result)
+app.post(`/vk`, async (req, res) => {
+	console.log('post vk', req.body)
+
+	const { id, firstName, lastName, photo, email } = req.body as Prisma.VkProfileCreateInput
+	const name = `${firstName} ${lastName}`
+
+	const result = await prisma.user.upsert({
+		where: { vkid: id },
+		create: {
+			email,
+			name,
+			avatar: photo,
+			vk: {
+				create: {
+					id,
+					firstName,
+					lastName,
+					photo,
+					email,
+				}
+			}
+		},
+		update: {
+			name,
+			email,
+			avatar: photo,
+			vk: {
+				update: {
+					firstName,
+					lastName,
+					photo,
+					email,
+				}
+			}
+		}
+	})
+	res.json(result)
 })
 
 app.post(`/users`, async (req, res) => {
