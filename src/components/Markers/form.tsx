@@ -36,7 +36,7 @@ export const Form = ({ setMarkers, setAddMode, setShowForm, draft, markers }) =>
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className={s.formHead}>
-                    <span>// Новая точка</span>
+                    <span>Новый комментарий</span>
                     <button
                         style={{
                             width: 30,
@@ -80,8 +80,8 @@ export const Form = ({ setMarkers, setAddMode, setShowForm, draft, markers }) =>
                         {errors?.text.message}
                     </p>
                 )}
-                <button type='submit'>
-                    Поставить точку
+                <button type='submit' style={{ fontWeight: 'bold' }}>
+                    Оставить комментарий
                         <Emoji name='📍' />
                 </button>
             </form>

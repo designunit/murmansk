@@ -45,7 +45,6 @@ const markers = [
 ]
 
 const ProjectItem = ({ item }) => {
-
     switch (item.type) {
         case 'text':
             return (

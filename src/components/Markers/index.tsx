@@ -98,12 +98,30 @@ export const Markers: React.FC<MarkersProps> = ({ style, markersData, leftImage 
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
+                    alignItems: 'center',
                     paddingTop: 20,
                 }}>
+                    {addMode && !showForm && (
+                        <span style={{
+                            padding: 12,
+                        }}>
+                            Выберите место для комментария
+                        </span>
+                    )}
                     <button
                         onClick={() => setAddMode(!addMode)}
+                        style={{
+                            border: 'solid 1px black',
+                            background: 'transparent',
+                            padding: 12,
+                            fontWeight: 'bold',
+                            textTransform: 'uppercase',
+                            cursor: 'pointer',
+                            display: 'flex',
+                        }}
                     >
-                        {addMode ? 'Отмена' : 'Добавить точку'}
+                        {addMode ? 'Отмена' : ' Добавить комментарий '}
+                        {!addMode && <Emoji name={'💬'} />}
                     </button>
                 </div>
             )}
@@ -119,8 +137,9 @@ export const Markers: React.FC<MarkersProps> = ({ style, markersData, leftImage 
                         !showMarkers && s.viewSwitchActive
                     )}
                 >
-                    {'Посмотреть картинку '}
+                    {'существующая ситуация '}
                     <Emoji name='↔️' />
+                    {' концепция изменений'}
                 </button>
                 <span
                     style={{
@@ -132,13 +151,14 @@ export const Markers: React.FC<MarkersProps> = ({ style, markersData, leftImage 
                 <button
                     onClick={() => {
                         setShowMarkers(true)
+
                     }}
                     className={cx(
                         s.viewSwitch,
                         showMarkers && s.viewSwitchActive
                     )}
                 >
-                    {'Посмотреть идеи '}
+                    {'комментарии'}
                     <Emoji name='💡' />
                 </button>
             </div>
