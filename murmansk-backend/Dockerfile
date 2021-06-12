@@ -25,6 +25,8 @@ RUN npm run build
 ## APP
 FROM base as app
 
+LABEL org.opencontainers.image.source https://github.com/designunit/murmansk
+
 COPY package*.json ./
 COPY prisma ./prisma
 COPY --from=build /app/node_modules ./node_modules
