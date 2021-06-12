@@ -1,0 +1,60 @@
+.bg {
+    width: 100%;
+}
+
+.viewSwitchContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.viewSwitch {
+    position: relative;
+    padding: .5em;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 1px transparent;
+    border-radius: 0px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.viewSwitch::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    background-color: black;
+    
+    transition: all .25s;
+}
+.viewSwitch:hover::after {
+    width: 100%;
+}
+.viewSwitchActive {
+    border-bottom: solid 1px black;
+}
+
+.mobileAccordion {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-x: auto;
+    border: solid 1px black;
+    border-bottom: none;
+    border-radius: 0px;
+}
+
+.mobileItemHead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    border-bottom: solid 1px black;
+}
+.mobileItemHead > p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+}

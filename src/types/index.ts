@@ -8,7 +8,6 @@ export interface Item {
 export interface MarkerData extends Marker {
     top: number,
     left: number,
-    text: string
-    id: string
-    isOpen?: boolean
+    content: string,
+    id: number,
 }

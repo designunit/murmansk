@@ -1,0 +1,36 @@
+.container {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.point {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border-radius: 50%;
+    border: solid 2px var(--color-purple);
+}
+
+.card {
+    position: relative;
+    max-width: 300px;
+    width: max-content;
+    max-height: 5em;
+    bottom: calc(-50%);
+    left: 5px;
+    z-index: 1;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .75);
+}
+
+.text {
+    display: block;
+    height: 100%;
+    padding: 10px;
+    margin: 0;
+    font-size: 12px;
+}
