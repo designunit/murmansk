@@ -134,6 +134,44 @@ app.get('/images', async (req, res) => {
 	res.json(result)
 })
 
+app.get('/images/:image', async (req, res) => {
+	const { image } = req.params
+	const imageId = parseInt(image)
+
+	let result = await prisma.image.findUnique({
+		where: { id: imageId }
+	})
+	if (!result) {
+		const src = req.query.src
+		if (!src) {
+			return error(res, 400, 'src not set')
+		}
+		if (typeof src !== 'string') {
+			return error(res, 400, 'src is not string')
+		}
+
+		result = await prisma.image.create({
+			data: {
+				src,
+				width: 0,
+				height: 0,
+			}
+		})
+	}
+
+	const markers = await prisma.marker.findMany({
+		where: {
+			imageId: result.id,
+			published: true,
+		}
+	})
+
+	res.json({
+		...result,
+		markers,
+	})
+})
+
 app.post(`/images`, admin(), async (req, res) => {
 	const { src, width, height } = req.body as Prisma.ImageCreateInput
 	const result = await prisma.image.create({
