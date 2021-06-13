@@ -32,8 +32,6 @@ COPY prisma ./prisma
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 
-RUN npx prisma migrate deploy
-
 ENV JWT_SECRET=
 ENV ADMIN_SECRET=
 ENV PORT=80
