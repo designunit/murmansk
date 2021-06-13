@@ -1,5 +1,5 @@
 import { Prisma, PrismaClient } from '@prisma/client'
-import express, { NextFunction, Request, Response } from 'express'
+import express, { Handler, NextFunction, Request, Response } from 'express'
 import cookieParser from 'cookie-parser'
 import crypto from 'crypto'
 import jose from 'jose'
@@ -65,6 +65,12 @@ function error(res: Response, status: number, message?: string) {
 	})
 }
 
+const $ = (fn: Handler) => (req: Request, res: Response, next: NextFunction) => {
+	return Promise
+		.resolve(fn(req, res, next))
+		.catch(next)
+}
+
 function auth() {
 	const cookieName = 'next-auth.session-token'
 
@@ -119,22 +125,22 @@ function admin() {
 	}
 }
 
-app.get('/ping', async (req, res) => {
+app.get('/ping', $(async (req, res) => {
 	res.json({
 		message: 'pong',
 	})
-})
+}))
 
-app.get('/images', async (req, res) => {
+app.get('/images', $(async (req, res) => {
 	const result = await prisma.image.findMany({
 		include: {
 			markers: true,
 		},
 	})
 	res.json(result)
-})
+}))
 
-app.get('/images/:image', async (req, res) => {
+app.get('/images/:image', $(async (req, res) => {
 	const { image } = req.params
 	const imageId = parseInt(image)
 
@@ -170,9 +176,9 @@ app.get('/images/:image', async (req, res) => {
 		...result,
 		markers,
 	})
-})
+}))
 
-app.post(`/images`, admin(), async (req, res) => {
+app.post(`/images`, admin(), $(async (req, res) => {
 	const { src, width, height } = req.body as Prisma.ImageCreateInput
 	const result = await prisma.image.create({
 		data: {
@@ -182,9 +188,9 @@ app.post(`/images`, admin(), async (req, res) => {
 		}
 	})
 	res.json(result)
-})
+}))
 
-app.post(`/users`, admin(), async (req, res) => {
+app.post(`/users`, admin(), $(async (req, res) => {
 	const { name, email, avatar } = req.body as Prisma.UserCreateInput
 	try {
 		const result = await prisma.user.create({
@@ -200,14 +206,14 @@ app.post(`/users`, admin(), async (req, res) => {
 			error: err,
 		})
 	}
-})
+}))
 
-app.get('/users', admin(), async (req, res) => {
+app.get('/users', admin(), $(async (req, res) => {
 	const users = await prisma.user.findMany()
 	res.json(users)
-})
+}))
 
-app.post(`/vk`, async (req, res) => {
+app.post(`/vk`, $(async (req, res) => {
 	const { id, firstName, lastName, photo, email } = req.body as Prisma.VkProfileCreateInput
 	const name = `${firstName} ${lastName}`
 	const result = await prisma.user.upsert({
@@ -241,9 +247,9 @@ app.post(`/vk`, async (req, res) => {
 		}
 	})
 	res.json(result)
-})
+}))
 
-app.put(`/images/:image/like`, auth(), async (req, res) => {
+app.put(`/images/:image/like`, auth(), $(async (req, res) => {
 	if (!req.userId) {
 		return error(res, 401)
 	}
@@ -292,9 +298,9 @@ app.put(`/images/:image/like`, auth(), async (req, res) => {
 			error: err,
 		})
 	}
-})
+}))
 
-app.post(`/images/:image/marker`, auth(), async (req, res) => {
+app.post(`/images/:image/marker`, auth(), $(async (req, res) => {
 	if (!req.userId) {
 		return error(res, 401)
 	}
@@ -323,9 +329,9 @@ app.post(`/images/:image/marker`, auth(), async (req, res) => {
 			error: err,
 		})
 	}
-})
+}))
 
-app.get('/likes', auth(), async (req, res) => {
+app.get('/likes', auth(), $(async (req, res) => {
 	if (!req.userId) {
 		return error(res, 401)
 	}
@@ -336,7 +342,7 @@ app.get('/likes', auth(), async (req, res) => {
 	})
 	result = result.filter(x => x.like)
 	res.json(result)
-})
+}))
 
 const port = process.env.PORT ?? 3000
 const server = app.listen(port, () => {
