@@ -74,7 +74,21 @@ const $ = (fn: Handler) => (req: Request, res: Response, next: NextFunction) => 
 }
 
 function auth() {
-	const cookieName = 'next-auth.session-token'
+	const cookieNames = [
+		'next-auth.session-token',
+		'__Secure-next-auth.session-token',
+	]
+
+	function getToken(req: Request) {
+		for (let cookieName of cookieNames) {
+			const token = req.cookies[cookieName]
+			if (token) {
+				return token as string
+			}
+		}
+
+		return null
+	}
 
 	function getPayload(token: string): Record<string, any> | null {
 		try {
@@ -86,7 +100,7 @@ function auth() {
 	}
 
 	return (req: Request, res: Response, next: NextFunction) => {
-		const token = req.cookies[cookieName]
+		const token = getToken(req)
 		if (!token) {
 			return error(res, 401)
 		}
