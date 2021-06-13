@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import crypto from 'crypto'
 import jose from 'jose'
 import dotenv from 'dotenv'
+import morgan from 'morgan'
 
 dotenv.config()
 
@@ -47,6 +48,7 @@ const publicKey = getSigningKey()
 const prisma = new PrismaClient()
 const app = express()
 
+app.use(morgan('tiny'))
 app.use(express.json())
 app.use(cookieParser())
 
