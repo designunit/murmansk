@@ -1,6 +1,8 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
+const backend = process.env.BACKEND_URL!
+
 export default NextAuth({
 	callbacks: {
 		async signIn(user, account, profile) {
@@ -25,7 +27,7 @@ export default NextAuth({
 				photo,
 			}
 
-			const res = await fetch('http://localhost:8080/vk', {
+			const res = await fetch(`${backend}/vk'`, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json, text/plain, */*',
