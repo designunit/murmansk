@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id      Int        @id @default(autoincrement())
+    email   String?    @unique
+    vk      VkProfile? @relation(fields: [vkid], references: [id])
+    vkid    Int?       @unique
+    name    String?
+    avatar  String?
+    markers Marker[]
+    likes   Like[]
+}
+
+model VkProfile {
+    id        Int     @id
+    email     String? @unique
+    firstName String
+    lastName  String
+    photo     String
+    user      User[]
+}
+
+model Marker {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    content   String
+    x         Float
+    y         Float
+    published Boolean  @default(false)
+    author    User     @relation(fields: [authorId], references: [id])
+    authorId  Int
+    image     Image    @relation(fields: [imageId], references: [id])
+    imageId   Int
+}
+
+model Like {
+    // id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    like      Boolean
+    author    User     @relation(fields: [authorId], references: [id])
+    authorId  Int
+    image     Image    @relation(fields: [imageId], references: [id])
+    imageId   Int
+
+    @@id([imageId, authorId])
+}
+
+model Image {
+    id        Int      @id @default(autoincrement())
+    src       String
+    width     Int
+    height    Int
+    likeCount Int      @default(0)
+    markers   Marker[]
+    likes     Like[]
+}
+
+// model Post {
+//     id        Int      @id @default(autoincrement())
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+//     title     String   @db.VarChar(255)
+//     content   String?
+//     published Boolean  @default(false)
+//     author    User     @relation(fields: [authorId], references: [id])
+//     authorId  Int
+// }
