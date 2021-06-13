@@ -27,7 +27,7 @@ export default NextAuth({
 				photo,
 			}
 
-			const res = await fetch(`${backend}/vk'`, {
+			const res = await fetch(`${backend}/vk`, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json, text/plain, */*',
