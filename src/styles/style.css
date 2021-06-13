@@ -40,16 +40,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-/* MARKERS */
-
-.image-marker {
-    position: absolute !important;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-}
-.image-marker > img {
-    height: 100%;
-}
