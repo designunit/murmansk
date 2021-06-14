@@ -6,6 +6,7 @@ import { Item } from '@/types'
 import { useMobile } from '@/hooks/useMobile'
 import React from 'react'
 import { Markers } from '../Markers'
+import { CommentedImage } from '../CommentedImage'
 
 interface IFeedItemProps {
     project: any // Item
@@ -15,7 +16,7 @@ const markers = [
     {
         top: 10,
         left: 40,
-        text: `Мой батя ебашит вообще адовые блюда. Ну такой вот примерно
+        content: `Мой батя ебашит вообще адовые блюда. Ну такой вот примерно
         рецепт усредненный, потому что вариаций масса. Берется суп, он
         не греется, греть - это не про моего батю. Он берет это суп,
         вываливает его на сковороду и начинает жарить. Добавляет в него
@@ -28,19 +29,19 @@ const markers = [
         иногда предлагает, но я отказываюсь. Надо ли говорить о том
         какой дичайший пердеж потом? Вонища такая, что обои от стен
         отклеиваются.`,
-        id: 'id1',
+        id: 1,
     },
     {
         top: 33,
         left: 76,
-        text: 'близкая точка для проверялки',
-        id: 'id2',
+        content: 'близкая точка для проверялки',
+        id: 2,
     },
     {
         top: 34,
         left: 70,
-        text: 'проверялка для близких точек',
-        id: 'id3',
+        content: 'проверялка для близких точек',
+        id: 3,
     },
 ]
 
@@ -52,10 +53,19 @@ const ProjectItem = ({ item }) => {
             )
         case 'slider':
             return (
+                // <CommentedImage 
+                //     id={item.id}
+                //     src={item.right}
+                //     style={{
+                //         position: 'relative',
+                //         margin: '1rem 0',
+                //         padding: 0,
+                //     }}
+                // />
                 <Markers
                     leftImage={item.left}
                     rightImage={item.right}
-                    markersData={markers}
+                    data={item}
                 />
             )
 
@@ -63,11 +73,6 @@ const ProjectItem = ({ item }) => {
             return null
     }
 }
-
-
-{/* <div
-    dangerouslySetInnerHTML={{ __html: item.post }}
-/> */}
 
 export const Project: React.FC<IFeedItemProps> = ({ project }) => {
     const isMobile = useMobile()

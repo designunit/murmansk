@@ -10,32 +10,30 @@ import cx from 'classnames'
 import ImageMarker, { Marker } from 'react-image-marker'
 import { MarkerData } from '@/types'
 import { Form } from './form'
+import { CommentedImage } from '../CommentedImage'
+import { signIn, useSession } from 'next-auth/client'
+import { getImage } from '@/api'
+import { useQuery } from 'react-query'
+import { LikeButton } from '../LikeButton'
 
 interface MarkersProps {
-    markersData: MarkerData[]
     leftImage?: string
     rightImage?: string
     style?: React.CSSProperties
+    data: any
 }
 
-export const Markers: React.FC<MarkersProps> = ({ style, markersData, leftImage = 'static/map.png', rightImage = 'static/meta.jpg' }) => {
+export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'static/map.png', rightImage = 'static/meta.jpg' }) => {
     const isMobile = useMobile()
 
-    const [markers, setMarkers] = useState<MarkerData[]>(markersData.map(x => ({ ...x, isOpen: true })))
-    const onItemClick = useCallback(
-        (id: string, state: boolean) => {
-            const newMarkers = markers.map((x, i) =>
-                x.id === id ? { ...x, isOpen: state } : x
-            )
-            setMarkers(newMarkers)
-        },
-        [markers]
-    )
-    const [draft, setDraft] = useState({ top: null, left: null })
-    const [showForm, setShowForm] = useState(false)
     const [showMarkers, setShowMarkers] = useState(false)
     const [activeId, setActiveId] = useState(undefined)
     const [addMode, setAddMode] = useState(false)
+
+    const [session, isLoadingSession] = useSession()
+
+    const key = `image_${data.id}`
+    const { isLoading, data: img } = useQuery(key, () => getImage(data.id, data.rightImage))
 
     return (
         <Section style={{
@@ -43,97 +41,64 @@ export const Markers: React.FC<MarkersProps> = ({ style, markersData, leftImage 
             paddingBottom: 36,
             ...style,
         }}>
-            <div
-                style={{
-                    position: 'relative',
-                }}
-            >
-                <div className={s.bg}>
-                    <ReactCompareImage
-                        leftImage={leftImage}
-                        rightImage={rightImage}
-                        aspectRatio='wider'
-                        handle={showMarkers ? <></> : null}
-                    />
-                </div>
-                {showMarkers && (
-                    <>
-                        <ImageMarker
-                            src='static/placeholder.png'
-                            alt=''
-                            markers={markers}
-                            onAddMarker={(marker: Marker) => {
-                                if (!addMode) {
-                                    return
-                                }
-                                setDraft(marker)
-                                setShowForm(true)
-                            }}
-                            // @ts-ignore
-                            markerComponent={(props: MarkerData) => (
-                                <Item
-                                    {...props}
-                                    onItemClick={onItemClick}
-                                    isOpen={
-                                        isMobile
-                                            ? activeId === props.id
-                                            : props.isOpen
-                                    }
-                                />
-                            )}
-                        />
-                        {showForm && (
-                            <Form
-                                setMarkers={setMarkers}
-                                setAddMode={setAddMode}
-                                setShowForm={setShowForm}
-                                draft={draft}
-                                markers={markers}
-                            />
-                        )}
-                    </>
-                )}
-            </div>
+            {showMarkers ? (
+                <CommentedImage
+                    id={data.id}
+                    src={data.right}
+                    allowClick={addMode}
+                    style={{
+                        position: 'relative',
+                        margin: '1rem 0',
+                        padding: 0,
+                    }}
+                />
+            ) : (
+                <ReactCompareImage
+                    leftImage={leftImage}
+                    rightImage={rightImage}
+                    aspectRatio='wider'
+                />
+            )}
             {showMarkers && (
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    paddingTop: 20,
-                }}>
-                    {addMode && !showForm && (
+                <div className={s.viewSwitchContainer}>
+                    {addMode ? (
                         <span style={{
-                            padding: 12,
+                            marginRight: '1rem',
                         }}>
-                            Выберите место для комментария
+                            Выберите место и предложите свою идею
                         </span>
+                    ) : (
+                        <button
+                            onClick={() => {
+                                if (!addMode && !session) {
+                                    signIn('vk')
+                                }
+                                setAddMode(true)
+                            }}
+                        >
+                            Добавить
+                        </button>
                     )}
-                    <button
-                        onClick={() => setAddMode(!addMode)}
-                        style={{
-                            border: 'solid 1px black',
-                            background: 'transparent',
-                            padding: 12,
-                            fontWeight: 'bold',
-                            textTransform: 'uppercase',
-                            cursor: 'pointer',
-                            display: 'flex',
-                        }}
-                    >
-                        {addMode ? 'Отмена' : ' Добавить комментарий '}
-                        {!addMode && <Emoji name={'💬'} />}
-                    </button>
                 </div>
             )}
             <div className={s.viewSwitchContainer}>
+                <LikeButton
+                    id={data.id}
+                    likes={img?.likeCount ?? 0}
+                />
+                <span
+                    style={{
+                        padding: '.5em 1em',
+                    }}
+                >
+                    //
+                </span>
                 <button
                     onClick={() => {
                         setShowMarkers(false)
-                        setShowForm(false)
                         setAddMode(false)
                     }}
                     className={cx(
-                        s.viewSwitch,
                         !showMarkers && s.viewSwitchActive
                     )}
                 >
@@ -154,7 +119,6 @@ export const Markers: React.FC<MarkersProps> = ({ style, markersData, leftImage 
 
                     }}
                     className={cx(
-                        s.viewSwitch,
                         showMarkers && s.viewSwitchActive
                     )}
                 >
@@ -177,13 +141,13 @@ export const Markers: React.FC<MarkersProps> = ({ style, markersData, leftImage 
                             />
                         )}
                     >
-                        {markers.map((x, i) => (
+                        {data.map((x, i) => (
                             <Collapse.Panel
                                 key={x.id}
                                 headerClass={s.mobileItemHead}
-                                header={<p>{x.text}</p>}
+                                header={<p>{x.content}</p>}
                             >
-                                {x.text}
+                                {x.content}
                             </Collapse.Panel>
                         ))}
                     </Collapse>

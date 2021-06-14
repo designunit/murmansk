@@ -48,6 +48,7 @@ const data = [
                 type: 'slider',
                 left: '/static/proj/1.jpg',
                 right: '/static/proj/2.jpg',
+                id: 666,
             },
             {
                 type: 'text',
@@ -57,6 +58,7 @@ const data = [
                 type: 'slider',
                 left: '/static/proj/2.jpg',
                 right: '/static/proj/3.jpg',
+                id: 1337,
             },
             {
                 type: 'text',
@@ -66,6 +68,7 @@ const data = [
                 type: 'slider',
                 left: '/static/proj/1.jpg',
                 right: '/static/proj/3.jpg',
+                id: 322,
             },
             {
                 type: 'text',

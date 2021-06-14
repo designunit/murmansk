@@ -16,17 +16,11 @@ export const ProjectsGrid: React.FC<IFeedProps> = ({ data }) => {
             justifyContent: 'center',
         }}>
             <Section>
-                <div style={{
-                    borderLeft: 'solid 1px black',
-                    borderRight: 'solid 1px black',
-                    padding: '1rem',
-
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    justifyContent: 'space-between',
-                }}>
+                <div 
+                    className={s.grid}
+                >
                     {data.map((project, i) => (
-                        <Link href={`/${project.id}`} >
+                        <Link href={`/${project.id}`} key={project.id} >
                             <a className={s.a}>
                                 <div style={{
                                     display: 'flex',
@@ -34,6 +28,7 @@ export const ProjectsGrid: React.FC<IFeedProps> = ({ data }) => {
                                     overflow: 'clip',
                                     whiteSpace: 'pre-wrap',
                                     padding: '1rem',
+                                    height: '100%',
                                 }}>
                                     <img
                                         src={project.preview}

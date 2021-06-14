@@ -3,5 +3,5 @@
     border-top: solid 1px black;
     display: flex;
     justify-content: center;
-    padding-top: 1rem;
+    padding: 1rem 0;
 }
