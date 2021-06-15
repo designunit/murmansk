@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const data = [
         {
             title: 'Название тестового проекта',
-            preview: '/static/proj/1.jpg',
+            preview: 'https://murmansk-git-feature-projects-unit.vercel.app/proj/1.jpg',
             description: 'описание для тестового проекта с открыточным видом, фруктовым садом и пешеходной набережной вдоль воды. Каждый день вокруг Казанского собора движутся десятки тысяч прихожан, туристов и местных жителей, тут же паркуются 250 автомобилей',
             id: 'test',
             items: [
@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         },
         {
             title: 'Название другого тестового проекта',
-            preview: '/static/proj/3.jpg',
+            preview: 'https://murmansk-git-feature-projects-unit.vercel.app/proj/3.jpg',
             description: 'ное пространство для людей. Каждый час до 1000 человек протискивается через 30 хаотично припаркованных автомобилей. Люди идут по узкому тротуару между нагромождением ',
             id: 'test',
             items: [
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         },
         {
             title: 'Название третьего проекта',
-            preview: '/static/proj/1.jpg',
+            preview: 'https://murmansk-git-feature-projects-unit.vercel.app/proj/1.jpg',
             description: 'о для людей. Каждый час до 1000 человек протискивается через 30 хаотично припаркованных автомобилей. Люди идут по узкому тро вокруг Казанского собора движутся десятки тысяч прихожан, туристов и местных жителей, тут же паркуются 250 автомобилей',
             id: 'test',
             items: [
@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         },
         {
             title: 'Четвертый проект',
-            preview: '/static/proj/2.jpg',
+            preview: 'https://murmansk-git-feature-projects-unit.vercel.app/proj/2.jpg',
             description: 'короткое описание',
             id: 'test',
             items: [
