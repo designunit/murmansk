@@ -9,6 +9,8 @@ import { Item, MarkerData } from '@/types'
 import { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
+import { useSession } from 'next-auth/client'
+import { Emoji } from '@/components/Emoji'
 
 interface ILandingProps {
     data: Item[]
@@ -17,6 +19,8 @@ interface ILandingProps {
 }
 
 const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
+    const [session, isLoadingSession] = useSession()
+
     return (
         <>
             <Head>
@@ -28,9 +32,28 @@ const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
                     paddingTop: 0,
                     paddingBottom: 0,
                 }}>
-                    <Project
-                        project={data[0]}
-                    />
+                    {isLoadingSession ? (
+                        <div style={{
+                            height: '75vh',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            flexFlow: 'column',
+                        }}>
+                            <span>
+                                Загрузка
+                            </span>
+                            <div>
+                                <Emoji name={'🌐'} />
+                                <Emoji name={'📲'} />
+                                <Emoji name={'👾'} />
+                            </div>
+                        </div>
+                    ) : (
+                        <Project
+                            project={data[0]}
+                        />
+                    )}
                 </Section>
             </Layout>
         </>

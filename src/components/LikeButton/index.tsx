@@ -44,6 +44,6 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 	const count = props.likes > 0 ? props.likes : ''
 
 	return (
-		<button disabled={isLoadingSession} onClick={onClick}> <Emoji name={emoji} /> {count} </button>
+		<button onClick={onClick}> <Emoji name={emoji} /> {count} </button>
 	)
 }
