@@ -27,6 +27,8 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 	})
 
 	useEffect(() => {
+        if (!data) return
+        
 		const like = !isLoading && data.find(x => x.imageId === props.id)
 
 		setActive(!!like)
