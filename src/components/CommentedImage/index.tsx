@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import React, { useCallback, useState, useEffect } from 'react'
+import { Section } from '../Section'
 import { Item, OnClick } from './item'
 import ImageMarker, { Marker } from 'react-image-marker'
 import { useQuery, useMutation, useQueryClient } from 'react-query'

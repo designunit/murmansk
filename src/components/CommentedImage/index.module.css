@@ -1,16 +1,13 @@
-.bg {
-    width: 100%;
-}
-
 .viewSwitchContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding-top: 20px;
 }
 
-.viewSwitch {
+.viewSwitchContainer > button {
     position: relative;
-    padding: .5em;
+    padding: .5em 1em;
     background-color: transparent;
     border: none;
     border: solid 1px black;
@@ -19,11 +16,12 @@
     text-transform: uppercase;
     font-weight: bold;
 }
-.viewSwitch:hover {
+
+.viewSwitchContainer > button:hover {
     background-color: var(--color-green);
 }
 .viewSwitchActive {
-    background-color: var(--color-violet);
+    background-color: var(--color-violet) !important;
 }
 
 .mobileAccordion {
