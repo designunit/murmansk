@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { NextPage } from 'next'
 import { Layout } from '../components/Layout'
 import { GetStaticProps } from 'next'
-import { markdownToHtml } from '@/lib/markdownToHtml'
 import { Item } from '@/types'
 import { IMeta, Meta } from '@/components/Meta'
 import React from 'react'
@@ -24,7 +23,7 @@ const Landing: NextPage<ILandingProps> = ({ data, meta }) => {
             </Head>
             <Layout data={data}>
                 <Hero />
-                <ProjectsGrid data={data} />
+                {false && <ProjectsGrid data={data} />}
                 <Map />
             </Layout>
         </>

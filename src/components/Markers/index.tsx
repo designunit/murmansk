@@ -33,78 +33,98 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
             padding: '1rem 0',
             ...style,
         }}>
-            {showMarkers ? (
-                <CommentedImage
-                    id={data.id}
-                    src={data.right}
-                    allowClick={addMode}
-                    style={{
-                        position: 'relative',
-                        margin: '1rem 0',
-                        padding: 0,
-                    }}
-                />
-            ) : (
+            <div style={{
+                position: 'relative',
+                width: '100%',
+                height: ' 100%',
+            }}>
                 <ReactCompareImage
                     leftImage={leftImage}
                     rightImage={rightImage}
                     aspectRatio='wider'
                 />
-            )}
-            {showMarkers && (
-                <div className={s.viewSwitchContainer}>
-                    {addMode ? (
-                        <span style={{
-                            marginRight: '1rem',
-                        }}>
-                            Выберите место и предложите свою идею
-                        </span>
-                    ) : (
-                        <button
-                            onClick={() => {
-                                if (!addMode && !session) {
-                                    signIn('vk')
-                                    return 
-                                }
-                                setAddMode(true)
+                {showMarkers && (
+                    <div style={{
+                        position: 'absolute',
+                        zIndex: 1,
+                        top: 0,
+                        width: '100%',
+                        height: ' 100%',
+                    }}>
+                        <CommentedImage
+                            id={data.id}
+                            src={data.right}
+                            allowClick={addMode}
+                            style={{
+                                position: 'relative',
+                                margin: '1rem 0',
+                                padding: 0,
                             }}
-                        >
-                            Добавить
-                        </button>
-                    )}
-                </div>
-            )}
-            <div className={s.viewSwitchContainer}>
-                <LikeButton
-                    id={data.id}
-                    likes={null} // {img?.likeCount ?? 0}
-                    src={data.rightImage}
-                />
-                <button
-                    onClick={() => {
-                        setShowMarkers(false)
-                        setAddMode(false)
-                    }}
-                    className={cx(
-                        !showMarkers && s.viewSwitchActive
-                    )}
-                >
-                    {'существующая ситуация '}
-                    <Emoji name='↔️' />
-                    {' концепция изменений'}
-                </button>
-                <button
-                    onClick={() => {
-                        setShowMarkers(true)
+                        />
+                    </div>
+                )}
+            </div>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+            }}>
+                <div className={s.viewSwitchContainer}>
+                    <LikeButton
+                        id={data.id}
+                        likes={null} // {img?.likeCount ?? 0}
+                        src={data.rightImage}
+                    />
+                    <button
+                        onClick={() => {
+                            setShowMarkers(false)
+                            setAddMode(false)
+                        }}
+                        className={cx(
+                            !showMarkers && s.viewSwitchActive
+                        )}
+                    >
+                        {'существующая ситуация '}
+                        <Emoji name='↔️' />
+                        {' концепция изменений'}
+                    </button>
+                    <button
+                        onClick={() => {
+                            setShowMarkers(true)
 
-                    }}
-                    className={cx(
-                        showMarkers && s.viewSwitchActive
-                    )}
-                >
-                    {'комментарии'}
-                    <Emoji name='💡' />
-                </button>
+                        }}
+                        className={cx(
+                            showMarkers && s.viewSwitchActive
+                        )}
+                    >
+                        {'комментарии'}
+                        <Emoji name='💡' />
+                    </button>
+                </div>
+                {showMarkers && (
+                    <div className={s.viewSwitchContainer}>
+                        {addMode ? (
+                            <span style={{
+                                marginRight: '1rem',
+                            }}>
+                                Выберите место и предложите свою идею
+                            </span>
+                        ) : (
+                            <button
+                                disabled={isLoadingSession}
+                                onClick={() => {
+                                    if (!addMode && !session) {
+                                        signIn('vk')
+                                        return
+                                    }
+                                    setAddMode(true)
+                                }}
+                            >
+                                {'Добавить '}
+                                <Emoji name='⚡' />
+                            </button>
+                        )}
+                    </div>
+                )}
             </div>
             {false && isMobile && showMarkers && ( // mobile comments disabled form now 
                 <>

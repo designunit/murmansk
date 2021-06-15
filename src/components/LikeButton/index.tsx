@@ -28,7 +28,7 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 
 	useEffect(() => {
         if (!data) return
-        
+
 		const like = !isLoading && data.find(x => x.imageId === props.id)
 
 		setActive(!!like)
@@ -52,6 +52,6 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 	const count = !isAlsoLoading || (img?.likeCount ?? 0) > 0 ? props.likes : ''
 
 	return (
-		<button onClick={onClick}> <Emoji name={emoji} /> {count} </button>
+		<button disabled={isLoadingSession} onClick={onClick}> <Emoji name={emoji} /> {count} </button>
 	)
 }
