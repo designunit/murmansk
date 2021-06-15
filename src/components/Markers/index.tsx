@@ -1,13 +1,11 @@
 import { Section } from '../Section'
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { Emoji } from '../Emoji'
 import ReactCompareImage from 'react-compare-image'
 import { useMobile } from '@/hooks/useMobile'
 import Collapse from 'rc-collapse'
 import s from './index.module.css'
 import cx from 'classnames'
-import ImageMarker, { Marker } from 'react-image-marker'
-import { MarkerData } from '@/types'
 import { CommentedImage } from '../CommentedImage'
 import { signIn, useSession } from 'next-auth/client'
 import { getImage } from '@/api'
@@ -30,13 +28,9 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
 
     const [session, isLoadingSession] = useSession()
 
-    const key = `image_${data.id}`
-    const { isLoading, data: img } = useQuery(key, () => getImage(data.id, data.rightImage))
-
     return (
         <Section style={{
-            paddingTop: 36,
-            paddingBottom: 36,
+            padding: '1rem 0',
             ...style,
         }}>
             {showMarkers ? (
@@ -70,6 +64,7 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
                             onClick={() => {
                                 if (!addMode && !session) {
                                     signIn('vk')
+                                    return 
                                 }
                                 setAddMode(true)
                             }}
@@ -82,15 +77,9 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
             <div className={s.viewSwitchContainer}>
                 <LikeButton
                     id={data.id}
-                    likes={img?.likeCount ?? 0}
+                    likes={null} // {img?.likeCount ?? 0}
+                    src={data.rightImage}
                 />
-                <span
-                    style={{
-                        padding: '.5em 1em',
-                    }}
-                >
-                    //
-                </span>
                 <button
                     onClick={() => {
                         setShowMarkers(false)
@@ -104,13 +93,6 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
                     <Emoji name='↔️' />
                     {' концепция изменений'}
                 </button>
-                <span
-                    style={{
-                        padding: '.5em 1em',
-                    }}
-                >
-                    //
-                </span>
                 <button
                     onClick={() => {
                         setShowMarkers(true)
@@ -124,7 +106,7 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
                     <Emoji name='💡' />
                 </button>
             </div>
-            {isMobile && showMarkers && (
+            {false && isMobile && showMarkers && ( // mobile comments disabled form now 
                 <>
                     <Collapse
                         accordion

@@ -1,13 +1,11 @@
 import dynamic from 'next/dynamic'
-import React, { useCallback, useState, useEffect } from 'react'
-import { Section } from '../Section'
+import React, { useCallback, useState } from 'react'
 import { Item, OnClick } from './item'
 import ImageMarker, { Marker } from 'react-image-marker'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { MarkerData } from '@/types'
 import { FormOnSubmit } from './form'
-import { addMarker, getImage, getLikes, setLike } from '@/api'
-import { LikeButton } from '../LikeButton'
+import { addMarker, getImage } from '@/api'
 
 const Form = dynamic(import('./form').then(m => m.Form), { ssr: false })
 
@@ -39,13 +37,11 @@ export const CommentedImage: React.FC<MarkersProps> = props => {
     const [showForm, setShowForm] = useState(false)
 
     const onMarkerClick = useCallback<OnClick>((id, state) => {
-        if (!props.allowClick) return
-
         setOpened(opened => ({
             ...opened,
             [id]: state,
         }))
-    }, [props.allowClick])
+    }, [])
 
     const onSubmit = useCallback<FormOnSubmit>(content => {
         if (content) {
@@ -69,6 +65,8 @@ export const CommentedImage: React.FC<MarkersProps> = props => {
                 src={props.src}
                 markers={markers}
                 onAddMarker={(marker: Marker) => {
+                    if (!props.allowClick) return
+
                     setDraft(marker)
                     setShowForm(true)
                 }}

@@ -1,12 +1,8 @@
-import { Gradient } from '../Gradient'
 import { Header } from '../Header'
-import { Section as div } from '../Section'
 import s from './index.module.css'
-import { Item } from '@/types'
 import { useMobile } from '@/hooks/useMobile'
 import React from 'react'
 import { Markers } from '../Markers'
-import { CommentedImage } from '../CommentedImage'
 
 interface IFeedItemProps {
     project: any // Item
@@ -45,8 +41,8 @@ export const Project: React.FC<IFeedItemProps> = ({ project }) => {
     const isMobile = useMobile()
     return (
         <div className={s.container} style={{
-            borderLeft: 'solid 1px black',
-            borderRight: 'solid 1px black',
+            borderLeft: !isMobile && 'solid 1px black',
+            borderRight: !isMobile && 'solid 1px black',
         }}>
             <Header style={{
                 justifyContent: 'flex-start',

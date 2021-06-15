@@ -1,4 +1,4 @@
-import { getLikes, setLike } from '@/api'
+import { getImage, getLikes, setLike } from '@/api'
 import { signIn, useSession } from 'next-auth/client'
 import React, { useState, useEffect, useCallback } from 'react'
 import { useQuery, useQueryClient, useMutation } from 'react-query'
@@ -7,6 +7,7 @@ import { Emoji } from '../Emoji'
 export type LikeButtonProps = {
 	id: number
 	likes: number
+    src?: string
 }
 
 export const LikeButton: React.FC<LikeButtonProps> = props => {
@@ -34,6 +35,7 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 	const onClick = useCallback(() => {
         if (!session) {
             signIn('vk')
+            return
         }
 		put.mutate({
 			like: !active,
@@ -41,7 +43,11 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 
 	}, [active, session])
 
-	const count = props.likes > 0 ? props.likes : ''
+    
+    const key = `image_${props.id}`
+    const { isLoading: isAlsoLoading, data: img } = useQuery(key, () => getImage(props.id, props.src))
+
+	const count = !isAlsoLoading || (img?.likeCount ?? 0) > 0 ? props.likes : ''
 
 	return (
 		<button onClick={onClick}> <Emoji name={emoji} /> {count} </button>

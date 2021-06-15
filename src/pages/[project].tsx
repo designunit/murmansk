@@ -11,6 +11,7 @@ import Head from 'next/head'
 import React from 'react'
 import { useSession } from 'next-auth/client'
 import { Emoji } from '@/components/Emoji'
+import { useMobile } from '@/hooks/useMobile'
 
 interface ILandingProps {
     data: Item[]
@@ -20,6 +21,7 @@ interface ILandingProps {
 
 const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
     const [session, isLoadingSession] = useSession()
+    const isMobile = useMobile()
 
     return (
         <>
@@ -31,6 +33,9 @@ const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
                 <Section style={{
                     paddingTop: 0,
                     paddingBottom: 0,
+                    ...{
+                        padding: isMobile && 0,
+                    }
                 }}>
                     {isLoadingSession ? (
                         <div style={{
