@@ -33,6 +33,11 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
             padding: '1rem 0',
             ...style,
         }}>
+            <button
+                onClick={() => signIn('vk')}
+            >
+                {`signIn('vk')`}
+            </button>
             <div style={{
                 position: 'relative',
                 width: '100%',
@@ -111,7 +116,7 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
                         ) : (
                             <button
                                 onClick={() => {
-                                    if (!addMode && !session) {
+                                    if (!session) {
                                         signIn('vk')
                                         return
                                     }
