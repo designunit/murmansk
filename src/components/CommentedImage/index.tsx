@@ -62,7 +62,7 @@ export const CommentedImage: React.FC<MarkersProps> = props => {
         console.log('markers', markers)
         console.log('img', img)
         
-    }, [markers, img])
+    }, [markers, img, isLoading])
 
     return (
         <div style={{

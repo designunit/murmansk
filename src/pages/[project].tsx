@@ -92,7 +92,7 @@ const data = [
             {
                 type: 'slider',
                 left: '/static/proj/2.jpg',
-                right: '/static/proj/3.jpg',
+                right: '/static/proj/1.jpg',
                 id: 1337,
             },
             {
