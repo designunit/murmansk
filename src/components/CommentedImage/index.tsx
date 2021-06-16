@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Item, OnClick } from './item'
 import ImageMarker, { Marker } from 'react-image-marker'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
@@ -56,6 +56,10 @@ export const CommentedImage: React.FC<MarkersProps> = props => {
     }, [draft, img])
 
     const markers = isLoading ? [] : img.markers
+
+    useEffect(() => {
+        console.log(`${props.id}: `, markers)
+    }, [markers])
 
     return (
         <div style={{
