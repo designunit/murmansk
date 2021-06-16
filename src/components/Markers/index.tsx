@@ -110,7 +110,6 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
                             </span>
                         ) : (
                             <button
-                                disabled={isLoadingSession}
                                 onClick={() => {
                                     if (!addMode && !session) {
                                         signIn('vk')
