@@ -16,31 +16,21 @@ interface MarkersProps {
     style?: React.CSSProperties
     data: any
     session: any
+    showModal: any
 }
 
-export const Markers: React.FC<MarkersProps> = ({ style, data, session, leftImage = 'static/map.png', rightImage = 'static/meta.jpg' }) => {
+export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModal, leftImage = 'static/map.png', rightImage = 'static/meta.jpg' }) => {
     const isMobile = useMobile()
 
     const [showMarkers, setShowMarkers] = useState(false)
     const [activeId, setActiveId] = useState(undefined)
     const [addMode, setAddMode] = useState(false)
-    
-    useEffect(() => {
-        console.log(
-            'session',
-            session,
-        )
-    }, [session])
+
     return (
         <Section style={{
             padding: '1rem 0',
             ...style,
         }}>
-            <button
-                onClick={() => signIn('vk')}
-            >
-                {`signIn('vk')`}
-            </button>
             <div style={{
                 position: 'relative',
                 width: '100%',
@@ -81,6 +71,8 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, leftImag
                         id={data.id}
                         likes={null} // {img?.likeCount ?? 0}
                         src={data.rightImage}
+                        session={session}
+                        showModal={showModal}
                     />
                     <button
                         onClick={() => {
@@ -120,7 +112,7 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, leftImag
                             <button
                                 onClick={() => {
                                     if (!session) {
-                                        signIn('vk')
+                                        showModal()
                                         return
                                     }
                                     setAddMode(true)

@@ -7,9 +7,10 @@ import { Markers } from '../Markers'
 interface IFeedItemProps {
     project: any // Item
     session: any
+    showModal: any
 }
 
-const ProjectItem = ({ item, session }) => {
+const ProjectItem = ({ item, session, showModal }) => {
     switch (item.type) {
         case 'text':
             return (
@@ -31,6 +32,7 @@ const ProjectItem = ({ item, session }) => {
                     rightImage={item.right}
                     data={item}
                     session={session}
+                    showModal={showModal}
                 />
             )
 
@@ -39,7 +41,7 @@ const ProjectItem = ({ item, session }) => {
     }
 }
 
-export const Project: React.FC<IFeedItemProps> = ({ project, session }) => {
+export const Project: React.FC<IFeedItemProps> = ({ project, session, showModal }) => {
     const isMobile = useMobile()
     return (
         <div className={s.container} style={{
@@ -59,6 +61,7 @@ export const Project: React.FC<IFeedItemProps> = ({ project, session }) => {
                         item={x}
                         key={i}
                         session={session}
+                        showModal={showModal}
                     />
                 ))}
             </div>

@@ -1,17 +1,15 @@
-import { ProjectsGrid } from '@/components/ProjectsGrid'
 import { Project } from '@/components/Project'
-import { Hero } from '@/components/Hero'
 import { Layout } from '@/components/Layout'
-import { Markers } from '@/components/Markers'
 import { IMeta, Meta } from '@/components/Meta'
 import { Section } from '@/components/Section'
 import { Item, MarkerData } from '@/types'
 import { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import { useSession } from 'next-auth/client'
 import { Emoji } from '@/components/Emoji'
 import { useMobile } from '@/hooks/useMobile'
+import { Modal } from '@/components/Modal'
 
 interface ILandingProps {
     data: Item[]
@@ -22,6 +20,9 @@ interface ILandingProps {
 const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
     const [session, isLoadingSession] = useSession()
     const isMobile = useMobile()
+
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const showModal = useCallback(() => setModalIsOpen(true), [])
 
     return (
         <>
@@ -37,6 +38,10 @@ const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
                         padding: isMobile && 0,
                     }
                 }}>
+                    <Modal 
+                        modalIsOpen={modalIsOpen}
+                        setModalIsOpen={setModalIsOpen}
+                    />
                     {isLoadingSession ? (
                         <div style={{
                             height: '75vh',
@@ -58,6 +63,7 @@ const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
                         <Project
                             project={data[0]}
                             session={session}
+                            showModal={showModal}
                         />
                     )}
                 </Section>

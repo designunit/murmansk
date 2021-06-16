@@ -8,6 +8,8 @@ export type LikeButtonProps = {
 	id: number
 	likes: number
     src?: string
+    session: any
+    showModal: any
 }
 
 export const LikeButton: React.FC<LikeButtonProps> = props => {
@@ -15,7 +17,6 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 	const [active, setActive] = useState(false)
 	const emoji = active ? '❤️' : '🤍'
 
-    const [session, isLoadingSession] = useSession()
 
 	const client = useQueryClient()
 	const put = useMutation(({ like }: { like: boolean }) => setLike(props.id, like), {
@@ -35,15 +36,15 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 	}, [data])
 
 	const onClick = useCallback(() => {
-        if (!session) {
-            signIn('vk')
+        if (!props.session) {
+            props.showModal()
             return
         }
 		put.mutate({
 			like: !active,
 		})
 
-	}, [active, session])
+	}, [active, props.session])
 
     
     const key = `image_${props.id}`
@@ -52,6 +53,6 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 	const count = !isAlsoLoading || (img?.likeCount ?? 0) > 0 ? props.likes : ''
 
 	return (
-		<button disabled={isLoadingSession} onClick={onClick}> <Emoji name={emoji} /> {count} </button>
+		<button onClick={onClick}> <Emoji name={emoji} /> {count} </button>
 	)
 }
