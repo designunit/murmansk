@@ -22,9 +22,9 @@
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
-}
-.modal > button:hover {
-    background-color: var(--color-green);
+
+    background-color: #2787f5;
+    color: white;
 }
 
 .modal:focus {
