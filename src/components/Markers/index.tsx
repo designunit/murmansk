@@ -11,15 +11,13 @@ import { signIn, useSession } from 'next-auth/client'
 import { LikeButton } from '../LikeButton'
 
 interface MarkersProps {
-    leftImage?: string
-    rightImage?: string
     style?: React.CSSProperties
     data: any
     session: any
     showModal: any
 }
 
-export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModal, leftImage = 'static/map.png', rightImage = 'static/meta.jpg' }) => {
+export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModal }) => {
     const isMobile = useMobile()
 
     const [showMarkers, setShowMarkers] = useState(false)
@@ -37,8 +35,8 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                 height: ' 100%',
             }}>
                 <ReactCompareImage
-                    leftImage={leftImage}
-                    rightImage={rightImage}
+                    leftImage={data.left}
+                    rightImage={data.right}
                     aspectRatio='wider'
                 />
                 {showMarkers && (

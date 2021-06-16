@@ -58,6 +58,7 @@ export const CommentedImage: React.FC<MarkersProps> = props => {
     const markers = isLoading ? [] : img.markers
 
     useEffect(() => {
+        console.log('src: ', props.src)
         console.log(`code: ${props.id}`)
         console.log(`res: `, img?.id)
         

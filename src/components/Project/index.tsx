@@ -28,8 +28,6 @@ const ProjectItem = ({ item, session, showModal }) => {
                 //     }}
                 // />
                 <Markers
-                    leftImage={item.left}
-                    rightImage={item.right}
                     data={item}
                     session={session}
                     showModal={showModal}
