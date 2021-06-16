@@ -7,7 +7,6 @@ import Collapse from 'rc-collapse'
 import s from './index.module.css'
 import cx from 'classnames'
 import { CommentedImage } from '../CommentedImage'
-import { signIn, useSession } from 'next-auth/client'
 import { LikeButton } from '../LikeButton'
 
 interface MarkersProps {
@@ -67,7 +66,6 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                 <div className={s.viewSwitchContainer}>
                     <LikeButton
                         id={data.id}
-                        likes={null} // {img?.likeCount ?? 0}
                         src={data.rightImage}
                         session={session}
                         showModal={showModal}

@@ -6,7 +6,6 @@ import { Emoji } from '../Emoji'
 
 export type LikeButtonProps = {
 	id: number
-	likes: number
     src?: string
     session: any
     showModal: any
@@ -50,7 +49,7 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
     const key = `image_${props.id}`
     const { isLoading: isAlsoLoading, data: img } = useQuery(key, () => getImage(props.id, props.src))
 
-	const count = !isAlsoLoading || (img?.likeCount ?? 0) > 0 ? props.likes : ''
+	const count = (img?.likeCount ?? 0) > 0 ? img.likeCount : ''
 
 	return (
 		<button onClick={onClick}> <Emoji name={emoji} /> {count} </button>
