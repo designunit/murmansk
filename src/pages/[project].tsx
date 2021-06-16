@@ -83,7 +83,7 @@ const data = [
                 type: 'slider',
                 left: '/static/proj/1.jpg',
                 right: 'https://мойзалив.рф/static/proj/2.jpg',
-                id: 666,
+                id: 11,
             },
             {
                 type: 'text',
@@ -93,7 +93,7 @@ const data = [
                 type: 'slider',
                 left: '/static/proj/2.jpg',
                 right: 'https://мойзалив.рф/static/proj/1.jpg',
-                id: 1337,
+                id: 22,
             },
             {
                 type: 'text',
@@ -103,7 +103,7 @@ const data = [
                 type: 'slider',
                 left: '/static/proj/1.jpg',
                 right: 'https://мойзалив.рф/static/proj/3.jpg',
-                id: 322,
+                id: 33,
             },
             {
                 type: 'text',
