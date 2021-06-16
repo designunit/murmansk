@@ -8,8 +8,6 @@ import s from './index.module.css'
 import cx from 'classnames'
 import { CommentedImage } from '../CommentedImage'
 import { signIn, useSession } from 'next-auth/client'
-import { getImage } from '@/api'
-import { useQuery } from 'react-query'
 import { LikeButton } from '../LikeButton'
 
 interface MarkersProps {
@@ -37,6 +35,10 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
                 onClick={() => signIn('vk')}
             >
                 {`signIn('vk')`}
+                {console.log(
+                    'session',
+                    session,
+                )}
             </button>
             <div style={{
                 position: 'relative',
