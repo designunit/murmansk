@@ -1,5 +1,5 @@
 import { Section } from '../Section'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Emoji } from '../Emoji'
 import ReactCompareImage from 'react-compare-image'
 import { useMobile } from '@/hooks/useMobile'
@@ -15,7 +15,7 @@ interface MarkersProps {
     style?: React.CSSProperties
     data: any
     session: any
-    showModal: any
+    showModal: () => void
 }
 
 export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModal }) => {
@@ -55,6 +55,7 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                             src={data.right}
                             img={img}
                             allowClick={addMode}
+                            onAfterSubmit={() => setAddMode(false)}
                             style={{
                                 position: 'relative',
                                 margin: '1rem 0',
@@ -100,14 +101,41 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                         {'комментарии'}
                         <Emoji name='💡' />
                     </button>
+                    {addMode ? (
+                        <span style={{
+                            marginRight: '1rem',
+                            order: 666,
+                        }}>
+                            {'Выберите место для комментария'}
+                        </span>
+                    ) : (
+                        <button
+                            style={{
+                                display: !showMarkers && 'none',
+                                justifySelf: 'flex-end',
+                                marginLeft: 'auto',
+                                order: 666,
+                            }}
+                            onClick={() => {
+                                if (!session) {
+                                    showModal()
+                                    return
+                                }
+                                setAddMode(true)
+                            }}
+                        >
+                            {'Добавить '}
+                            <Emoji name='⚡' />
+                        </button>
+                    )}
                 </div>
-                {showMarkers && (
-                    <div className={s.viewSwitchContainer}>
+                {false && showMarkers && (
+                    <div className={s.viewSwitchContainer} style={{ order: 666 }}>
                         {addMode ? (
                             <span style={{
                                 marginRight: '1rem',
                             }}>
-                                Выберите место и предложите свою идею
+                                {'Выберите место для комментария'}
                             </span>
                         ) : (
                             <button

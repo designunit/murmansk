@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Item, OnClick } from './item'
 import ImageMarker, { Marker } from 'react-image-marker'
-import { useQuery, useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 import { MarkerData } from '@/types'
 import { FormOnSubmit } from './form'
-import { addMarker, getImage } from '@/api'
+import { addMarker, ImageDto } from '@/api'
 
 const Form = dynamic(import('./form').then(m => m.Form), { ssr: false })
 
@@ -14,7 +14,8 @@ export type MarkersProps = {
     src: string
     style?: React.CSSProperties
     allowClick?: boolean
-    img: any
+    img: ImageDto
+    onAfterSubmit: () => void
 }
 
 type AddMarkerMutationOptions = {
@@ -51,16 +52,12 @@ export const CommentedImage: React.FC<MarkersProps> = props => {
                 content,
             })
         }
-
         setShowForm(false)
+        props.onAfterSubmit()
     }, [draft, props.img])
 
     const markers = props.img?.markers ?? []
 
-    useEffect(() => {
-        console.log(`code id: ${props.id}`)
-        console.log('img', props.img)
-    }, [])
     return (
         <div style={{
             position: 'relative',

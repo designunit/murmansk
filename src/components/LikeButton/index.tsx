@@ -8,7 +8,7 @@ export type LikeButtonProps = {
 	id: number
     likes: number
     session: any
-    showModal: any
+    showModal: () => void
 }
 
 export const LikeButton: React.FC<LikeButtonProps> = props => {
