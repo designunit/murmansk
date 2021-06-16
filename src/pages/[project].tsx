@@ -57,6 +57,7 @@ const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
                     ) : (
                         <Project
                             project={data[0]}
+                            session={session}
                         />
                     )}
                 </Section>

@@ -15,16 +15,16 @@ interface MarkersProps {
     rightImage?: string
     style?: React.CSSProperties
     data: any
+    session: any
 }
 
-export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'static/map.png', rightImage = 'static/meta.jpg' }) => {
+export const Markers: React.FC<MarkersProps> = ({ style, data, session, leftImage = 'static/map.png', rightImage = 'static/meta.jpg' }) => {
     const isMobile = useMobile()
 
     const [showMarkers, setShowMarkers] = useState(false)
     const [activeId, setActiveId] = useState(undefined)
     const [addMode, setAddMode] = useState(false)
-
-    const [session, isLoadingSession] = useSession()
+    
     useEffect(() => {
         console.log(
             'session',

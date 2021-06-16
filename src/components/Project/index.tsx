@@ -6,9 +6,10 @@ import { Markers } from '../Markers'
 
 interface IFeedItemProps {
     project: any // Item
+    session: any
 }
 
-const ProjectItem = ({ item }) => {
+const ProjectItem = ({ item, session }) => {
     switch (item.type) {
         case 'text':
             return (
@@ -29,6 +30,7 @@ const ProjectItem = ({ item }) => {
                     leftImage={item.left}
                     rightImage={item.right}
                     data={item}
+                    session={session}
                 />
             )
 
@@ -37,7 +39,7 @@ const ProjectItem = ({ item }) => {
     }
 }
 
-export const Project: React.FC<IFeedItemProps> = ({ project }) => {
+export const Project: React.FC<IFeedItemProps> = ({ project, session }) => {
     const isMobile = useMobile()
     return (
         <div className={s.container} style={{
@@ -53,7 +55,11 @@ export const Project: React.FC<IFeedItemProps> = ({ project }) => {
                 padding: '0 1rem',
             }}>
                 {project.items.map((x, i) => (
-                    <ProjectItem item={x} key={i} />
+                    <ProjectItem
+                        item={x}
+                        key={i}
+                        session={session}
+                    />
                 ))}
             </div>
         </div>
