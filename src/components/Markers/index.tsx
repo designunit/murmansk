@@ -1,5 +1,5 @@
 import { Section } from '../Section'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Emoji } from '../Emoji'
 import ReactCompareImage from 'react-compare-image'
 import { useMobile } from '@/hooks/useMobile'
@@ -25,7 +25,12 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
     const [addMode, setAddMode] = useState(false)
 
     const [session, isLoadingSession] = useSession()
-
+    useEffect(() => {
+        console.log(
+            'session',
+            session,
+        )
+    }, [session])
     return (
         <Section style={{
             padding: '1rem 0',
@@ -35,10 +40,6 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, leftImage = 'stat
                 onClick={() => signIn('vk')}
             >
                 {`signIn('vk')`}
-                {console.log(
-                    'session',
-                    session,
-                )}
             </button>
             <div style={{
                 position: 'relative',
