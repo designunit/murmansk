@@ -32,7 +32,7 @@ export const Form: React.FC<FormProps> = props => {
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className={s.formHead}>
-					<span>// Комментарий</span>
+					<span>Новый комментарий</span>
 					<button
 						style={{
 							width: 30,
@@ -61,7 +61,7 @@ export const Form: React.FC<FormProps> = props => {
 					})}
 					rows={4}
 					cols={45}
-					placeholder='Что вы думаете?'
+					placeholder='Ваше предложение'
 					style={{
 						resize: 'none',
 					}}

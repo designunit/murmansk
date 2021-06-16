@@ -1,0 +1,24 @@
+.a {
+    text-decoration: none;
+}
+.a :hover {
+    background: var(--color-green);
+}
+.a :hover > h3 {
+    text-decoration: underline;
+}
+
+.grid {
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+}
+
+@media screen and (max-width : 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

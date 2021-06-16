@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+    overflow: hidden;
+    
+    position: relative;
+    z-index: 0;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 33px;
+    padding: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+}
