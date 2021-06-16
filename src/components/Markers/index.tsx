@@ -129,32 +129,8 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                         </button>
                     )}
                 </div>
-                {false && showMarkers && (
-                    <div className={s.viewSwitchContainer} style={{ order: 666 }}>
-                        {addMode ? (
-                            <span style={{
-                                marginRight: '1rem',
-                            }}>
-                                {'Выберите место для комментария'}
-                            </span>
-                        ) : (
-                            <button
-                                onClick={() => {
-                                    if (!session) {
-                                        showModal()
-                                        return
-                                    }
-                                    setAddMode(true)
-                                }}
-                            >
-                                {'Добавить '}
-                                <Emoji name='⚡' />
-                            </button>
-                        )}
-                    </div>
-                )}
             </div>
-            {false && isMobile && showMarkers && ( // mobile comments disabled form now 
+            {isMobile && showMarkers && (
                 <>
                     <Collapse
                         accordion
@@ -169,9 +145,9 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                             />
                         )}
                     >
-                        {data.map((x, i) => (
+                        {(img?.markers ?? []).map((x, i) => (
                             <Collapse.Panel
-                                key={x.id}
+                                key={i}
                                 headerClass={s.mobileItemHead}
                                 header={<p>{x.content}</p>}
                             >
