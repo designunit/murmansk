@@ -103,7 +103,8 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                     </button>
                     {addMode ? (
                         <span style={{
-                            marginRight: '1rem',
+                            justifySelf: 'flex-end',
+                            marginLeft: 'auto',
                             order: 666,
                         }}>
                             {'Выберите место для комментария'}

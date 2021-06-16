@@ -52,6 +52,7 @@
     .viewSwitchContainer {
         flex-flow: row wrap;
         justify-content: flex-start;
+        gap: .5rem;
     }
 
     .viewSwitchContainer > :nth-child(1) {

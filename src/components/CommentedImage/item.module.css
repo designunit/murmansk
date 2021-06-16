@@ -10,9 +10,10 @@
     left: 0px;
     width: 10px;
     height: 10px;
-    background: transparent;
+    background: var(--color-green);
+    opacity: .75;
     border-radius: 50%;
-    border: solid 2px var(--color-purple);
+    border: solid 2px black;
 }
 
 .card {
