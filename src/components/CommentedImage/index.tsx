@@ -14,6 +14,7 @@ export type MarkersProps = {
     src: string
     style?: React.CSSProperties
     allowClick?: boolean
+    img: any
 }
 
 type AddMarkerMutationOptions = {
@@ -30,7 +31,6 @@ export const CommentedImage: React.FC<MarkersProps> = props => {
             client.refetchQueries(key)
         },
     })
-    const { isLoading, data: img } = useQuery(key, () => getImage(props.id, props.src))
 
     const [opened, setOpened] = useState<Record<number, boolean>>({})
     const [draft, setDraft] = useState<Marker>(null)
@@ -46,24 +46,21 @@ export const CommentedImage: React.FC<MarkersProps> = props => {
     const onSubmit = useCallback<FormOnSubmit>(content => {
         if (content) {
             add.mutate({
-                imageId: img.id,
+                imageId: props.img.id,
                 marker: draft,
                 content,
             })
         }
 
         setShowForm(false)
-    }, [draft, img])
+    }, [draft, props.img])
 
-    const markers = isLoading ? [] : img.markers
+    const markers = props.img?.markers ?? []
 
     useEffect(() => {
-        console.log('src: ', props.src)
-        console.log(`code: ${props.id}`)
-        console.log(`res: `, img?.id)
-        
-    }, [img, isLoading])
-
+        console.log(`code id: ${props.id}`)
+        console.log('img', props.img)
+    }, [])
     return (
         <div style={{
             position: 'relative',

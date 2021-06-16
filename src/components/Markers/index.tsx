@@ -8,6 +8,8 @@ import s from './index.module.css'
 import cx from 'classnames'
 import { CommentedImage } from '../CommentedImage'
 import { LikeButton } from '../LikeButton'
+import { getImage } from '@/api'
+import { useQuery } from 'react-query'
 
 interface MarkersProps {
     style?: React.CSSProperties
@@ -22,6 +24,8 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
     const [showMarkers, setShowMarkers] = useState(false)
     const [activeId, setActiveId] = useState(undefined)
     const [addMode, setAddMode] = useState(false)
+
+    const { isLoading, data: img } = useQuery(`image_${data.id}`, () => getImage(data.id, data.right))
 
     return (
         <Section style={{
@@ -49,6 +53,7 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                         <CommentedImage
                             id={data.id}
                             src={data.right}
+                            img={img}
                             allowClick={addMode}
                             style={{
                                 position: 'relative',
@@ -66,7 +71,7 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                 <div className={s.viewSwitchContainer}>
                     <LikeButton
                         id={data.id}
-                        src={data.rightImage}
+                        likes={img?.likeCount}
                         session={session}
                         showModal={showModal}
                     />
