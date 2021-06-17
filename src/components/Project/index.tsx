@@ -3,6 +3,7 @@ import s from './index.module.css'
 import { useMobile } from '@/hooks/useMobile'
 import React from 'react'
 import { Markers } from '../Markers'
+import { InteractiveImage } from '../InteractiveImage'
 
 interface IFeedItemProps {
     project: any // Item
@@ -18,15 +19,6 @@ const ProjectItem = ({ item, session, showModal }) => {
             )
         case 'slider':
             return (
-                // <CommentedImage 
-                //     id={item.id}
-                //     src={item.right}
-                //     style={{
-                //         position: 'relative',
-                //         margin: '1rem 0',
-                //         padding: 0,
-                //     }}
-                // />
                 <Markers
                     data={item}
                     session={session}
@@ -62,6 +54,16 @@ export const Project: React.FC<IFeedItemProps> = ({ project, session, showModal 
                         showModal={showModal}
                     />
                 ))}
+
+                <InteractiveImage
+                    src='/static/map.png'
+                    key={66}
+                />
+                <div style={{height:100}} />
+                <InteractiveImage
+                    src='/static/proj/2.jpg'
+                    key={2}
+                />
             </div>
         </div>
     )
