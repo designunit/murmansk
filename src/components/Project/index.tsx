@@ -56,13 +56,6 @@ export const Project: React.FC<IFeedItemProps> = ({ project, session, showModal 
                 ))}
 
                 <InteractiveImage
-                    src='/static/map.png'
-                    key={66}
-                />
-                <div style={{height:100}} />
-                <InteractiveImage
-                    src='/static/proj/2.jpg'
-                    key={2}
                 />
             </div>
         </div>

@@ -1,50 +1,39 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { usePointer } from '@/hooks/usePointer';
 
 interface InteractiveImageProps {
-    src: string
+    // src: string
 }
 
-export const InteractiveImage: React.FC<InteractiveImageProps> = ({ src }) => {
-    const ref = useRef(null)
-    const coords = usePointer(ref)
+export const InteractiveImage: React.FC<InteractiveImageProps> = () => {
+    const bg = '/static/panorama.jpg'
+    const fg = '/static/rupor.png'
+
+    const [state, setState] = useState(0)
 
     return (
         <div
-            ref={ref}
             style={{
                 position: 'relative'
             }}
         >
             <img
-                src={src}
+                src={fg}
                 style={{
-                    display: 'block',
+                    position: 'relative',
                     width: '100%',
+                    maxHeight: '90vh',
+                    backgroundImage: `url(${bg})`,
+                    backgroundSize: 'cover',
+                    backgroundPositionX: `${state}%`,
+                    transition: 'background .25s',
                 }}
             />
-            <svg xmlns='http://www.w3.org/2000/svg'
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    zIndex: 1,
-                    width: '100%',
-                    height: '100%',
-                }}
+            <button
+                onClick={() => setState(Math.min(state + 1, 100))}
             >
-                <mask id='myMask'>
-                    <rect x='0' y='0' width='100%' height='100%' fill='white' />
-                    <circle cx={`${coords[0]}%`} cy={`${coords[1]}%`} r={'25%'} fill='black'
-                        style={{
-                            transition: 'all .5s ease-out',
-                        }}
-                    />
-                </mask>
-                <rect width='100%' height='100%' fill='var(--color-green)'
-                    mask='url(#myMask)'
-                />
-            </svg>
+                {'>'}
+            </button>
         </div>
     )
 }
