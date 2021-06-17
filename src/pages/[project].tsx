@@ -29,7 +29,7 @@ const ProjectPage: NextPage<ILandingProps> = ({ data, meta }) => {
                 <title>Мойзалив.рф</title>
                 <Meta meta={meta} />
             </Head>
-            <Layout>
+            <Layout session={session} >
                 <Section style={{
                     paddingTop: 0,
                     paddingBottom: 0,

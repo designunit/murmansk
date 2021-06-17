@@ -6,13 +6,15 @@ import { Header } from '../Header'
 import { markdownToHtml } from '@/lib/markdownToHtml'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface IMenuProps {
     buttons: buttonsType
     isIndex?: boolean
+    session?: any
 }
 
-export const Menu: React.FC<IMenuProps> = ({ buttons, isIndex = false }) => {
+export const Menu: React.FC<IMenuProps> = ({ buttons, isIndex = false, session }) => {
     const isMobile = useMobile()
 
     const [state, setState] = useState('')
@@ -44,6 +46,20 @@ export const Menu: React.FC<IMenuProps> = ({ buttons, isIndex = false }) => {
                         <div
                             dangerouslySetInnerHTML={{ __html: state }}
                         />
+                        {session && (
+                            <div
+                                style={{
+                                    borderRadius: '50%',
+                                    width: '3rem',
+                                    height: '3rem',
+                                    marginLeft: '1rem',
+                                    alignSelf: 'center',
+                                    backgroundImage: `url(${session.user.image})`,
+                                    backgroundSize: 'cover',
+                                    border: 'solid 1px black',
+                                }}
+                            />
+                        )}
                         {!isMobile && (
                             buttons.map(({ text, id, href }, index) => (
                                 <a
