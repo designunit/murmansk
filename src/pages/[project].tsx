@@ -14,10 +14,9 @@ import { Modal } from '@/components/Modal'
 interface ILandingProps {
     data: Item[]
     meta: IMeta
-    markers: MarkerData[]
 }
 
-const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
+const ProjectPage: NextPage<ILandingProps> = ({ data, meta }) => {
     const [session, isLoadingSession] = useSession()
     const isMobile = useMobile()
 
@@ -30,7 +29,7 @@ const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
                 <title>Мойзалив.рф</title>
                 <Meta meta={meta} />
             </Head>
-            <Layout data={data}>
+            <Layout>
                 <Section style={{
                     paddingTop: 0,
                     paddingBottom: 0,
@@ -38,34 +37,15 @@ const ProjectPage: NextPage<ILandingProps> = ({ data, meta, markers }) => {
                         padding: isMobile && 0,
                     }
                 }}>
-                    <Modal 
+                    <Modal
                         modalIsOpen={modalIsOpen}
                         setModalIsOpen={setModalIsOpen}
                     />
-                    {isLoadingSession ? (
-                        <div style={{
-                            height: '75vh',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            flexFlow: 'column',
-                        }}>
-                            <span>
-                                Загрузка
-                            </span>
-                            <div>
-                                <Emoji name={'🌐'} />
-                                <Emoji name={'📲'} />
-                                <Emoji name={'👾'} />
-                            </div>
-                        </div>
-                    ) : (
-                        <Project
-                            project={data[0]}
-                            session={session}
-                            showModal={showModal}
-                        />
-                    )}
+                    <Project
+                        project={data[0]}
+                        session={session}
+                        showModal={showModal}
+                    />
                 </Section>
             </Layout>
         </>

@@ -16,7 +16,7 @@ export type buttonsType = button[]
 
 const buttons: buttonsType = []
 
-export const Layout: React.FC<any> = ({ data, children }) => {
+export const Layout: React.FC<any> = ({ children }) => {
     const isMobile = useMobile()
 
     const router = useRouter()
