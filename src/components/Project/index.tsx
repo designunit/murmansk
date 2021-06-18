@@ -39,7 +39,7 @@ const ProjectItem = ({ item, session, showModal }) => {
     }
 }
 
-export const Project: React.FC<IFeedItemProps> = ({ project, session, showModal }) => {
+export const Project: React.FC<any> = ({ title, children }) => {
     const isMobile = useMobile()
     return (
         <div className={s.container} style={{
@@ -49,19 +49,12 @@ export const Project: React.FC<IFeedItemProps> = ({ project, session, showModal 
             <Header style={{
                 justifyContent: 'flex-start',
             }}>
-                <h1 className={s.title}>{project.title}</h1>
+                <h1 className={s.title}>{title}</h1>
             </Header>
             <div style={{
                 padding: '0 1rem',
             }}>
-                {project.items.map((x, i) => (
-                    <ProjectItem
-                        item={x}
-                        key={i}
-                        session={session}
-                        showModal={showModal}
-                    />
-                ))}
+                {children}
             </div>
         </div>
     )
