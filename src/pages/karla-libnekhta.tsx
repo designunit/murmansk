@@ -20,9 +20,6 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
     const [session, isLoadingSession] = useSession()
     const isMobile = useMobile()
 
-    const [modalIsOpen, setModalIsOpen] = useState(false)
-    const showModal = useCallback(() => setModalIsOpen(true), [])
-
     return (
         <>
             <Head>
@@ -84,6 +81,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             </p>
 
                             <Section style={{
+                                padding: '1rem 0',
                                 display: 'flex',
                                 flexFlow: 'column',
                                 alignItems: 'center',
@@ -98,7 +96,14 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 >
                                     Видеопрезентация концепции
                                 </h3>
-                                <iframe width="922" height="753" src="https://www.youtube.com/embed/eBGIQ7ZuuiU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+                                <iframe 
+                                    style={{
+                                        width:' 100%',
+                                        height: isMobile ? '300px' : 753,
+                                        maxWidth: 922,
+                                        maxHeight: 753,
+                                    }}
+                                src="https://www.youtube.com/embed/eBGIQ7ZuuiU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
                             </Section>
                         </Section>
                     </Project>
