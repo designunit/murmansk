@@ -2,23 +2,96 @@ import { Project } from '@/components/Project'
 import { Layout } from '@/components/Layout'
 import { IMeta, Meta } from '@/components/Meta'
 import { Section } from '@/components/Section'
-import { Item, MarkerData } from '@/types'
 import { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
-import React, { useCallback, useState } from 'react'
-import { useSession } from 'next-auth/client'
-import { Emoji } from '@/components/Emoji'
+import React, { forwardRef, ReactElement, useCallback, useState } from 'react'
 import { useMobile } from '@/hooks/useMobile'
-import { Modal } from '@/components/Modal'
 import ReactCompareImage from 'react-compare-image'
+import { useForm } from 'react-hook-form'
+import { Button } from '@/components/Button'
 
 interface ILandingProps {
     meta: IMeta
 }
 
+type InputProps = React.InputHTMLAttributes<HTMLInputElement>
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
+    <input
+        {...props}
+        ref={ref}
+        style={{
+            padding: '8px 16px',
+            height: '2rem',
+            width:' 100%',
+
+            fontFamily: ' var(--font-family)',
+            fontWeight: 500,
+            fontSize: 16,
+            lineHeight: 26,
+
+            borderRadius: 'var(--border-radius)',
+            border: '2px solid #091133',
+        }}
+    />
+))
+interface QuestionProps { head: ReactElement | string, required?: boolean, caption?: string }
+const Question: React.FC<QuestionProps> = ({ head, children, required = true, caption }) => (
+    <div style={{
+        marginBottom: '2rem',
+        display: 'flex',
+        justifyContent: 'center',
+        flexFlow: 'column',
+        maxWidth: '20rem',
+        width: '100%',
+    }}>
+        <div style={{
+            fontSize: 22,
+            marginBottom: '1rem',
+        }}>
+            {head}
+        </div>
+        {caption && (
+            // className={s.questionCaption}
+            <p>
+                {caption}
+            </p>
+        )}
+        {children}
+    </div >
+)
+
 const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
-    const [session, isLoadingSession] = useSession()
+    // const [session, isLoadingSession] = useSession()
     const isMobile = useMobile()
+
+    const { handleSubmit, register, errors, formState } = useForm({
+        defaultValues: {
+            one: '',
+            two: '',
+            thee: '',
+        },
+        shouldFocusError: false,
+    })
+
+    const [state, setState] = useState(null)
+
+    const onSubmit = useCallback(async value => {
+        const data = {
+            id: 'sklon-karla',
+            ...value
+        }
+        await fetch('/api', { method: 'POST', body: JSON.stringify(data) })
+            .then((res) => {
+                if (res.status !== 200) {
+                    console.log(res)
+                }
+                return res.json()
+            })
+            .then(res => {
+                res.result === 'error' && console.log(res)
+                setState(res.result === 'success')
+            })
+    }, [])
 
     return (
         <>
@@ -26,7 +99,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                 <title>Мойзалив.рф</title>
                 <Meta meta={meta} />
             </Head>
-            <Layout session={session} >
+            <Layout>
                 <Section style={{
                     paddingTop: 0,
                     paddingBottom: 0,
@@ -80,6 +153,59 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 Выше к амфитеатру ведет тропинка, вдоль которой мы сделали опоры с канатами - это "поручень" для удобного спуска и подъема, особенно зимой и во время дождей или гололедицы. Канаты появились на двух уровнях - для взрослых и тех, кто помладше. Сам амфитеатр расположился на самой высокой точке площадки. Расположение на холме и ступенчатость конструкции защитят отдыхающих от порывов северного ветра, чтобы они могли с комфортом смотреть на закаты и слушать размеренные звуки Барабана.
                             </p>
 
+                            <form
+                                onSubmit={handleSubmit(onSubmit)}
+                            >
+                                <Section style={{
+                                    padding: '2rem 0 1rem 0',
+                                    display: 'flex',
+                                    flexFlow: 'column',
+                                    alignItems: 'center',
+                                }}>
+                                    <Question
+                                        head='Что нравится?'
+                                    >
+                                        <Input
+                                            name='one'
+                                            ref={register}
+                                        />
+                                    </Question>
+                                    <Question
+                                        head='Что не нравится, вызывает вопросы?'
+                                    >
+                                        <Input
+                                            name='two'
+                                            ref={register}
+                                        />
+                                    </Question>
+                                    <Question
+                                        head='Что добавить, идеи и предложения?'
+                                    >
+                                        <Input
+                                            name='three'
+                                            ref={register}
+                                        />
+                                    </Question>
+                                    {state === null || state === false ? (
+                                        <Button
+                                        theme='default'
+                                        size={'big'}
+                                        type={'submit'}
+                                        style={{
+                                            alignSelf: 'center',
+                                            margin: '2rem 0',
+                                        }}
+                                    >
+                                        {state === false ? 'Что-то поломалось. Еще раз?' : 'Отправить'}
+                                    </Button>
+                                    ) : (
+                                        <span>
+                                            Ваш ответ отправлен
+                                        </span>
+                                    )}
+                                </Section>
+                            </form>
+
                             <Section style={{
                                 padding: '1rem 0',
                                 display: 'flex',
@@ -96,14 +222,14 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 >
                                     Видеопрезентация концепции
                                 </h3>
-                                <iframe 
+                                <iframe
                                     style={{
-                                        width:' 100%',
+                                        width: ' 100%',
                                         height: isMobile ? '300px' : 753,
                                         maxWidth: 922,
                                         maxHeight: 753,
                                     }}
-                                src="https://www.youtube.com/embed/eBGIQ7ZuuiU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+                                    src="https://www.youtube.com/embed/eBGIQ7ZuuiU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
                             </Section>
                         </Section>
                     </Project>

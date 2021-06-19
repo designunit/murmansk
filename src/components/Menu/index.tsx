@@ -50,53 +50,55 @@ export const Menu: React.FC<IMenuProps> = ({ buttons, isIndex = false, session }
                         <div
                             dangerouslySetInnerHTML={{ __html: state }}
                         />
-                        <div
-                            style={{
-                                position: 'relative',
-                                borderRadius: '50%',
-                                width: '3rem',
-                                height: '3rem',
-                                marginLeft: '1rem',
-                                alignSelf: 'center',
-                                backgroundImage: `url(${session?.user.image ?? null})`,
-                                backgroundSize: 'cover',
-                                border: 'solid 1px black',
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => setAvatar(!avatar)}
-                        >
-                            {!session && (
-                                <Emoji name='📲'
-                                    style={{
-                                        position: 'relative',
-                                        top: 'calc(50% - .5em)',
-                                        left: 'calc(50% - .5em)',
-                                        fontSize: 36,
-                                    }}
-                                />
-                            )}
-                            {avatar && (
-                                <button
-                                    className={s.logInOut}
-                                    style={{
-                                        backgroundColor: !session && '#2787f5',
-                                        color: !session && 'white',
-                                    }}
-                                    onClick={() => {
-                                        session ? signOut() : signIn('vk')
-                                    }}
-                                >
-                                    {session ? (
-                                        'Разлогиниться'
-                                    ) : (
-                                        <>
-                                            {'Авторизоваться ВК '}
-                                            < Emoji name='🔑' />
-                                        </>
-                                    )}
-                                </button>
-                            )}
-                        </div>
+                        {session && (
+                            <div
+                                style={{
+                                    position: 'relative',
+                                    borderRadius: '50%',
+                                    width: '3rem',
+                                    height: '3rem',
+                                    marginLeft: '1rem',
+                                    alignSelf: 'center',
+                                    backgroundImage: `url(${session?.user.image ?? null})`,
+                                    backgroundSize: 'cover',
+                                    border: 'solid 1px black',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => setAvatar(!avatar)}
+                            >
+                                {!session && (
+                                    <Emoji name='📲'
+                                        style={{
+                                            position: 'relative',
+                                            top: 'calc(50% - .5em)',
+                                            left: 'calc(50% - .5em)',
+                                            fontSize: 36,
+                                        }}
+                                    />
+                                )}
+                                {avatar && (
+                                    <button
+                                        className={s.logInOut}
+                                        style={{
+                                            backgroundColor: !session && '#2787f5',
+                                            color: !session && 'white',
+                                        }}
+                                        onClick={() => {
+                                            session ? signOut() : signIn('vk')
+                                        }}
+                                    >
+                                        {session ? (
+                                            'Разлогиниться'
+                                        ) : (
+                                            <>
+                                                {'Авторизоваться ВК '}
+                                                < Emoji name='🔑' />
+                                            </>
+                                        )}
+                                    </button>
+                                )}
+                            </div>
+                        )}
                         {!isMobile && (
                             buttons.map(({ text, id, href }, index) => (
                                 <a
