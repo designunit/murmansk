@@ -9,6 +9,7 @@ import { useMobile } from '@/hooks/useMobile'
 import ReactCompareImage from 'react-compare-image'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/Button'
+import { Emoji } from '@/components/Emoji'
 
 interface ILandingProps {
     meta: IMeta
@@ -22,7 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
         style={{
             padding: '8px 16px',
             height: '2rem',
-            width:' 100%',
+            width: ' 100%',
 
             fontFamily: ' var(--font-family)',
             fontWeight: 500,
@@ -37,7 +38,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
 interface QuestionProps { head: ReactElement | string, required?: boolean, caption?: string }
 const Question: React.FC<QuestionProps> = ({ head, children, required = true, caption }) => (
     <div style={{
-        marginBottom: '2rem',
+        marginBottom: '.5rem',
         display: 'flex',
         justifyContent: 'center',
         flexFlow: 'column',
@@ -46,7 +47,7 @@ const Question: React.FC<QuestionProps> = ({ head, children, required = true, ca
     }}>
         <div style={{
             fontSize: 22,
-            marginBottom: '1rem',
+            marginBottom: '.5rem',
         }}>
             {head}
         </div>
@@ -163,7 +164,12 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     alignItems: 'center',
                                 }}>
                                     <Question
-                                        head='Что нравится?'
+                                        head={(
+                                            <>
+                                                {'Что нравится? '}
+                                                <Emoji name='🥰' />
+                                            </>
+                                        )}
                                     >
                                         <Input
                                             name='one'
@@ -171,7 +177,12 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                         />
                                     </Question>
                                     <Question
-                                        head='Что не нравится, вызывает вопросы?'
+                                        head={(
+                                            <>
+                                                {'Что не нравится, вызывает вопросы? '}
+                                                <Emoji name='🥵' />
+                                            </>
+                                        )}
                                     >
                                         <Input
                                             name='two'
@@ -179,28 +190,39 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                         />
                                     </Question>
                                     <Question
-                                        head='Что добавить, идеи и предложения?'
+                                        head={(
+                                            <>
+                                                {'Что добавить, идеи и предложения? '}
+                                                <Emoji name='🤔' />
+                                            </>
+                                        )}
                                     >
                                         <Input
                                             name='three'
                                             ref={register}
                                         />
                                     </Question>
-                                    {state === null || state === false ? (
+                                    {false || state === null || state === false ? (
                                         <Button
-                                        theme='default'
-                                        size={'big'}
-                                        type={'submit'}
-                                        style={{
-                                            alignSelf: 'center',
-                                            margin: '2rem 0',
-                                        }}
-                                    >
-                                        {state === false ? 'Что-то поломалось. Еще раз?' : 'Отправить'}
-                                    </Button>
+                                            theme='default'
+                                            size={'big'}
+                                            type={'submit'}
+                                            style={{
+                                                alignSelf: 'center',
+                                                margin: '2rem 0',
+                                            }}
+                                        >
+                                            {state === false ? 'Что-то поломалось. Еще раз?' : 'Отправить'}
+                                        </Button>
                                     ) : (
-                                        <span>
-                                            Ваш ответ отправлен
+                                        <span
+                                            style={{
+                                                margin: '2rem 0',
+                                            }}
+                                        >
+                                            <Emoji name='🤩' />
+                                            {' Ваш ответ отправлен '}
+                                            <Emoji name='🥳' />
                                         </span>
                                     )}
                                 </Section>
