@@ -10,6 +10,7 @@ import ReactCompareImage from 'react-compare-image'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/Button'
 import { Emoji } from '@/components/Emoji'
+import Image from 'next/image'
 
 interface ILandingProps {
     meta: IMeta
@@ -42,7 +43,7 @@ const Question: React.FC<QuestionProps> = ({ head, children, required = true, ca
         display: 'flex',
         justifyContent: 'center',
         flexFlow: 'column',
-        maxWidth: '20rem',
+        maxWidth: '30rem',
         width: '100%',
     }}>
         <div style={{
@@ -94,6 +95,17 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
             })
     }, [])
 
+    const Skeleton = props => (
+        <img
+            src={props.src}
+            style={{
+                objectFit: 'cover',
+                width: '100%',
+                filter: ' blur(5px)',
+            }}
+        />
+    )
+
     return (
         <>
             <Head>
@@ -114,12 +126,18 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                         <Section
                             style={{
                                 padding: '1rem 0',
+                                position: 'relative',
                             }}
                         >
                             <ReactCompareImage
                                 leftImage={'/static/projects/sklon-karla/1.jpg'}
                                 rightImage={'/static/projects/sklon-karla/2.jpg'}
                                 aspectRatio='wider'
+                                skeleton={(
+                                    <Skeleton
+                                        src={'/static/projects/sklon-karla/1.jpg'}
+                                    />
+                                )}
                             />
                         </Section>
                         <p>
@@ -134,6 +152,11 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 leftImage={'/static/projects/sklon-karla/3.jpg'}
                                 rightImage={'/static/projects/sklon-karla/4.jpg'}
                                 aspectRatio='wider'
+                                skeleton={(
+                                    <Skeleton
+                                        src={'/static/projects/sklon-karla/3.jpg'}
+                                    />
+                                )}
                             />
                         </Section>
                         <p>
@@ -149,6 +172,11 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 leftImage={'/static/projects/sklon-karla/5.jpg'}
                                 rightImage={'/static/projects/sklon-karla/6.jpg'}
                                 aspectRatio='wider'
+                                skeleton={(
+                                    <Skeleton
+                                        src={'/static/projects/sklon-karla/5.jpg'}
+                                    />
+                                )}
                             />
                             <p>
                                 Выше к амфитеатру ведет тропинка, вдоль которой мы сделали опоры с канатами - это "поручень" для удобного спуска и подъема, особенно зимой и во время дождей или гололедицы. Канаты появились на двух уровнях - для взрослых и тех, кто помладше. Сам амфитеатр расположился на самой высокой точке площадки. Расположение на холме и ступенчатость конструкции защитят отдыхающих от порывов северного ветра, чтобы они могли с комфортом смотреть на закаты и слушать размеренные звуки Барабана.
@@ -262,15 +290,6 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    // const res = await fetch(`https://unit.tmshv.com/mur-events`)
-    // const data = await res.json()
-    // const parsed: Item[] = await Promise.all(
-    //     data.map(async x => ({
-    //         ...x,
-    //         post: await markdownToHtml(x.post)
-    //     }))
-    // )
-
     const meta: IMeta = {
         title: 'МОЙЗАЛИВ.РФ',
         description: 'Дорогие Мурманчане, давайте чаще любоваться видами нашего города!',
