@@ -252,66 +252,62 @@ export const InteractiveImage: React.FC<InteractiveImageProps> = () => {
 
     return (
         <div
+            ref={ref}
             style={{
                 position: 'relative',
+                maxHeight: '90vh',
+                display: 'flex',
+                alignItems: 'center',
+                flexFlow: 'column',
             }}
         >
-            <div
-                ref={ref}
+            <img
+                src={fg}
                 style={{
-                    position: 'relative',
-                    maxHeight: '90vh',
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexFlow: 'column',
+                    display: 'block',
+                    height: '100%',
+                    width: '100%',
+                    objectFit: 'cover',
+                    backgroundImage: `url(${bg})`,
+                    backgroundSize: 'cover',
+                    backgroundPositionX: `${state}%`,
+                    transition: 'background .25s',
+                }}
+            />
+
+            <Repeatable
+                repeatDelay={32}
+                repeatInterval={interval}
+                tag="div"
+                onHold={onLeft}
+                style={{
+                    position: 'absolute',
+                    left: '1rem',
+                    top: '50%',
+                    cursor: 'pointer',
+                    fontSize: 28,
                 }}
             >
-                <img
-                    src={fg}
-                    style={{
-                        height: '100%',
-                        width: isMobile && '100%',
-                        backgroundImage: `url(${bg})`,
-                        backgroundSize: 'cover',
-                        backgroundPositionX: `${state}%`,
-                        transition: 'background .25s',
-                    }}
-                />
+                <Emoji name='⬅️' style={{ pointerEvents: 'none' }} />
+            </Repeatable>
+            <Repeatable
+                repeatDelay={32}
+                repeatInterval={interval}
+                tag="button"
+                onHold={onRight}
+                style={{
+                    position: 'absolute',
+                    right: '1rem',
+                    top: '50%',
+                    cursor: 'pointer',
+                    fontSize: 28,
 
-                <Repeatable
-                    repeatDelay={32}
-                    repeatInterval={interval}
-                    tag="div"
-                    onHold={onLeft}
-                    style={{
-                        position: 'absolute',
-                        left: '1rem',
-                        top: '50%',
-                        cursor: 'pointer',
-                        fontSize: 28,
-                    }}
-                >
-                    <Emoji name='⬅️' style={{ pointerEvents: 'none' }} />
-                </Repeatable>
-                <Repeatable
-                    repeatDelay={32}
-                    repeatInterval={interval}
-                    tag="button"
-                    onHold={onRight}
-                    style={{
-                        position: 'absolute',
-                        right: '1rem',
-                        top: '50%',
-                        cursor: 'pointer',
-                        fontSize: 28,
-
-                        border: 'none',
-                        background: 'none',
-                    }}
-                >
-                    <Emoji name='➡️' style={{ pointerEvents: 'none' }} />
-                </Repeatable>
-            </div>
+                    border: 'none',
+                    background: 'none',
+                }}
+            >
+                <Emoji name='➡️' style={{ pointerEvents: 'none' }} />
+            </Repeatable>
         </div>
     )
 }
