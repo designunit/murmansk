@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const url = getUrl(JSON.parse(req.body).id)
-    if (url) {
+    if (!url) {
         res
             .status(500)
             .json({
