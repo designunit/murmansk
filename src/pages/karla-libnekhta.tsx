@@ -43,7 +43,7 @@ const Question: React.FC<QuestionProps> = ({ head, children, required = true, ca
         display: 'flex',
         justifyContent: 'center',
         flexFlow: 'column',
-        maxWidth: '30rem',
+        // maxWidth: '30rem',
         width: '100%',
     }}>
         <div style={{
@@ -66,7 +66,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
     // const [session, isLoadingSession] = useSession()
     const isMobile = useMobile()
 
-    const { handleSubmit, register, errors, formState } = useForm({
+    const { handleSubmit, register } = useForm({
         defaultValues: {
             one: '',
             two: '',
@@ -75,9 +75,10 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
         shouldFocusError: false,
     })
 
-    const [state, setState] = useState(null)
+    const [formState, setFormState] = useState<'start' | 'ok' | 'error' | 'fetch'>('start')
 
     const onSubmit = useCallback(async value => {
+        setFormState('fetch')
         const data = {
             id: 'sklon-karla',
             ...value
@@ -91,7 +92,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
             })
             .then(res => {
                 res.result === 'error' && console.log(res)
-                setState(res.result === 'success')
+                setFormState(res.result === 'success' ? 'ok' : 'error')
             })
     }, [])
 
@@ -194,7 +195,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     <Question
                                         head={(
                                             <>
-                                                {'Что нравится? '}
+                                                {'Что вам нравится в предложенном проекте? Какие решения и предложения поддерживаете? '}
                                                 <Emoji name='🥰' />
                                             </>
                                         )}
@@ -207,7 +208,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     <Question
                                         head={(
                                             <>
-                                                {'Что не нравится, вызывает вопросы? '}
+                                                {'Что вызывает вопрос в предложенном проекте? Что не нравится? '}
                                                 <Emoji name='🥵' />
                                             </>
                                         )}
@@ -220,7 +221,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     <Question
                                         head={(
                                             <>
-                                                {'Что добавить, идеи и предложения? '}
+                                                {'Что вы рекомендуете добавить? Ваши идеи и предложения '}
                                                 <Emoji name='🤔' />
                                             </>
                                         )}
@@ -230,7 +231,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                             ref={register}
                                         />
                                     </Question>
-                                    {false || state === null || state === false ? (
+                                    {(formState === 'start' || formState === 'error') && (
                                         <Button
                                             theme='default'
                                             size={'big'}
@@ -240,17 +241,27 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                                 margin: '2rem 0',
                                             }}
                                         >
-                                            {state === false ? 'Что-то поломалось. Еще раз?' : 'Отправить'}
+                                            {formState === 'error' ? 'Что-то поломалось. Еще раз?' : 'Отправить'}
                                         </Button>
-                                    ) : (
+                                    )}
+                                    {(formState === 'fetch' || formState === 'ok') && (
                                         <span
                                             style={{
                                                 margin: '2rem 0',
                                             }}
                                         >
-                                            <Emoji name='🤩' />
-                                            {' Ваш ответ отправлен '}
-                                            <Emoji name='🥳' />
+                                            {formState === 'fetch' ? (
+                                                <>
+                                                    {'Отправляем '}
+                                                    <Emoji name='📡' />
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Emoji name='🤩' />
+                                                    {' Ваш ответ отправлен '}
+                                                    <Emoji name='🥳' />
+                                                </>
+                                            )}
                                         </span>
                                     )}
                                 </Section>
