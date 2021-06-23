@@ -241,6 +241,19 @@ const AbramMys: NextPage<ILandingProps> = ({ meta }) => {
                                             ref={register}
                                         />
                                     </Question>
+                                    <Question
+                                        head={(
+                                            <>
+                                                {'Оставьте свои контакты (телефон/почта/социальные сети/мессенджеры) если вы готовы принимать участие в обсуждении проекта '}
+                                                <Emoji name='🤓' />
+                                            </>
+                                        )}
+                                    >
+                                        <Input
+                                            name='four'
+                                            ref={register}
+                                        />
+                                    </Question>
                                     {(formState === 'start' || formState === 'error') && (
                                         <Button
                                             theme='default'
