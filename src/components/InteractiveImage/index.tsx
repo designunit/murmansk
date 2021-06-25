@@ -1,9 +1,8 @@
-import React, { useCallback, useRef, useState } from 'react'
-import Image from 'next/image'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Emoji } from '../Emoji';
-import { useSlider } from 'react-use';
-import { useSwipeable } from 'react-swipeable';
-import { useMobile } from '@/hooks/useMobile';
+import { useSwipeable } from 'react-swipeable'
+import { useMobile } from '@/hooks/useMobile'
+import anim from './anim.module.css'
 
 interface InteractiveImageProps {
     // src: string
@@ -229,8 +228,8 @@ class Repeatable extends React.Component<any> {
 }
 
 export const InteractiveImage: React.FC<InteractiveImageProps> = () => {
-    const bg = '/static/panorama.jpg'
-    const fg = '/static/rupor.png'
+    const bg = '/static/rupor/panorama.jpg'
+    const fg = '/static/rupor/rupor.png'
     const speed = 5 // n% / sec
     const interval = 100 // 1000 = 1s
 
@@ -250,18 +249,43 @@ export const InteractiveImage: React.FC<InteractiveImageProps> = () => {
 
     const isMobile = useMobile()
 
+    const refImg = useRef(null)
+    const [imgWIdth, setImgWIdth] = useState(0)
+    useEffect(() => {
+        setImgWIdth(
+            (refImg.current as HTMLImageElement).clientWidth / 3979
+        )
+    }, [refImg.current])
+
+    const [prefState, setPrefState] = useState(state)
+    const [animate, setAnimate] = useState({
+        play: false,
+        direction: true
+    })
+    useEffect(() => {
+        if (prefState !== state) {
+            setAnimate({ play: true, direction: state - prefState > 0 })
+        } else {
+            setTimeout(() => {
+                setAnimate({ ...animate, play: false })
+            }, 250)
+        }
+        setPrefState(state)
+    }, [prefState, state])
+
     return (
         <div
             ref={ref}
             style={{
                 position: 'relative',
-                maxHeight: '90vh',
                 display: 'flex',
                 alignItems: 'center',
                 flexFlow: 'column',
+                overflow: 'clip',
             }}
         >
             <img
+                ref={refImg}
                 src={fg}
                 style={{
                     display: 'block',
@@ -275,6 +299,38 @@ export const InteractiveImage: React.FC<InteractiveImageProps> = () => {
                 }}
             />
 
+            {/* HANDS */}
+            <img
+                className={animate.direction ? anim.leftToR : anim.leftToL}
+                src='/static/rupor/hand_l.png'
+                style={{
+                    position: 'absolute',
+                    zIndex: 2,
+                    top: '87.5%',
+                    left: '20.8%',
+                    width: 2213 * imgWIdth,
+                    height: 715 * imgWIdth,
+                    transformOrigin: '33% 20%',
+                    animationPlayState: animate.play ? 'running' : 'paused',
+                }}
+            />
+
+            <img
+                className={animate.direction ? anim.rightToR : anim.rightToL}
+                src='/static/rupor/hand_r.png'
+                style={{
+                    position: 'absolute',
+                    zIndex: 2,
+                    top: '88.4%',
+                    left: '21.7%',
+                    width: 2213 * imgWIdth,
+                    height: 715 * imgWIdth,
+                    transformOrigin: '66% 20%',
+                    animationPlayState: animate.play ? 'running' : 'paused',
+                }}
+            />
+
+            {/* ARROWS */}
             <Repeatable
                 repeatDelay={32}
                 repeatInterval={interval}
