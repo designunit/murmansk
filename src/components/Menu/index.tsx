@@ -50,7 +50,7 @@ export const Menu: React.FC<IMenuProps> = ({ buttons, isIndex = false, session }
                         <div
                             dangerouslySetInnerHTML={{ __html: state }}
                         />
-                        {session && (
+                        {false && session && (
                             <div
                                 style={{
                                     position: 'relative',
