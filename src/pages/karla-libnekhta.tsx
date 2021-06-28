@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form'
 import { Button } from '@/components/Button'
 import { Emoji } from '@/components/Emoji'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface ILandingProps {
     meta: IMeta
@@ -289,7 +290,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 <h3
                                     style={{
                                         fontSize: 33,
-                                        padding: '3rem 0',
+                                        padding: '2rem 0',
                                         margin: 0,
                                         textTransform: 'uppercase',
                                     }}
@@ -297,13 +298,33 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     Видеопрезентация концепции
                                 </h3>
                                 <iframe
+                                    src="https://drive.google.com/file/d/1gnDLIPsL6OuM-UP8YBDZId_MPsAtGxT0/preview"
+                                    allow="autoplay"
+
                                     style={{
                                         width: ' 100%',
-                                        height: isMobile ? '300px' : 753,
-                                        maxWidth: 922,
-                                        maxHeight: 753,
+                                        height: isMobile ? '100%' : 720,
+                                        maxWidth: 1280,
+                                        maxHeight: 720,
+                                        border: 'none',
                                     }}
-                                    src="https://www.youtube.com/embed/eBGIQ7ZuuiU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+                                />
+                                <Link
+                                    href='/static/projects/sklon-karla/report.pdf'
+                                >
+                                    <a
+                                        style={{
+                                            paddingTop: '2rem',
+                                        }}
+                                        target='_blank'
+                                    >
+                                        <Button
+                                            size='big'
+                                        >
+                                            Резюме встречи
+                                        </Button>
+                                    </a>
+                                </Link>
                             </Section>
                         </Section>
                     </Project>
