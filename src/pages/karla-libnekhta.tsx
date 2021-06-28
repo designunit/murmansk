@@ -236,7 +236,8 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                             whiteSpace: 'unset',
                                         }}
                                     >
-                                        Резюме обсуждения проекта с местными жителями
+                                        Резюме обсуждения проекта с местными жителями <br/>
+                                        по результатам проект будет доработан
                                     </Button>
                                 </a>
                             </Link>
@@ -378,7 +379,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     <Emoji name='🥶' style={{ marginLeft: 8 }} />
                                 </b>
                                 <span>
-                                    автор проекта мойзалив.рф, координатор
+                                    Автор проекта мойзалив.рф, координатор
                                 </span>
                             </div>
 
@@ -471,7 +472,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     <Emoji name='🌞' style={{ marginLeft: 8 }} />
                                 </b>
                                 <span>
-                                    автор обьекта "солнце"
+                                    Автор обьекта "солнце"
                                 </span>
                             </div>
 
@@ -496,7 +497,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     <Emoji name='🤠' style={{ marginLeft: 8 }} />
                                 </b>
                                 <span>
-                                    авторы концепции
+                                    Авторы концепции
                                 </span>
                             </div>
 
@@ -521,7 +522,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     <Emoji name='👾' style={{ marginLeft: 8 }} />
                                 </b>
                                 <span>
-                                    сайт, фирменный стиль
+                                    Сайт, фирменный стиль
                                 </span>
                             </div>
                         </Section>
