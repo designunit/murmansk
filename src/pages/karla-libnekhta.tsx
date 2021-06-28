@@ -224,11 +224,17 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 <a
                                     style={{
                                         paddingTop: '2rem',
+                                        whiteSpace: 'unset',
+                                        maxWidth: '100%',
                                     }}
                                     target='_blank'
                                 >
                                     <Button
                                         size='big'
+                                        style={{
+                                            maxWidth: '100%',
+                                            whiteSpace: 'unset',
+                                        }}
                                     >
                                         Резюме обсуждения проекта с местными жителями
                                     </Button>
@@ -344,7 +350,8 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 padding: '1rem 0 1rem 0',
                                 display: 'flex',
                                 flexFlow: 'column',
-                                gap: 16,
+                                gap: isMobile ? 32 : 16,
+                                fontSize: '1.25rem',
                             }}
                         >
                             <h2
@@ -361,15 +368,15 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             <div
                                 style={{
                                     display: 'flex',
-                                    alignItems: 'center',
+                                    alignItems: isMobile ? 'flex-start' : 'center',
                                     gap: 8,
-                                    fontSize: '1.25rem',
+                                    flexFlow: isMobile && 'column',                                    
                                 }}
                             >
                                 <b>
                                     Алексей Арушанян
+                                    <Emoji name='🥶' style={{ marginLeft: 8 }} />
                                 </b>
-                                <Emoji name='🥶' />
                                 <span>
                                     автор проекта мойзалив.рф, координатор
                                 </span>
@@ -378,15 +385,15 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             <div
                                 style={{
                                     display: 'flex',
-                                    alignItems: 'center',
+                                    alignItems: isMobile ? 'flex-start' : 'center',
                                     gap: 8,
-                                    fontSize: '1.25rem',
+                                    flexFlow: isMobile && 'column',
                                 }}
                             >
                                 <b>
                                     Елизавета Савостьянова
+                                    <Emoji name='🥳' style={{ marginLeft: 8 }} />
                                 </b>
-                                <Emoji name='🥳' />
                                 <span>
                                     Организатор
                                 </span>
@@ -395,15 +402,15 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             <div
                                 style={{
                                     display: 'flex',
-                                    alignItems: 'center',
+                                    alignItems: isMobile ? 'flex-start' : 'center',
                                     gap: 8,
-                                    fontSize: '1.25rem',
+                                    flexFlow: isMobile && 'column',
                                 }}
                             >
                                 <b>
                                     Дарья Тимофеева
+                                    <Emoji name='😎' style={{ marginLeft: 8 }} />
                                 </b>
-                                <Emoji name='😎' />
                                 <span>
                                     Организатор
                                 </span>
@@ -412,15 +419,15 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             <div
                                 style={{
                                     display: 'flex',
-                                    alignItems: 'center',
+                                    alignItems: isMobile ? 'flex-start' : 'center',
                                     gap: 8,
-                                    fontSize: '1.25rem',
+                                    flexFlow: isMobile && 'column',
                                 }}
                             >
                                 <b>
                                     Андрей Фесенко
+                                    <Emoji name='🤑' style={{ marginLeft: 8 }} />
                                 </b>
-                                <Emoji name='🤑' />
                                 <span>
                                     Организатор
                                 </span>
@@ -429,15 +436,15 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             <div
                                 style={{
                                     display: 'flex',
-                                    alignItems: 'center',
+                                    alignItems: isMobile ? 'flex-start' : 'center',
                                     gap: 8,
-                                    fontSize: '1.25rem',
+                                    flexFlow: isMobile && 'column',
                                 }}
                             >
                                 <b>
                                     Виктория Пашкова
+                                    <Emoji name='😏' style={{ marginLeft: 8 }} />
                                 </b>
-                                <Emoji name='😏' />
                                 <span>
                                     Куратор исследования и соучастия
                                 </span>
@@ -446,9 +453,9 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             <div
                                 style={{
                                     display: 'flex',
-                                    alignItems: 'center',
+                                    alignItems: isMobile ? 'flex-start' : 'center',
                                     gap: 8,
-                                    fontSize: '1.25rem',
+                                    flexFlow: isMobile && 'column',
                                 }}
                             >
                                 <b>
@@ -461,8 +468,8 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                             Weld queen
                                         </a>
                                     </Link>
+                                    <Emoji name='🌞' style={{ marginLeft: 8 }} />
                                 </b>
-                                <Emoji name='🌞' />
                                 <span>
                                     автор обьекта "солнце"
                                 </span>
@@ -471,9 +478,9 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             <div
                                 style={{
                                     display: 'flex',
-                                    alignItems: 'center',
+                                    alignItems: isMobile ? 'flex-start' : 'center',
                                     gap: 8,
-                                    fontSize: '1.25rem',
+                                    flexFlow: isMobile && 'column',
                                 }}
                             >
                                 <b>
@@ -486,8 +493,8 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                             Арктикаметрия
                                         </a>
                                     </Link>
+                                    <Emoji name='🤠' style={{ marginLeft: 8 }} />
                                 </b>
-                                <Emoji name='🤠' />
                                 <span>
                                     авторы концепции
                                 </span>
@@ -496,23 +503,23 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             <div
                                 style={{
                                     display: 'flex',
-                                    alignItems: 'center',
+                                    alignItems: isMobile ? 'flex-start' : 'center',
                                     gap: 8,
-                                    fontSize: '1.25rem',
+                                    flexFlow: isMobile && 'column',
                                 }}
                             >
                                 <b>
-                                <Link
+                                    <Link
                                         href='https://unit4.io/'
                                     >
                                         <a
                                             target='_blank'
                                         >
-                                    design : : unit 4
-                                    </a>
+                                            design : : unit 4
+                                        </a>
                                     </Link>
+                                    <Emoji name='👾' style={{ marginLeft: 8 }} />
                                 </b>
-                                <Emoji name='👾' />
                                 <span>
                                     сайт, фирменный стиль
                                 </span>
