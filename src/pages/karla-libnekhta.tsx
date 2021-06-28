@@ -10,7 +10,6 @@ import ReactCompareImage from 'react-compare-image'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/Button'
 import { Emoji } from '@/components/Emoji'
-import Image from 'next/image'
 import Link from 'next/link'
 
 interface ILandingProps {
@@ -183,149 +182,341 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                             <p>
                                 Выше к амфитеатру ведет тропинка, вдоль которой мы сделали опоры с канатами - это "поручень" для удобного спуска и подъема, особенно зимой и во время дождей или гололедицы. Канаты появились на двух уровнях - для взрослых и тех, кто помладше. Сам амфитеатр расположился на самой высокой точке площадки. Расположение на холме и ступенчатость конструкции защитят отдыхающих от порывов северного ветра, чтобы они могли с комфортом смотреть на закаты и слушать размеренные звуки Барабана.
                             </p>
+                            <img
+                                src='/static/projects/sklon-karla/7.jpg'
+                                style={{
+                                    width: '100%',
+                                }}
+                            />
 
-                            <form
-                                onSubmit={handleSubmit(onSubmit)}
+                        </Section>
+                        <Section style={{
+                            padding: '3rem 0',
+                            display: 'flex',
+                            flexFlow: 'column',
+                            alignItems: 'center',
+                        }}>
+                            <h3
+                                style={{
+                                    fontSize: 33,
+                                    padding: '2rem 0',
+                                    margin: 0,
+                                    textTransform: 'uppercase',
+                                }}
                             >
-                                <Section style={{
-                                    padding: '2rem 0 1rem 0',
-                                    display: 'flex',
-                                    flexFlow: 'column',
-                                    alignItems: 'center',
-                                }}>
-                                    <Question
-                                        head={(
-                                            <>
-                                                {'Что вам нравится в предложенном проекте? Какие решения и предложения поддерживаете? '}
-                                                <Emoji name='🥰' />
-                                            </>
-                                        )}
-                                    >
-                                        <Input
-                                            name='one'
-                                            ref={register}
-                                        />
-                                    </Question>
-                                    <Question
-                                        head={(
-                                            <>
-                                                {'Что вызывает вопрос в предложенном проекте? Что не нравится? '}
-                                                <Emoji name='🥵' />
-                                            </>
-                                        )}
-                                    >
-                                        <Input
-                                            name='two'
-                                            ref={register}
-                                        />
-                                    </Question>
-                                    <Question
-                                        head={(
-                                            <>
-                                                {'Что вы рекомендуете добавить? Ваши идеи и предложения '}
-                                                <Emoji name='🤔' />
-                                            </>
-                                        )}
-                                    >
-                                        <Input
-                                            name='three'
-                                            ref={register}
-                                        />
-                                    </Question>
-                                    <Question
-                                        head={(
-                                            <>
-                                                {'Оставьте свои контакты (телефон/почта/социальные сети/мессенджеры) если вы готовы принимать участие в обсуждении проекта '}
-                                                <Emoji name='🤓' />
-                                            </>
-                                        )}
-                                    >
-                                        <Input
-                                            name='four'
-                                            ref={register}
-                                        />
-                                    </Question>
-                                    {(formState === 'start' || formState === 'error') && (
-                                        <Button
-                                            theme='default'
-                                            size={'big'}
-                                            type={'submit'}
-                                            style={{
-                                                alignSelf: 'center',
-                                                margin: '2rem 0',
-                                            }}
-                                        >
-                                            {formState === 'error' ? 'Что-то поломалось. Еще раз?' : 'Отправить'}
-                                        </Button>
-                                    )}
-                                    {(formState === 'fetch' || formState === 'ok') && (
-                                        <span
-                                            style={{
-                                                margin: '2rem 0',
-                                            }}
-                                        >
-                                            {formState === 'fetch' ? (
-                                                <>
-                                                    {'Отправляем '}
-                                                    <Emoji name='📡' />
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <Emoji name='🤩' />
-                                                    {' Ваш ответ отправлен '}
-                                                    <Emoji name='🥳' />
-                                                </>
-                                            )}
-                                        </span>
-                                    )}
-                                </Section>
-                            </form>
+                                ВИДЕОПРЕЗЕНТАЦИЯ КОНЦЕПЦИИ МЕСТНЫМ ЖИТЕЛЯМ 21 ИЮНЯ 2021 Г.
+                            </h3>
+                            <iframe
+                                src="https://drive.google.com/file/d/1gnDLIPsL6OuM-UP8YBDZId_MPsAtGxT0/preview"
+                                allow="autoplay"
 
+                                style={{
+                                    width: ' 100%',
+                                    height: isMobile ? '100%' : 720,
+                                    maxWidth: 1280,
+                                    maxHeight: 720,
+                                    border: 'none',
+                                }}
+                            />
+                            <Link
+                                href='/static/projects/sklon-karla/report.pdf'
+                            >
+                                <a
+                                    style={{
+                                        paddingTop: '2rem',
+                                    }}
+                                    target='_blank'
+                                >
+                                    <Button
+                                        size='big'
+                                    >
+                                        Резюме обсуждения проекта с местными жителями
+                                    </Button>
+                                </a>
+                            </Link>
+                        </Section>
+                        <form
+                            onSubmit={handleSubmit(onSubmit)}
+                        >
                             <Section style={{
-                                padding: '1rem 0',
+                                padding: '2rem 0 1rem 0',
                                 display: 'flex',
                                 flexFlow: 'column',
                                 alignItems: 'center',
                             }}>
-                                <h3
+                                <p
                                     style={{
-                                        fontSize: 33,
-                                        padding: '2rem 0',
-                                        margin: 0,
-                                        textTransform: 'uppercase',
+                                        fontSize: 22,
+                                        fontWeight: 'bold',
                                     }}
                                 >
-                                    Видеопрезентация концепции
-                                </h3>
-                                <iframe
-                                    src="https://drive.google.com/file/d/1gnDLIPsL6OuM-UP8YBDZId_MPsAtGxT0/preview"
-                                    allow="autoplay"
-
-                                    style={{
-                                        width: ' 100%',
-                                        height: isMobile ? '100%' : 720,
-                                        maxWidth: 1280,
-                                        maxHeight: 720,
-                                        border: 'none',
-                                    }}
-                                />
-                                <Link
-                                    href='/static/projects/sklon-karla/report.pdf'
+                                    Перед заполенением формы обратной связи, пожалуйста, посмотрите видеопрезентацию о проекте и ознакомьтесь с резюме обсуждения проекта с жителями. Мы ответили на ключевые вопросы о проекте и договорились с жителями об изменениях, которые необходимо внести в проект.
+                                </p>
+                                <Question
+                                    head={(
+                                        <>
+                                            {'Что вам нравится в предложенном проекте? Какие решения и предложения поддерживаете? '}
+                                            <Emoji name='🥰' />
+                                        </>
+                                    )}
                                 >
-                                    <a
+                                    <Input
+                                        name='one'
+                                        ref={register}
+                                    />
+                                </Question>
+                                <Question
+                                    head={(
+                                        <>
+                                            {'Что вызывает вопрос в предложенном проекте? Что не нравится? '}
+                                            <Emoji name='🥵' />
+                                        </>
+                                    )}
+                                >
+                                    <Input
+                                        name='two'
+                                        ref={register}
+                                    />
+                                </Question>
+                                <Question
+                                    head={(
+                                        <>
+                                            {'Что вы рекомендуете добавить? Ваши идеи и предложения '}
+                                            <Emoji name='🤔' />
+                                        </>
+                                    )}
+                                >
+                                    <Input
+                                        name='three'
+                                        ref={register}
+                                    />
+                                </Question>
+                                <Question
+                                    head={(
+                                        <>
+                                            {'Оставьте свои контакты (телефон/почта/социальные сети/мессенджеры) если вы готовы принимать участие в обсуждении проекта '}
+                                            <Emoji name='🤓' />
+                                        </>
+                                    )}
+                                >
+                                    <Input
+                                        name='four'
+                                        ref={register}
+                                    />
+                                </Question>
+                                {(formState === 'start' || formState === 'error') && (
+                                    <Button
+                                        theme='default'
+                                        size={'big'}
+                                        type={'submit'}
                                         style={{
-                                            paddingTop: '2rem',
+                                            alignSelf: 'center',
+                                            margin: '2rem 0',
                                         }}
-                                        target='_blank'
                                     >
-                                        <Button
-                                            size='big'
-                                        >
-                                            Резюме встречи
-                                        </Button>
-                                    </a>
-                                </Link>
+                                        {formState === 'error' ? 'Что-то поломалось. Еще раз?' : 'Отправить'}
+                                    </Button>
+                                )}
+                                {(formState === 'fetch' || formState === 'ok') && (
+                                    <span
+                                        style={{
+                                            margin: '2rem 0',
+                                        }}
+                                    >
+                                        {formState === 'fetch' ? (
+                                            <>
+                                                {'Отправляем '}
+                                                <Emoji name='📡' />
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Emoji name='🤩' />
+                                                {' Ваш ответ отправлен '}
+                                                <Emoji name='🥳' />
+                                            </>
+                                        )}
+                                    </span>
+                                )}
                             </Section>
+                        </form>
+                        <Section
+                            style={{
+                                padding: '1rem 0 1rem 0',
+                                display: 'flex',
+                                flexFlow: 'column',
+                                gap: 16,
+                            }}
+                        >
+                            <h2
+                                style={{
+                                    fontSize: 33,
+                                    padding: '2rem 0 1rem 0',
+                                    margin: 0,
+                                    textTransform: 'uppercase',
+                                }}
+                            >
+                                Команда проекта
+                            </h2>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 8,
+                                    fontSize: '1.25rem',
+                                }}
+                            >
+                                <b>
+                                    Алексей Арушанян
+                                </b>
+                                <Emoji name='🥶' />
+                                <span>
+                                    автор проекта мойзалив.рф, координатор
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 8,
+                                    fontSize: '1.25rem',
+                                }}
+                            >
+                                <b>
+                                    Елизавета Савостьянова
+                                </b>
+                                <Emoji name='🥳' />
+                                <span>
+                                    Организатор
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 8,
+                                    fontSize: '1.25rem',
+                                }}
+                            >
+                                <b>
+                                    Дарья Тимофеева
+                                </b>
+                                <Emoji name='😎' />
+                                <span>
+                                    Организатор
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 8,
+                                    fontSize: '1.25rem',
+                                }}
+                            >
+                                <b>
+                                    Андрей Фесенко
+                                </b>
+                                <Emoji name='🤑' />
+                                <span>
+                                    Организатор
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 8,
+                                    fontSize: '1.25rem',
+                                }}
+                            >
+                                <b>
+                                    Виктория Пашкова
+                                </b>
+                                <Emoji name='😏' />
+                                <span>
+                                    Куратор исследования и соучастия
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 8,
+                                    fontSize: '1.25rem',
+                                }}
+                            >
+                                <b>
+                                    <Link
+                                        href='https://www.instagram.com/weldqueen/'
+                                    >
+                                        <a
+                                            target='_blank'
+                                        >
+                                            Weld queen
+                                        </a>
+                                    </Link>
+                                </b>
+                                <Emoji name='🌞' />
+                                <span>
+                                    автор обьекта "солнце"
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 8,
+                                    fontSize: '1.25rem',
+                                }}
+                            >
+                                <b>
+                                    <Link
+                                        href='https://www.instagram.com/arcticametria/'
+                                    >
+                                        <a
+                                            target='_blank'
+                                        >
+                                            Арктикаметрия
+                                        </a>
+                                    </Link>
+                                </b>
+                                <Emoji name='🤠' />
+                                <span>
+                                    авторы концепции
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 8,
+                                    fontSize: '1.25rem',
+                                }}
+                            >
+                                <b>
+                                <Link
+                                        href='https://unit4.io/'
+                                    >
+                                        <a
+                                            target='_blank'
+                                        >
+                                    design : : unit 4
+                                    </a>
+                                    </Link>
+                                </b>
+                                <Emoji name='👾' />
+                                <span>
+                                    сайт, фирменный стиль
+                                </span>
+                            </div>
                         </Section>
                     </Project>
                 </Section>
