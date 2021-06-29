@@ -211,7 +211,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 allow="autoplay"
 
                                 style={{
-                                    width: ' 100%',
+                                    width: '100%',
                                     height: isMobile ? '100%' : 720,
                                     maxWidth: 1280,
                                     maxHeight: 720,
@@ -236,7 +236,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                             whiteSpace: 'unset',
                                         }}
                                     >
-                                        Резюме обсуждения проекта с местными жителями <br/>
+                                        Резюме обсуждения проекта с местными жителями <br />
                                         по результатам проект будет доработан
                                     </Button>
                                 </a>
@@ -371,7 +371,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                     display: 'flex',
                                     alignItems: isMobile ? 'flex-start' : 'center',
                                     gap: 8,
-                                    flexFlow: isMobile && 'column',                                    
+                                    flexFlow: isMobile && 'column',
                                 }}
                             >
                                 <b>
@@ -460,6 +460,23 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 }}
                             >
                                 <b>
+                                    Юлия Секушина
+                                    <Emoji name='🤩' style={{ marginLeft: 8 }} />
+                                </b>
+                                <span>
+                                    Антрополог проекта
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: isMobile ? 'flex-start' : 'center',
+                                    gap: 8,
+                                    flexFlow: isMobile && 'column',
+                                }}
+                            >
+                                <b>
                                     <Link
                                         href='https://www.instagram.com/weldqueen/'
                                     >
@@ -523,7 +540,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 </b>
                                 <span>
                                     Сайт, фирменный стиль
-                                </span>
+                                </span>Юлия Секушина
                             </div>
                         </Section>
                     </Project>
