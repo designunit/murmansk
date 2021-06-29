@@ -39,7 +39,7 @@ const ProjectItem = ({ item, session, showModal }) => {
     }
 }
 
-export const Project: React.FC<{title: string}> = ({ title, children }) => {
+export const Project: React.FC<any> = ({ title, children }) => {
     const isMobile = useMobile()
     return (
         <div className={s.container} style={{
