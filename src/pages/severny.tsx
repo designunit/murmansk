@@ -16,20 +16,22 @@ interface ILandingProps {
     meta: IMeta
 }
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement>
-const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
-    <input
+type InputProps = React.InputHTMLAttributes<HTMLTextAreaElement>
+const Input = forwardRef<HTMLTextAreaElement, InputProps>((props, ref) => (
+    <textarea
         {...props}
         ref={ref}
+        cols={3}
         style={{
             padding: '8px 16px',
-            height: '2rem',
+            // height: '2rem',
             width: ' 100%',
+            minWidth:' 100%',
+            maxWidth: '100%',
 
             fontFamily: ' var(--font-family)',
             fontWeight: 500,
             fontSize: 16,
-            lineHeight: 26,
 
             borderRadius: 'var(--border-radius)',
             border: '2px solid #091133',
@@ -562,7 +564,7 @@ const Seveny: NextPage<ILandingProps> = ({ meta }) => {
                                 </b>
                                 <span>
                                     Сайт, фирменный стиль
-                                </span>Юлия Секушина
+                                </span>
                             </div>
                         </Section>
                     </Project>
