@@ -12,7 +12,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return (
                     'https://script.google.com/macros/s/AKfycbw-1IBZIB7dNtxfRLRYEvHj6yJ3btYfZKl0PfKhidiX9bw7bKpR7ElNXGZznhGVVOw2Xw/exec'
                 )
-
+            case 'severny' :
+                return (
+                    'https://script.google.com/macros/s/AKfycbxJMBMcDfz1M1Ebtwe_ogreGQ9T6j-7IBh6PnBdUZu4BEt0OTHxOQhpBi_1MovVuc0/exec'
+                )
             default:
                 return (null)
         }
