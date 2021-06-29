@@ -3,20 +3,44 @@ import React from 'react'
 import { Section } from '../Section'
 import s from './index.module.css'
 
-interface IFeedProps {
-    data: any // Item[]
-}
-export const ProjectsGrid: React.FC<IFeedProps> = ({ data }) => {
+export const ProjectsGrid: React.FC = () => {
+    const data = [
+        {
+            title: 'Склон Либнекхта',
+            preview: '/static/projects/sklon-karla/7.jpg',
+            id: 'karla-libnekhta',
+        },
+    ]
+
     return (
         <div style={{
             width: '100%',
             borderTop: 'solid 1px black',
             borderBottom: 'solid 1px black',
             display: 'flex',
-            justifyContent: 'center',
+            flexFlow: 'column',
+            alignItems: 'center',
         }}>
             <Section>
-                <div 
+                {/* <div
+                    style={{
+                        padding: '0 1rem',
+                        borderLeft: 'solid 1px black',
+                        borderRight: 'solid 1px black',
+                    }}
+                >
+                    <h2
+                        style={{
+                            fontSize: 33,
+                            padding: '1rem 0 1rem 0',
+                            margin: 0,
+                            textTransform: 'uppercase',
+                        }}
+                    >
+                        Проекты
+                    </h2>
+                </div> */}
+                <div
                     className={s.grid}
                 >
                     {data.map((project, i) => (
@@ -42,9 +66,6 @@ export const ProjectsGrid: React.FC<IFeedProps> = ({ data }) => {
                                     }}>
                                         {project.title}
                                     </h3>
-                                    <p>
-                                        {project.description}
-                                    </p>
                                 </div>
                             </a>
                         </Link>

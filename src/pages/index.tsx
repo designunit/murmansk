@@ -23,7 +23,7 @@ const Landing: NextPage<ILandingProps> = ({ data, meta }) => {
             </Head>
             <Layout data={data}>
                 <Hero />
-                {false && <ProjectsGrid data={data} />}
+                <ProjectsGrid />
                 <Map />
             </Layout>
         </>
@@ -39,41 +39,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     //         post: await markdownToHtml(x.post)
     //     }))
     // )
-
-    const data = [
-        {
-            title: 'Название тестового проекта',
-            preview: 'https://murmansk-git-feature-projects-unit.vercel.app/static/proj/1.jpg',
-            description: 'описание для тестового проекта с открыточным видом, фруктовым садом и пешеходной набережной вдоль воды. Каждый день вокруг Казанского собора движутся десятки тысяч прихожан, туристов и местных жителей, тут же паркуются 250 автомобилей',
-            id: 'test',
-            items: [
-            ]
-        },
-        {
-            title: 'Название другого тестового проекта',
-            preview: 'https://murmansk-git-feature-projects-unit.vercel.app/static/proj/3.jpg',
-            description: 'ное пространство для людей. Каждый час до 1000 человек протискивается через 30 хаотично припаркованных автомобилей. Люди идут по узкому тротуару между нагромождением ',
-            id: 'test',
-            items: [
-            ]
-        },
-        {
-            title: 'Название третьего проекта',
-            preview: 'https://murmansk-git-feature-projects-unit.vercel.app/static/proj/1.jpg',
-            description: 'о для людей. Каждый час до 1000 человек протискивается через 30 хаотично припаркованных автомобилей. Люди идут по узкому тро вокруг Казанского собора движутся десятки тысяч прихожан, туристов и местных жителей, тут же паркуются 250 автомобилей',
-            id: 'test',
-            items: [
-            ]
-        },
-        {
-            title: 'Четвертый проект',
-            preview: 'https://murmansk-git-feature-projects-unit.vercel.app/static/proj/2.jpg',
-            description: 'короткое описание',
-            id: 'test',
-            items: [
-            ]
-        },
-    ]
 
     const meta: IMeta = {
 		title: 'МОЙЗАЛИВ.РФ',
@@ -95,7 +60,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     return {
         props: {
-            data,
             meta,
         }
     }
