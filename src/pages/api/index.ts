@@ -8,14 +8,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return (
                     'https://script.google.com/macros/s/AKfycbyp8TexKZAqtUrsWjeiMbMwvtcT3GV5qdteQm2KBS_QYgclFRhMpxBetBeibezFjk_g7w/exec'
                 )
+            case 'abram-mys':
+                return (
+                    'https://script.google.com/macros/s/AKfycbw-1IBZIB7dNtxfRLRYEvHj6yJ3btYfZKl0PfKhidiX9bw7bKpR7ElNXGZznhGVVOw2Xw/exec'
+                )
 
             default:
-                return ('')
+                return (null)
         }
     }
 
+    const url = getUrl(JSON.parse(req.body).id)
+    if (!url) {
+        res
+            .status(500)
+            .json({
+                result: 'error',
+                reason: 'invalid form id',
+            })
+
+        return
+    }
+
     await fetch(
-        getUrl(JSON.parse(req.body).id),
+        url,
         {
             method: 'post',
             body: req.body as string
@@ -26,13 +42,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .status(value.status)
             .json(await value.json())
     })
-    // await axios.post(
-    //     getUrl(JSON.parse(req.body).id),
-    //     req.body as string,
-    // )
-    // .then((axiosRes: AxiosResponse) => {
-    //     res
-    //         .status(axiosRes.status)
-    //         .json(axiosRes.data)
-    // })
 }
