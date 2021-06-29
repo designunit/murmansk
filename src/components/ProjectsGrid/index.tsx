@@ -10,6 +10,11 @@ export const ProjectsGrid: React.FC = () => {
             preview: '/static/projects/sklon-karla/7.jpg',
             id: 'karla-libnekhta',
         },
+        {
+            title: 'Площадка на Северном проезде',
+            preview: '/static/projects/severny/9.jpg',
+            id: 'severny',
+        },
     ]
 
     return (
