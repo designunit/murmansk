@@ -540,7 +540,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 </b>
                                 <span>
                                     Сайт, фирменный стиль
-                                </span>Юлия Секушина
+                                </span>
                             </div>
                         </Section>
                     </Project>
