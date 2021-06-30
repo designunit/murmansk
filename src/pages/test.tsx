@@ -29,10 +29,10 @@ const Test: NextPage<ILandingProps> = ({ meta }) => {
     }, [router.query, isLoadingSession])
 
     const [modal, setModal] = useState(false)
-    const [modalCallback, setModalCallback] = useState(null)
+    const [modalArg, setModalArg] = useState(null)
     const showModal = useCallback((callback) => {
         setModal(true)
-        setModalCallback(callback)
+        setModalArg(callback)
     }, [])
 
     return (
@@ -44,7 +44,7 @@ const Test: NextPage<ILandingProps> = ({ meta }) => {
             <Modal
                 modalIsOpen={modal}
                 setModalIsOpen={setModal}
-                modalCallback={modalCallback}
+                modalCallback={modalArg}
             />
             <Layout>
                 <Section style={{

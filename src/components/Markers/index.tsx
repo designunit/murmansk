@@ -15,7 +15,7 @@ interface MarkersProps {
     style?: React.CSSProperties
     data: any
     session: any
-    showModal: (callback) => void
+    showModal: any
 }
 
 export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModal }) => {

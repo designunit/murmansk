@@ -8,7 +8,7 @@ export type LikeButtonProps = {
     id: number
     likes: number
     session: any
-    showModal: (callback) => void
+    showModal: any
 }
 
 export const LikeButton: React.FC<LikeButtonProps> = props => {
@@ -36,7 +36,7 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 
     const onClick = useCallback(() => {
         if (!props.session) {
-            props.showModal(() => props.id)
+            props.showModal(props.id)
             return
         }
         put.mutate({
