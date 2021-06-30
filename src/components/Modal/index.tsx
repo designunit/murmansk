@@ -17,6 +17,10 @@ export const Modal: React.FC<{
 
     const router = useRouter()
 
+    console.log(
+        encodeURI(`https://мойзалив.рф${router.pathname}?like=${modalCallback}`)
+    )
+
     return (
         <ReactModal
             isOpen={modalIsOpen}
@@ -33,7 +37,7 @@ export const Modal: React.FC<{
                 </span>
                 <button
                     onClick={async () => {
-                        await signIn('vk', { callbackUrl: `https://мойзалив.рф${router.pathname}?like=${modalCallback}` })
+                        await signIn('vk', { callbackUrl: encodeURI(`https://мойзалив.рф${router.pathname}?like=${modalCallback}`) })
                     }}
                 >
                     {'Войти ВК '}
