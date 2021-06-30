@@ -36,11 +36,14 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
 
     const onClick = useCallback(() => {
         if (!props.session) {
-            props.showModal(
+            props.showModal(() => {
                 put.mutate({
                     like: !active,
                 })
-            )
+                console.log(
+                    props.id 
+                )
+            })
             return
         }
         put.mutate({
