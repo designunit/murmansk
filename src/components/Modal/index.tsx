@@ -11,7 +11,7 @@ export type ModalProps = Omit<ReactModal.Props, 'closeTimeoutMS'>
 export const Modal: React.FC<{
     modalIsOpen: boolean
     setModalIsOpen: (isOpen: boolean) => void
-    modalCallback: () => void
+    modalCallback: any
 }> = ({ modalIsOpen, setModalIsOpen, modalCallback }) => {
     const delay = 0
 
@@ -33,7 +33,7 @@ export const Modal: React.FC<{
                 </span>
                 <button
                     onClick={async () => {
-                        await signIn('vk', {callbackUrl: `https://мойзалив.рф${router.pathname}?like=${modalCallback()}`})
+                        await signIn('vk', { callbackUrl: `https://мойзалив.рф${router.pathname}?like=${modalCallback}` })
                     }}
                 >
                     {'Войти ВК '}
