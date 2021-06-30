@@ -10,7 +10,8 @@ export type ModalProps = Omit<ReactModal.Props, 'closeTimeoutMS'>
 export const Modal: React.FC<{
     modalIsOpen: boolean
     setModalIsOpen: (isOpen: boolean) => void
-}> = ({ modalIsOpen, setModalIsOpen }) => {
+    modalCallback: () => void
+}> = ({ modalIsOpen, setModalIsOpen, modalCallback }) => {
     const delay = 0
 
     return (
@@ -28,9 +29,12 @@ export const Modal: React.FC<{
                     <Emoji name='🔐' />
                 </span>
                 <button
-                    onClick={() => signIn('vk')}
+                    onClick={async () => {
+                        await signIn('vk')
+                        modalCallback()
+                    }}
                 >
-                    {'Авторизоваться ВК '}
+                    {'Войти ВК '}
                     <Emoji name='🔑' />
                 </button>
             </>
