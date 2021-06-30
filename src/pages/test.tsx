@@ -18,11 +18,11 @@ const Test: NextPage<ILandingProps> = ({ meta }) => {
     const [session, isLoadingSession] = useSession()
     const isMobile = useMobile()
 
-    const [modal, setModal] = useState(false)
-    const [modalArg, setModalCallback] = useState(null)
-    const showModal = useCallback((callback) => {
-        setModal(true)
-        setModalCallback(callback)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [modalId, setModalId] = useState(null)
+    const showModal = useCallback((id) => {
+        setModalIsOpen(true)
+        setModalId(id)
     }, [])
 
     return (
@@ -32,9 +32,9 @@ const Test: NextPage<ILandingProps> = ({ meta }) => {
                 <Meta meta={meta} />
             </Head>
             <Modal
-                modalIsOpen={modal}
-                setModalIsOpen={setModal}
-                modalCallback={modalArg}
+                modalIsOpen={modalIsOpen}
+                setModalIsOpen={setModalIsOpen}
+                modalCallback={modalId}
             />
             <Layout>
                 <Section style={{

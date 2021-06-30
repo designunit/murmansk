@@ -15,8 +15,8 @@ export type LikeButtonProps = {
 export const LikeButton: React.FC<LikeButtonProps> = props => {
     const { isLoading, data } = useQuery('likes', getLikes)
     const [active, setActive] = useState(false)
+    const router = useRouter()
     const emoji = active ? '❤️' : '🤍'
-
 
     const client = useQueryClient()
     const put = useMutation(({ like }: { like: boolean }) => setLike(props.id, like), {
@@ -27,17 +27,14 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
         },
     })
 
-    const router = useRouter()
     useEffect(() => {
-        if (router.query?.like) {
-
+        if (router.query?.like && props.id == Number(router.query?.like)) {
             put.mutate({
-                like: !active,
+                like: true,
             })
-
             router.push(router.pathname, null, { shallow: true })
         }
-    }, [router.query])
+    }, [router.query, props.id])
 
     useEffect(() => {
         if (!data) return
