@@ -17,6 +17,7 @@ export const ProjectsGrid: React.FC = () => {
                         border: 'solid 1px black',
                         background: 'white',
                         padding: '1rem',
+                        height: 200,
                     }}
                 >
                     {'Приглашаем ребят 11-16 лет придумать и построить площадку с видом на залив на ул. Маяковского '}
@@ -68,6 +69,7 @@ export const ProjectsGrid: React.FC = () => {
                                         style={{
                                             display: 'block',
                                             maxWidth: '100%',
+                                            height: !project?.description && 200,
                                         }}
                                     />
                                     <h3 style={{
