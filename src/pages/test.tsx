@@ -9,8 +9,6 @@ import { useMobile } from '@/hooks/useMobile'
 import { Markers } from '@/components/Markers'
 import { useSession } from 'next-auth/client'
 import { Modal } from '@/components/Modal'
-import { useRouter } from 'next/router'
-import { setLike } from '@/api'
 
 interface ILandingProps {
     meta: IMeta
@@ -20,19 +18,11 @@ const Test: NextPage<ILandingProps> = ({ meta }) => {
     const [session, isLoadingSession] = useSession()
     const isMobile = useMobile()
 
-    const router = useRouter()
-    useEffect(() => {
-        if (router.query?.like && !isLoadingSession) {
-            setLike(Number(router.query.like), true)
-            router.push(router.pathname, null, { shallow: true })
-        }
-    }, [router.query, isLoadingSession])
-
     const [modal, setModal] = useState(false)
-    const [modalArg, setModalArg] = useState(null)
+    const [modalArg, setModalCallback] = useState(null)
     const showModal = useCallback((callback) => {
         setModal(true)
-        setModalArg(callback)
+        setModalCallback(callback)
     }, [])
 
     return (

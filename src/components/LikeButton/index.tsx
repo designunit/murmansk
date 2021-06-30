@@ -1,5 +1,6 @@
 import { getImage, getLikes, setLike } from '@/api'
 import { signIn, useSession } from 'next-auth/client'
+import { useRouter } from 'next/router'
 import React, { useState, useEffect, useCallback } from 'react'
 import { useQuery, useQueryClient, useMutation } from 'react-query'
 import { Emoji } from '../Emoji'
@@ -25,6 +26,18 @@ export const LikeButton: React.FC<LikeButtonProps> = props => {
             client.refetchQueries('likes')
         },
     })
+
+    const router = useRouter()
+    useEffect(() => {
+        if (router.query?.like) {
+
+            put.mutate({
+                like: !active,
+            })
+
+            router.push(router.pathname, null, { shallow: true })
+        }
+    }, [router.query])
 
     useEffect(() => {
         if (!data) return
