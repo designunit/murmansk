@@ -37,6 +37,11 @@ export const ProjectsGrid: React.FC = () => {
             preview: '/static/projects/severny/9.jpg',
             href: '/severny',
         },
+        {
+            title: 'Абрам-мыс',
+            preview: '/static/projects/abram-mys/3.jpg',
+            href: '/abram-mys',
+        },
     ]
 
     return (
@@ -70,6 +75,7 @@ export const ProjectsGrid: React.FC = () => {
                                             display: 'block',
                                             maxWidth: '100%',
                                             height: !project?.description && 200,
+                                            objectFit: 'cover'
                                         }}
                                     />
                                     <h3 style={{
