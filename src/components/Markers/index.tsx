@@ -15,7 +15,7 @@ interface MarkersProps {
     style?: React.CSSProperties
     data: any
     session: any
-    showModal: () => void
+    showModal: any
 }
 
 export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModal }) => {
@@ -25,7 +25,7 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
     const [activeId, setActiveId] = useState(undefined)
     const [addMode, setAddMode] = useState(false)
 
-    const { isLoading, data: img } = useQuery(`image_${data.id}`, () => getImage(data.id, data.right))
+    const { isLoading, data: img } = useQuery(`image_${data.id}`, () => getImage(data.id, data.left))
 
     return (
         <Section style={{
@@ -119,7 +119,7 @@ export const Markers: React.FC<MarkersProps> = ({ style, data, session, showModa
                             }}
                             onClick={() => {
                                 if (!session) {
-                                    showModal()
+                                    showModal(null) // ! ! ! null should be something 
                                     return
                                 }
                                 setAddMode(true)
