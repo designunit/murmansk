@@ -16,7 +16,7 @@ export type buttonsType = button[]
 
 const buttons: buttonsType = []
 
-export const Layout: React.FC<any> = ({ data, children }) => {
+export const Layout: React.FC<any> = ({ children, session }) => {
     const isMobile = useMobile()
 
     const router = useRouter()
@@ -26,7 +26,7 @@ export const Layout: React.FC<any> = ({ data, children }) => {
         <div className={s.container}>
             {false && isMobile && <MobileMenu buttons={buttons} />}
             <main className={s.main}>
-                <Menu buttons={buttons} isIndex={isIndex} />
+                <Menu buttons={buttons} isIndex={isIndex} session={session} />
                 {children}
                 <Footer />
             </main>

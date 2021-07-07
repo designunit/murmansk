@@ -46,9 +46,9 @@ export default NextAuth({
 			return true
 		},
 
-		// async redirect(url, baseUrl) {
-		// 	return baseUrl
-		// },
+		async redirect(url, baseUrl) {
+			return url ? url : baseUrl
+		},
 
 		// async session(session, user) {
 		// 	// session.user.val = 'kek'
