@@ -3,7 +3,6 @@ import s from './index.module.css'
 import { useMobile } from '@/hooks/useMobile'
 import React from 'react'
 import { Markers } from '../Markers'
-import { InteractiveImage } from '../InteractiveImage'
 
 interface IFeedItemProps {
     project: any // Item
