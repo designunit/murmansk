@@ -18,15 +18,6 @@ const ProjectItem = ({ item, session, showModal }) => {
             )
         case 'slider':
             return (
-                // <CommentedImage 
-                //     id={item.id}
-                //     src={item.right}
-                //     style={{
-                //         position: 'relative',
-                //         margin: '1rem 0',
-                //         padding: 0,
-                //     }}
-                // />
                 <Markers
                     data={item}
                     session={session}

@@ -1,0 +1,60 @@
+.leftToL {
+    animation: animLL .5s infinite alternate;
+}
+.rightToL {
+    animation: animRL .5s infinite alternate;
+}
+
+.leftToR {
+    animation: animLR .5s infinite alternate;
+}
+.rightToR {
+    animation: animRR .5s infinite alternate;
+}
+
+@keyframes animLL {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(-22deg);
+      top: 89.5%;
+    }
+  }
+
+  @keyframes animRL {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(-14deg);
+      top: 87.3%;
+      left: 21.3%;
+    }
+  }
+
+  
+  @keyframes animLR {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(5deg);
+      top: 86.7%;
+      left: 21.4%;
+    }
+  }
+
+  @keyframes animRR {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(12deg);
+      top: 89.5%;
+    }
+  }
