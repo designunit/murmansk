@@ -281,7 +281,7 @@ export const InteractiveImage: React.FC<InteractiveImageProps> = () => {
                 display: 'flex',
                 alignItems: 'center',
                 flexFlow: 'column',
-                overflow: 'clip',
+                overflow: 'hidden',
             }}
         >
             <img
