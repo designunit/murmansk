@@ -12,10 +12,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return (
                     'https://script.google.com/macros/s/AKfycbw-1IBZIB7dNtxfRLRYEvHj6yJ3btYfZKl0PfKhidiX9bw7bKpR7ElNXGZznhGVVOw2Xw/exec'
                 )
-            case 'severny' :
+            case 'severny':
                 return (
                     'https://script.google.com/macros/s/AKfycbxJMBMcDfz1M1Ebtwe_ogreGQ9T6j-7IBh6PnBdUZu4BEt0OTHxOQhpBi_1MovVuc0/exec'
                 )
+                case 'skver-shmidta':
+                    return (
+                        'https://script.google.com/macros/s/AKfycbwAnMNCLJNd2pSRAl6nHV7iksEyZ-Pprla4zGx47gOvzObhSSmLIxGaQ0LF3wc4sGti0g/exec'
+                    )
             default:
                 return (null)
         }
