@@ -276,6 +276,7 @@ export const InteractiveImage: React.FC<InteractiveImageProps> = () => {
     return (
         <div
             ref={ref}
+            className={anim.container}
             style={{
                 position: 'relative',
                 display: 'flex',
