@@ -12,6 +12,7 @@ import { Button } from '@/components/Button'
 import { Emoji } from '@/components/Emoji'
 import Link from 'next/link'
 import { InteractiveImage } from '@/components/InteractiveImage'
+import { ProjectGallery } from '@/components/ProjectGallery'
 
 interface ILandingProps {
     meta: IMeta
@@ -386,6 +387,11 @@ const SkverShmidta: NextPage<ILandingProps> = ({ meta }) => {
                                 )}
                             </Section>
                         </form>
+                        <ProjectGallery
+                            items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(x => ({
+                                original: `/static/projects/skver-shmidta/gallery/${x}.jpeg`,
+                            }))}
+                        />
                         <Section
                             style={{
                                 padding: '1rem 0 1rem 0',
