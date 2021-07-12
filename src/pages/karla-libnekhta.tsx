@@ -11,6 +11,8 @@ import { useForm } from 'react-hook-form'
 import { Button } from '@/components/Button'
 import { Emoji } from '@/components/Emoji'
 import Link from 'next/link'
+import ImageGallery from 'react-image-gallery'
+import 'react-image-gallery/styles/css/image-gallery.css'
 
 interface ILandingProps {
     meta: IMeta
@@ -26,7 +28,7 @@ const Input = forwardRef<HTMLTextAreaElement, InputProps>((props, ref) => (
             padding: '8px 16px',
             // height: '2rem',
             width: ' 100%',
-            minWidth:' 100%',
+            minWidth: '100%',
             maxWidth: '100%',
 
             fontFamily: ' var(--font-family)',
@@ -348,6 +350,79 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 )}
                             </Section>
                         </form>
+                        <ImageGallery
+                            items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(x => ({
+                                original: `/static/projects/sklon-karla/gallery/${x}.jpg`
+                            }))}
+                            showThumbnails={false}
+                            showPlayButton={false}
+                            showBullets
+                            slideDuration={250}
+                            renderLeftNav={(onClick, disabled) => (
+                                <button
+                                    disabled={disabled}
+                                    onClick={onClick}
+                                    style={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '.5rem',
+                                        zIndex: 1,
+                                        transform: 'translateY(-50%)',
+                                        border: 'none',
+                                        background: 'transparent',
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    <Emoji name='⬅️'
+                                        style={{
+                                            width: 32,
+                                        }}
+                                    />
+                                </button>
+                            )}
+                            renderRightNav={(onClick, disabled) => (
+                                <button
+                                    disabled={disabled}
+                                    onClick={onClick}
+                                    style={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        right: '.5rem',
+                                        zIndex: 1,
+                                        transform: 'translateY(-50%)',
+                                        border: 'none',
+                                        background: 'transparent',
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    <Emoji name='➡️'
+                                        style={{
+                                            width: 32,
+                                        }}
+                                    />
+                                </button>
+                            )}
+                            renderFullscreenButton={(onClick, isFullscreen) => (
+                                <button
+                                    onClick={onClick}
+                                    style={{
+                                        position: 'absolute',
+                                        bottom: '.5rem',
+                                        right: '.5rem',
+                                        zIndex: 1,
+                                        border: 'none',
+                                        background: 'transparent',
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    <Emoji name={isFullscreen ? '❎' : '🔍'}
+                                        style={{
+                                            width: 32,
+                                        }}
+                                    />
+                                </button>
+                            )}
+                        />
                         <Section
                             style={{
                                 padding: '1rem 0 1rem 0',

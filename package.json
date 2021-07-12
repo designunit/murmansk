@@ -36,6 +36,7 @@
         "react-dom": "^17.0.1",
         "react-fluid-text": "^0.1.1",
         "react-hook-form": "^6.15.4",
+        "react-image-gallery": "^1.1.1",
         "react-image-marker": "^1.2.0",
         "react-modal": "^3.12.1",
         "react-query": "^3.17.0",
