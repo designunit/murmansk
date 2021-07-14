@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
+        "start": "next start",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
@@ -36,6 +37,7 @@
         "react-dom": "^17.0.1",
         "react-fluid-text": "^0.1.1",
         "react-hook-form": "^6.15.4",
+        "react-image-gallery": "1.1.1",
         "react-image-marker": "^1.2.0",
         "react-modal": "^3.12.1",
         "react-query": "^3.17.0",
@@ -48,7 +50,8 @@
         "@types/classnames": "^2.2.11",
         "@types/node": "^14.14.31",
         "@types/react": "^17.0.2",
-        "@types/react-burger-menu": "^2.6.2",
+        "@types/react-burger-menu": "^2.8.1",
+        "@types/react-image-gallery": "^1.0.4",
         "typescript": "^4.0.3"
     }
 }

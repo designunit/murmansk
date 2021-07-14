@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form'
 import { Button } from '@/components/Button'
 import { Emoji } from '@/components/Emoji'
 import Link from 'next/link'
+import { ProjectGallery } from '@/components/ProjectGallery'
 
 interface ILandingProps {
     meta: IMeta
@@ -353,6 +354,11 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                                 )}
                             </Section>
                         </form>
+                        <ProjectGallery
+                            items={[1, 2, 3, 4].map(x => ({
+                                original: `/static/projects/abram-mys/gallery/${x}.jpeg`,
+                            }))}
+                        />
                         <Section
                             style={{
                                 padding: '1rem 0 1rem 0',

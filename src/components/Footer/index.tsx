@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
                     href='https://unit4.io'
                 >
                     <a>
-                        © 2017-2020 design unit 4
+                        © 2017-2021 design unit 4
                     </a>
                 </Link>
                 <a
