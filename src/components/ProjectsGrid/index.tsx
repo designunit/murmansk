@@ -47,6 +47,11 @@ export const ProjectsGrid: React.FC = () => {
             preview: '/static/projects/skver-shmidta/2.jpg',
             href: '/skver-shmidta',
         },
+        {
+            title: 'Кильдинская площадка',
+            preview: '/static/projects/kildinskaya/4.jpg',
+            href: '/kildinskaya',
+        },
     ]
 
     return (
