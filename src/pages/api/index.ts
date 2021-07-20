@@ -20,6 +20,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return (
                     'https://script.google.com/macros/s/AKfycbwAnMNCLJNd2pSRAl6nHV7iksEyZ-Pprla4zGx47gOvzObhSSmLIxGaQ0LF3wc4sGti0g/exec'
                 )
+            case 'kildinskaya':
+                return (
+                    'https://script.google.com/macros/s/AKfycbzRKT1bPf5Mkp542CKOqyzT7pHg_gyl41KFSJBZlGS0M0lAfssl20_fILj1RFhIDlnZ1g/exec'
+                )
             case 'dostoevskogo':
                 return (
                     'https://script.google.com/macros/s/AKfycbwNE2XwUbZ5RhYlJdusADVrWASzuFwuoJ8KwcbW9RR1D0Z0WUyMztV-f5jU0GsC50_3/exec'

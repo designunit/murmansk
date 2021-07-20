@@ -46,7 +46,6 @@ export const Timeline = () => {
             emoji: '🏁',
         },
     ]
-    const index = 6
 
     const ref = useRef(null)
     useEffectOnce(() => {
@@ -62,7 +61,7 @@ export const Timeline = () => {
         <div className={s.container} ref={ref}>
             {data.map((x, i) => (
                 <div className={s.item}>
-                    <div className={`${s.itemContent} ${i < index && s.disabled}`}>
+                    <div className={`${s.itemContent}`}>
                         <span>
                             {x.left}
                         </span>

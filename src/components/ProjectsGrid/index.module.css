@@ -1,7 +1,7 @@
 .a {
     text-decoration: none;
 }
-.a :hover {
+.a:hover {
     background: var(--color-green);
 }
 .a :hover > h3 {
