@@ -16,10 +16,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 return (
                     'https://script.google.com/macros/s/AKfycbxJMBMcDfz1M1Ebtwe_ogreGQ9T6j-7IBh6PnBdUZu4BEt0OTHxOQhpBi_1MovVuc0/exec'
                 )
-                case 'skver-shmidta':
-                    return (
-                        'https://script.google.com/macros/s/AKfycbwAnMNCLJNd2pSRAl6nHV7iksEyZ-Pprla4zGx47gOvzObhSSmLIxGaQ0LF3wc4sGti0g/exec'
-                    )
+            case 'skver-shmidta':
+                return (
+                    'https://script.google.com/macros/s/AKfycbwAnMNCLJNd2pSRAl6nHV7iksEyZ-Pprla4zGx47gOvzObhSSmLIxGaQ0LF3wc4sGti0g/exec'
+                )
+            case 'dostoevskogo':
+                return (
+                    'https://script.google.com/macros/s/AKfycbwNE2XwUbZ5RhYlJdusADVrWASzuFwuoJ8KwcbW9RR1D0Z0WUyMztV-f5jU0GsC50_3/exec'
+                )
             default:
                 return (null)
         }
