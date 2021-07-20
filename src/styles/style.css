@@ -33,7 +33,7 @@ body {
 a {
   color: inherit;
   text-decoration: underline;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   cursor: pointer;
 }
 
