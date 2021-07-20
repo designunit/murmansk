@@ -52,6 +52,11 @@ export const ProjectsGrid: React.FC = () => {
             preview: '/static/projects/kildinskaya/4.jpg',
             href: '/kildinskaya',
         },
+        {
+            title: 'Маяк на сопке Достоевского',
+            preview: '/static/projects/dostoevskogo/4.jpg',
+            href: '/dostoevskogo',
+        },
     ]
 
     return (
