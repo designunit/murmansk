@@ -27,7 +27,7 @@ const Input = forwardRef<HTMLTextAreaElement, InputProps>((props, ref) => (
             padding: '8px 16px',
             // height: '2rem',
             width: ' 100%',
-            minWidth:' 100%',
+            minWidth: ' 100%',
             maxWidth: '100%',
 
             fontFamily: ' var(--font-family)',
@@ -345,8 +345,8 @@ const Seveny: NextPage<ILandingProps> = ({ meta }) => {
                             </Section>
                         </form>
                         <ProjectGallery
-                            items={[1, 2, 3, 4, 5].map(x => ({
-                                original: `/static/projects/severny/gallery/${x}.jpg`,
+                            items={[1, 2, 3, 4, 5, 6, 7, 8].map(x => ({
+                                original: `/static/projects/dostoevskogo/gallery/${x}.jpeg`,
                             }))}
                         />
                         <Section
