@@ -349,11 +349,11 @@ const Seveny: NextPage<ILandingProps> = ({ meta }) => {
                                 )}
                             </Section>
                         </form>
-                        {/* <ProjectGallery
-                            items={[1, 2, 3, 4, 5].map(x => ({
-                                original: `/static/projects/severny/gallery/${x}.jpg`,
+                        <ProjectGallery
+                            items={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(x => ({
+                                original: `/static/projects/kildinskaya/gallery/${x}.jpeg`,
                             }))}
-                        /> */}
+                        />
                         <Section
                             style={{
                                 padding: '1rem 0 1rem 0',
