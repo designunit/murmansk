@@ -36,16 +36,18 @@ export const Timeline = () => {
             emoji: '🧑‍🤝‍🧑',
         },
         {
-            left: '15.07.2021',
+            left: '30.07.2021',
             right: 'разработка рабочей документации видовых площадок',
             emoji: '📄',
         },
         {
-            left: '20.07.2021',
+            left: '10.08.2021',
             right: 'cтарт реализации видовых площадок',
             emoji: '🏁',
         },
     ]
+
+    const index = 6 
 
     const ref = useRef(null)
     useEffectOnce(() => {
@@ -61,7 +63,7 @@ export const Timeline = () => {
         <div className={s.container} ref={ref}>
             {data.map((x, i) => (
                 <div className={s.item}>
-                    <div className={`${s.itemContent}`}>
+                    <div className={`${s.itemContent} ${i < index && s.disabled}`}>
                         <span>
                             {x.left}
                         </span>
