@@ -27,7 +27,7 @@ const Input = forwardRef<HTMLTextAreaElement, InputProps>((props, ref) => (
             padding: '8px 16px',
             // height: '2rem',
             width: ' 100%',
-            minWidth: ' 100%',
+            minWidth: '100%',
             maxWidth: '100%',
 
             fontFamily: ' var(--font-family)',
