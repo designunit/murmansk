@@ -47,7 +47,7 @@ export const Timeline = () => {
         },
     ]
 
-    const index = 6 
+    const index = 7
 
     const ref = useRef(null)
     useEffectOnce(() => {

@@ -27,7 +27,7 @@ const Input = forwardRef<HTMLTextAreaElement, InputProps>((props, ref) => (
             padding: '8px 16px',
             // height: '2rem',
             width: ' 100%',
-            minWidth:' 100%',
+            minWidth: ' 100%',
             maxWidth: '100%',
 
             fontFamily: ' var(--font-family)',
@@ -146,106 +146,69 @@ const Seveny: NextPage<ILandingProps> = ({ meta }) => {
                                 Все объекты имеют подсветку, что особенно актуально в полярную ночь.
                             </p>
                         </Section>
-                        <h2>
-                            Вариант 1
-                        </h2>
                         <Section
                             style={{
                                 padding: '1rem 0',
+                                position: 'relative',
                             }}
                         >
-                            <ReactCompareImage
-                                leftImage={'/static/projects/severny/1.jpg'}
-                                rightImage={'/static/projects/severny/2.jpg'}
-                                aspectRatio='wider'
-                                skeleton={(
-                                    <Skeleton
-                                        src={'/static/projects/severny/1.jpg'}
-                                    />
-                                )}
+                            <img
+                                src='/static/projects/severny/1.jpg'
+                                style={{
+                                    width: '100%',
+                                }}
                             />
                         </Section>
                         <Section
                             style={{
                                 padding: '1rem 0',
+                                position: 'relative',
                             }}
                         >
-                            <ReactCompareImage
-                                leftImage={'/static/projects/severny/3.jpg'}
-                                rightImage={'/static/projects/severny/4.jpg'}
-                                aspectRatio='wider'
-                                skeleton={(
-                                    <Skeleton
-                                        src={'/static/projects/severny/3.jpg'}
-                                    />
-                                )}
+                            <img
+                                src='/static/projects/severny/2.jpg'
+                                style={{
+                                    width: '100%',
+                                }}
                             />
                         </Section>
                         <Section
                             style={{
                                 padding: '1rem 0',
+                                position: 'relative',
                             }}
                         >
-                            <ReactCompareImage
-                                leftImage={'/static/projects/severny/5.jpg'}
-                                rightImage={'/static/projects/severny/6.jpg'}
-                                aspectRatio='wider'
-                                skeleton={(
-                                    <Skeleton
-                                        src={'/static/projects/severny/5.jpg'}
-                                    />
-                                )}
-                            />
-                        </Section>
-                        <h2>
-                            Вариант 2
-                        </h2>
-                        <Section
-                            style={{
-                                padding: '1rem 0',
-                            }}
-                        >
-                            <ReactCompareImage
-                                leftImage={'/static/projects/severny/7.jpg'}
-                                rightImage={'/static/projects/severny/8.jpg'}
-                                aspectRatio='wider'
-                                skeleton={(
-                                    <Skeleton
-                                        src={'/static/projects/severny/7.jpg'}
-                                    />
-                                )}
+                            <img
+                                src='/static/projects/severny/3.jpg'
+                                style={{
+                                    width: '100%',
+                                }}
                             />
                         </Section>
                         <Section
                             style={{
                                 padding: '1rem 0',
+                                position: 'relative',
                             }}
                         >
-                            <ReactCompareImage
-                                leftImage={'/static/projects/severny/9.jpg'}
-                                rightImage={'/static/projects/severny/10.jpg'}
-                                aspectRatio='wider'
-                                skeleton={(
-                                    <Skeleton
-                                        src={'/static/projects/severny/9.jpg'}
-                                    />
-                                )}
+                            <img
+                                src='/static/projects/severny/4.jpg'
+                                style={{
+                                    width: '100%',
+                                }}
                             />
                         </Section>
                         <Section
                             style={{
                                 padding: '1rem 0',
+                                position: 'relative',
                             }}
                         >
-                            <ReactCompareImage
-                                leftImage={'/static/projects/severny/5.jpg'}
-                                rightImage={'/static/projects/severny/11.jpg'}
-                                aspectRatio='wider'
-                                skeleton={(
-                                    <Skeleton
-                                        src={'/static/projects/severny/5.jpg'}
-                                    />
-                                )}
+                            <img
+                                src='/static/projects/severny/5.jpg'
+                                style={{
+                                    width: '100%',
+                                }}
                             />
                         </Section>
                         <Section style={{
