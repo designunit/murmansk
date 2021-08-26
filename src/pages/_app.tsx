@@ -2,9 +2,9 @@ import "../styles/style.css";
 import 'rc-collapse/assets/index.css'
 
 import Head from "next/head"
-import { AppType } from "next/dist/next-server/lib/utils"
 import { YMetrika } from "@/components/YMetrika"
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { AppType } from 'next/dist/shared/lib/utils'
 
 const queryClient = new QueryClient()
 
