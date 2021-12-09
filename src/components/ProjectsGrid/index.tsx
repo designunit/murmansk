@@ -95,13 +95,13 @@ export const ProjectsGrid: React.FC = () => {
                                 padding: '1rem',
                                 height: '100%',
                             }}>
-                                {project?.description}
+                                {/* {project?.description} */}
                                 <img
                                     src={project.preview}
                                     style={{
                                         display: 'block',
                                         maxWidth: '100%',
-                                        height: !project?.description && 200,
+                                        height: 200, //!project?.description && 
                                         objectFit: 'cover'
                                     }}
                                 />
