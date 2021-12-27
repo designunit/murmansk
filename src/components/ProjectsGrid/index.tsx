@@ -67,7 +67,7 @@ export const ProjectsGrid: React.FC = () => {
         },
         {
             title: 'Маяк на сопке Достоевского',
-            preview: '/static/projects/dostoevskogo/4.jpg',
+            preview: '/static/projects/dostoevskogo/preview.jpg',
             href: '/dostoevskogo',
         },
     ]
