@@ -57,7 +57,7 @@ export const ProjectsGrid: React.FC = () => {
         },
         {
             title: 'Сквер Шмидта',
-            preview: '/static/projects/skver-shmidta/2.jpg',
+            preview: '/static/projects/skver-shmidta/preview.jpg',
             href: '/skver-shmidta',
         },
         {
