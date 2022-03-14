@@ -50,11 +50,11 @@ export const ProjectsGrid: React.FC = () => {
             preview: '/static/projects/severny/9.jpg',
             href: '/severny',
         },
-        {
-            title: 'Абрам-мыс',
-            preview: '/static/projects/abram-mys/3.jpg',
-            href: '/abram-mys',
-        },
+        // {
+        //     title: 'Абрам-мыс',
+        //     preview: '/static/projects/abram-mys/3.jpg',
+        //     href: '/abram-mys',
+        // },
         {
             title: 'Сквер Шмидта',
             preview: '/static/projects/skver-shmidta/preview.jpg',
