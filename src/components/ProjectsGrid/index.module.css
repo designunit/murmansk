@@ -9,12 +9,22 @@
 }
 
 .grid {
-    border-left: solid 1px black;
-    border-right: solid 1px black;
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
+}
+
+.border {
+    border-left: solid 1px black;
+    border-right: solid 1px black;
+}
+
+.h3 {
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 33px;
+    margin: 0;
+    text-transform: uppercase;
 }
 
 @media screen and (max-width : 1024px) {
