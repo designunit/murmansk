@@ -27,6 +27,13 @@
     text-transform: uppercase;
 }
 
+.noHref:hover {
+    background-color: var(--color-gray);
+}
+.noHref:hover h3 { 
+    text-decoration: unset;
+}
+
 @media screen and (max-width : 1024px) {
     .grid {
         grid-template-columns: 1fr;

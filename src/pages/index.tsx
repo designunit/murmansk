@@ -77,6 +77,21 @@ const season2 = [
         href: null,
     },
     {
+        title: 'Склон Чумбарова-Лучинского',
+        preview: '/static/projects/chumbarova-luchinskogo/preview.jpg',
+        href: null,
+    },
+    {
+        title: 'Сопка Орликовой',
+        preview: '/static/projects/orlikovoy/preview.jpg',
+        href: null,
+    },
+    {
+        title: 'Набережная Росляково',
+        preview: '/static/projects/roslyakovo/preview.jpg',
+        href: null,
+    },
+    {
         title: 'Плетеные гнейсы',
         preview: '/static/projects/wicker-gneises/preview.jpg',
         href: null,
@@ -94,11 +109,9 @@ const Landing: NextPage<ILandingProps> = ({ data, meta }) => {
                 <Hero />
                 <ProjectsGrid
                     data={season1}
-                    title='Сезон 1'
                 />
                 <ProjectsGrid
                     data={season2}
-                    title='Сезон 2'
                     style={{
                         borderTop: 'none',
                     }}

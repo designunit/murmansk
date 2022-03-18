@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import Link from 'next/link'
 import React, { CSSProperties } from 'react'
 import { Emoji } from '../Emoji'
@@ -11,14 +12,14 @@ const Container = ({ href, children }) => href ? (
         </a>
     </Link>
 ) : (
-    <div className={s.a}>
+    <div className={classNames(s.a, s.noHref)}>
         {children}
     </div>
 )
 
 type ProjectsGridProps = {
     data: any[]
-    title: string
+    title?: string
     style?: CSSProperties
 }
 
@@ -35,9 +36,11 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ data, title, style }
         }}>
             <Section>
                 <div className={s.border}>
-                    <h3 className={s.h3}>
+                    {title && (
+                        <h3 className={s.h3}>
                         {title}
                     </h3>
+                    )}
                     <div
                         className={s.grid}
                     >
