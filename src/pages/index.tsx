@@ -60,6 +60,11 @@ const season2 = [
         href: null,
     },
     {
+        title: 'Гора Горелая',
+        preview: '/static/projects/gorelaya/preview.jpg',
+        href: null,
+    },
+    {
         title: 'Склон Чумбарова-Лучинского',
         preview: '/static/projects/chumbarova-luchinskogo/preview.jpg',
         href: null,
