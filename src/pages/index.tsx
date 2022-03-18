@@ -19,24 +19,7 @@ const season1 = [
     {
         title: 'Площадка Маяковского',
         preview: '/static/mayakovskogo.jpg',
-        href: null, // 'https://vk.com/moizaliv?w=wall-194862104_112',
-        // preview: null,
-        // description: (
-        //     <div
-        //         style={{
-        //             flex: '1 0 auto',
-        //             border: 'solid 1px black',
-        //             background: 'white',
-        //             padding: '1rem',
-        //             height: 200,
-        //         }}
-        //     >
-        //         {'Приглашаем ребят 11-16 лет придумать и построить площадку с видом на залив на ул. Маяковского '}
-        //         <span>
-        //             <Emoji name='⚒️' /> <Emoji name='👨‍👩‍👧‍👦' /> <Emoji name='🏘️' />
-        //         </span>
-        //     </div>
-        // )
+        href: null,
     },
     {
         title: 'Склон Либнекхта',
@@ -48,11 +31,11 @@ const season1 = [
         preview: '/static/projects/severny/9.jpg',
         href: '/severny',
     },
-    // {
-    //     title: 'Абрам-мыс',
-    //     preview: '/static/projects/abram-mys/3.jpg',
-    //     href: '/abram-mys',
-    // },
+    {
+        title: 'Абрам-мыс',
+        preview: '/static/projects/abram-mys/3.jpg',
+        href: '/abram-mys',
+    },
     {
         title: 'Сквер Шмидта',
         preview: '/static/projects/skver-shmidta/preview.jpg',
