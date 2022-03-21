@@ -45,9 +45,14 @@ export const Timeline = () => {
             right: 'cтарт реализации видовых площадок',
             emoji: '🏁',
         },
+        {
+            left: '01.01.2022',
+            right: 'подготовка к реализации 2 сезона',
+            emoji: '🤘',
+        },
     ]
 
-    const index = 7
+    const index = 8
 
     const ref = useRef(null)
     useEffectOnce(() => {
