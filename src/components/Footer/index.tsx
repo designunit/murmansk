@@ -5,23 +5,29 @@ import s from './index.module.css'
 export const Footer: React.FC = () => {
     return (
         <div className={s.container}>
-            <Section style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontSize: 12,
-            }}>
-                <Link
-                    href='https://unit4.io'
-                >
-                    <a>
-                        © 2017-2021 design unit 4
+            <Section className={s.section}>
+                <div className={s.flex}>
+                    <span>
+                        автор проекта: Алексей Арушанян
+                    </span>
+                    <span>
+                        реализация проекта: Цайт План
+                    </span>
+                </div>
+
+                <span>
+                    © 2017-2022
+                </span>
+                <div className={s.flex}>
+                    <span>
+                        разработка и сопровождение сайта / интерактивной карты:
+                    </span>
+                    <a
+                        href='https://unit4.io'
+                    >
+                        design : : unit 4
                     </a>
-                </Link>
-                <a
-                    href='mailto:inbox@unit4.io'
-                >
-                    inbox@unit4.io
-                </a>
+                </div>
             </Section>
         </div>
     )

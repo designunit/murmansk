@@ -17,11 +17,6 @@ interface ILandingProps {
 
 const season1 = [
     {
-        title: 'Площадка Маяковского',
-        preview: '/static/mayakovskogo.jpg',
-        href: null,
-    },
-    {
         title: 'Склон Либнекхта',
         preview: '/static/projects/sklon-karla/preview.jpeg',
         href: '/karla-libnekhta',
@@ -50,6 +45,11 @@ const season1 = [
         title: 'Маяк на сопке Достоевского',
         preview: '/static/projects/dostoevskogo/preview.jpg',
         href: '/dostoevskogo',
+    },
+    {
+        title: 'Площадка Маяковского',
+        preview: '/static/mayakovskogo.jpg',
+        href: null,
     },
 ]
 

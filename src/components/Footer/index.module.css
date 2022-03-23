@@ -5,3 +5,28 @@
     justify-content: center;
     padding: 1rem 0;
 }
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 12px;
+}
+
+.flex {
+    display: flex;
+    flex-flow: column;
+    gap: .5rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .section {
+        flex-flow: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .flex {
+        align-items: center;
+    }
+}
