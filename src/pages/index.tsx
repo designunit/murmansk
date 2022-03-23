@@ -38,7 +38,7 @@ const season1 = [
     },
     {
         title: 'Кильдинская площадка',
-        preview: '/static/projects/kildinskaya/4.jpg',
+        preview: '/static/projects/kildinskaya/preview.jpg',
         href: '/kildinskaya',
     },
     {
