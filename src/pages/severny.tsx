@@ -125,7 +125,7 @@ const Seveny: NextPage<ILandingProps> = ({ meta }) => {
                     }
                 }}>
                     <Project
-                        title='ПЛОЩАДКА СЕВЕРНОГО ПРОЕЗДА'
+                        title='«Северная площадка», в районе дома № 21 на Северном проезде'
                     >
                         <Section
                             style={{

@@ -125,7 +125,7 @@ const SklonKarla: NextPage<ILandingProps> = ({ meta }) => {
                     }
                 }}>
                     <Project
-                        title='Склон Карла Либнекхта'
+                        title='«Склон Либкнехта», на сопке в районе ул. К.Либкнехта'
                     >
                         <Section
                             style={{

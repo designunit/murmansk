@@ -17,37 +17,32 @@ interface ILandingProps {
 
 const season1 = [
     {
-        title: 'Склон Либнекхта',
+        title: '«Склон Либкнехта», на сопке в районе ул. К.Либкнехта',
         preview: '/static/projects/sklon-karla/preview.jpeg',
         href: '/karla-libnekhta',
     },
     {
-        title: 'Площадка на Северном проезде',
+        title: '«Северная площадка», в районе дома № 21 на Северном проезде',
         preview: '/static/projects/severny/9.jpg',
         href: '/severny',
     },
     {
-        title: 'Абрам-мыс',
-        preview: '/static/projects/abram-mys/3.jpg',
-        href: '/abram-mys',
-    },
-    {
-        title: 'Сквер Шмидта',
+        title: '«Сквер Шмидта», вдоль ул.Шмидта',
         preview: '/static/projects/skver-shmidta/preview.jpg',
         href: '/skver-shmidta',
     },
     {
-        title: 'Кильдинская площадка',
+        title: '«Кильдинская площадка», в районе дома № 11 по ул.Кильдинской',
         preview: '/static/projects/kildinskaya/preview.jpg',
         href: '/kildinskaya',
     },
     {
-        title: 'Маяк на сопке Достоевского',
+        title: '«Маяк на сопке Достоевского», в районе дома № 32 по ул.Достоевского',
         preview: '/static/projects/dostoevskogo/preview.jpg',
         href: '/dostoevskogo',
     },
     {
-        title: 'Площадка Маяковского',
+        title: '«Площадка Маяковского», в районе дома № 3 по ул.Маяковского',
         preview: '/static/mayakovskogo.jpg',
         href: null,
     },
@@ -58,6 +53,11 @@ const season2 = [
         title: 'Арктический пляж',
         preview: '/static/projects/arctic-beach/preview.jpg',
         href: null,
+    },
+    {
+        title: 'Абрам-мыс',
+        preview: '/static/projects/abram-mys/3.jpg',
+        href: '/abram-mys',
     },
     {
         title: 'Гора Горелая',

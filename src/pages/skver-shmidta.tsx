@@ -126,7 +126,7 @@ const SkverShmidta: NextPage<ILandingProps> = ({ meta }) => {
                     }
                 }}>
                     <Project
-                        title='Сквер Шмидта'
+                        title='«Сквер Шмидта», вдоль ул.Шмидта'
                     >
                         <Section
                             style={{

@@ -125,7 +125,7 @@ const Seveny: NextPage<ILandingProps> = ({ meta }) => {
                     }
                 }}>
                     <Project
-                        title='Маяк на сопке Достоевского'
+                        title='«Маяк на сопке Достоевского», в районе дома № 32 по ул.Достоевского'
                     >
                         <Section
                             style={{
