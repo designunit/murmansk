@@ -17,38 +17,85 @@ interface ILandingProps {
 
 const season1 = [
     {
-        title: '«Склон Либкнехта», на сопке в районе ул. К.Либкнехта',
+        title: <>
+            «Склон Либкнехта»<br />
+            <span style={{
+                fontSize: '.7em',
+            }}>
+                на сопке в районе ул. К.Либкнехта
+            </span>
+        </>,
         preview: '/static/projects/sklon-karla/preview.jpeg',
         href: '/karla-libnekhta',
     },
     {
-        title: '«Северная площадка», в районе дома № 21 на Северном проезде',
-        preview: '/static/projects/severny/9.jpg',
+        title: <>
+            «Северная площадка»<br />
+            <span style={{
+                fontSize: '.7em',
+            }}>
+                в районе дома №21 на Северном проезде
+            </span>
+        </>,
+        preview: '/static/projects/severny/preview.jpg',
         href: '/severny',
     },
     {
-        title: '«Сквер Шмидта», вдоль ул.Шмидта',
+        title: <>
+            «Сквер Шмидта»<br />
+            <span style={{
+                fontSize: '.7em',
+            }}>
+                вдоль ул.Шмидта
+            </span>
+        </>,
         preview: '/static/projects/skver-shmidta/preview.jpg',
         href: '/skver-shmidta',
     },
     {
-        title: '«Кильдинская площадка», в районе дома № 11 по ул.Кильдинской',
+        title: <>
+            «Кильдинская площадка»<br />
+            <span style={{
+                fontSize: '.7em',
+            }}>
+                в районе дома №11 по ул.Кильдинской
+            </span>
+        </>,
         preview: '/static/projects/kildinskaya/preview.jpg',
         href: '/kildinskaya',
     },
     {
-        title: '«Маяк на сопке Достоевского», в районе дома № 32 по ул.Достоевского',
+        title: <>
+            «Маяк на сопке Достоевского»<br />
+            <span style={{
+                fontSize: '.7em',
+            }}>
+                в районе дома №32 по ул.Достоевского
+            </span>
+        </>,
         preview: '/static/projects/dostoevskogo/preview.jpg',
         href: '/dostoevskogo',
     },
     {
-        title: '«Площадка Маяковского», в районе дома № 3 по ул.Маяковского',
+        title: <>
+            «Площадка Маяковского»<br />
+            <span style={{
+                fontSize: '.7em',
+            }}>
+                в районе дома № 3 по ул.Маяковского
+            </span>
+        </>,
         preview: '/static/mayakovskogo.jpg',
         href: null,
     },
 ]
 
 const season2 = [
+    {
+        title: 'Абрам-мыс',
+        preview: '/static/projects/abram-mys/3.jpg',
+        href: '/abram-mys',
+    },
     {
         title: 'Арктический пляж',
         preview: '/static/projects/arctic-beach/preview.jpg',
