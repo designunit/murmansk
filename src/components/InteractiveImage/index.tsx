@@ -7,7 +7,7 @@ interface InteractiveImageProps {
 
 export const InteractiveImage: React.FC<InteractiveImageProps> = ({ src }) => {
     const ref = useRef(null)
-    const coords = usePointer(ref)
+    const coords = usePointer(ref, 0.9)
 
     return (
         <div

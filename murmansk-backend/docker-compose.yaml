@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+    murmansk-backend:
+        image: ghcr.io/designunit/murmansk-backend:latest
+        restart: always
+        container_name: murmansk-backend
+        env_file: .env
+        volumes:
+            - ./murmansk.db:/app/murmansk.db
+        networks:
+            - proxy
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.murmansk-backend-insecure.entrypoints=http"
+            - "traefik.http.routers.murmansk-backend-insecure.rule=Host(`app.tmshv.com`)"
+            - "traefik.http.routers.murmansk-backend-insecure.middlewares=traefik-https-redirect"
+            - "traefik.http.routers.murmansk-backend.entrypoints=https"
+            - "traefik.http.routers.murmansk-backend.rule=Host(`app.tmshv.com`) && PathPrefix(`/murmansk-backend`)"
+            - "traefik.http.routers.murmansk-backend.tls=true"
+            - "traefik.http.routers.murmansk-backend.tls.certresolver=http"
+            - "traefik.http.routers.murmansk-backend.middlewares=murmansk-backend-stripprefix"
+            - "traefik.http.middlewares.murmansk-backend-stripprefix.stripprefix.prefixes=/murmansk-backend"
+
+networks:
+    proxy:
+        external: true
