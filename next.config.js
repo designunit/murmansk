@@ -11,10 +11,10 @@ module.exports = {
                 source: `/${encodeURIComponent('опрос')}`,
                 destination: '/survey',
             },
-			{
-				source: '/api/v1/:path*',
-				destination: `${backend}/:path*`,
-			},
+            {
+              source: '/api/v1/:path*',
+              destination: `${backend}/:path*`,
+            },
         ]
     }
 }
