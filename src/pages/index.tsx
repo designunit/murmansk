@@ -102,11 +102,6 @@ const season2 = [
         href: null,
     },
     {
-        title: 'Абрам-мыс',
-        preview: '/static/projects/abram-mys/3.jpg',
-        href: '/abram-mys',
-    },
-    {
         title: 'Гора Горелая',
         preview: '/static/projects/gorelaya/preview.jpg',
         href: null,
