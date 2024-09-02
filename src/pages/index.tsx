@@ -91,11 +91,11 @@ const season1 = [
 ]
 
 const season2 = [
-    {
-        title: 'Абрам-мыс',
-        preview: '/static/projects/abram-mys/3.jpg',
-        href: '/abram-mys',
-    },
+    // {
+    //     title: 'Абрам-мыс',
+    //     preview: '/static/projects/abram-mys/3.jpg',
+    //     href: '/abram-mys',
+    // },
     {
         title: 'Арктический пляж',
         preview: '/static/projects/arctic-beach/preview.jpg',
