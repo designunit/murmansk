@@ -149,8 +149,9 @@ const Landing: NextPage<ILandingProps> = ({ meta }) => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const res = await fetch(`https://unit.tmshv.com/mur-events`)
-    const data = await res.json()
+    // const res = await fetch(`https://unit.tmshv.com/mur-events`)
+    // const data = await res.json()
+    const data = []
     const parsed: Item[] = await Promise.all(
         data.map(async x => ({
             ...x,
