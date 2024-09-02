@@ -5,6 +5,9 @@ if (!backend) {
 }
 
 module.exports = {
+    images: {
+        unoptimized: true,
+    },
     async rewrites() {
         return [
             {
